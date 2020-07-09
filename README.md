@@ -15,7 +15,7 @@ With that method, you could lazy load every class that has to_partial_path defin
 You can pass the placeholder as a block:
 
 ```erb
-<%= futurize @posts do %>
+<%= futurize @posts, extends: :tr do %>
   <td class="placeholder"></td>
 <% end %>
 ```

@@ -1,6 +1,6 @@
 module Futurism
   module Helpers
-    def futurize(records, extends: :tr, &block)
+    def futurize(records, extends:, &block)
       placeholder = capture(&block)
       Array(records).map { |record|
         case extends
