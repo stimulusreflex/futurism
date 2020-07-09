@@ -6,4 +6,7 @@ require "futurism/channel"
 require "futurism/helpers"
 
 module Futurism
+  ActiveSupport.on_load(:action_view) {
+    include Futurism::Helpers
+  }
 end
