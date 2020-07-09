@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 bundle exec standardrb --fix
+
+npx prettier-standard lib/templates/**/*.js
