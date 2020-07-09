@@ -6,5 +6,3 @@ require "rails/test_help"
 
 # Filter out the backtrace from minitest while preserving the one from other libraries.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
-
-

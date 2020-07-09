@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -27,4 +27,3 @@ module Dummy
     # the framework and any gems in your application.
   end
 end
-
