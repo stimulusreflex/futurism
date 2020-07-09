@@ -3,7 +3,7 @@ module Futurism
     include CableReady::Broadcaster
 
     def subscribed
-      stream_from "FuturismChannel"
+      stream_from "Futurism::Channel"
     end
 
     def receive(data)
@@ -12,7 +12,7 @@ module Futurism
       }
 
       resources.each do |sgid, resource|
-        cable_ready["FuturismChannel"].outer_html(
+        cable_ready["Futurism::Channel"].outer_html(
           selector: "[data-sgid='#{sgid}']",
           html: ApplicationController.render(resource)
         )
