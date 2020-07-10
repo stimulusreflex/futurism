@@ -8,7 +8,7 @@ with a helper in your template
 <%= futurize @posts %>
 ```
 
-custom `<futurism-elements>` (in the form of a `<div>` or a `<tr is="futurism-table-row">` are rendered. Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
+custom `<futurism-element>`s (in the form of a `<div>` or a `<tr is="futurism-table-row">` are rendered. Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
 
 With that method, you could lazy load every class that has to_partial_path defined (ActiveModel has by default).
 
