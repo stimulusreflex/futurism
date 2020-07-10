@@ -22,6 +22,20 @@ You can pass the placeholder as a block:
 
 ![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
 
+### Partial Path
+
+Remember that you can override the partial path in you models, like so:
+
+```rb
+class Post < ApplicationRecord
+  def to_partial_path
+    "home/post"
+  end
+end
+```
+
+That way you get maximal flexibility when just specifying a single resource.
+
 ## Installation
 Add this line to your application's Gemfile:
 
