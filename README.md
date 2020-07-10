@@ -20,6 +20,8 @@ You can pass the placeholder as a block:
 <% end %>
 ```
 
+![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
+
 ## Installation
 Add this line to your application's Gemfile:
 
