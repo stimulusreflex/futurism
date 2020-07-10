@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "julianrubisch",
+      "name": "Julian Rubisch",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4352208?v=4",
+      "profile": "http://www.julianrubisch.at",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "futurism",
+  "projectOwner": "julianrubisch",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
