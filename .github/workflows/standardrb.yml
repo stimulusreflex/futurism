@@ -24,6 +24,10 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
+    - name: Install sqlite headers
+      run: |
+        sudo apt-get update
+        sudo apt-get install libsqlite3-dev
     - name: Bundle install
       run: |
         gem install bundler
