@@ -151,6 +151,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     standard (0.4.7)
       rubocop (~> 0.85.0)
       rubocop-performance (~> 1.6.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   futurism!
   pry (~> 0.12.2)
   rake (~> 13.0)
+  sqlite3
   standardrb
 
 BUNDLED WITH
