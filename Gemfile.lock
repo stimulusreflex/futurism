@@ -4,7 +4,7 @@ PATH
     futurism (0.1.1)
       cable_ready (>= 4)
       rack (~> 2.0)
-      rails (>= 6, >= 5.2)
+      rails (>= 6)
 
 GEM
   remote: https://rubygems.org/
@@ -151,6 +151,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    spy (1.0.0)
     sqlite3 (1.4.2)
     standard (0.4.7)
       rubocop (~> 0.85.0)
@@ -175,6 +176,7 @@ DEPENDENCIES
   futurism!
   pry (~> 0.12.2)
   rake (~> 13.0)
+  spy
   sqlite3
   standardrb
 
