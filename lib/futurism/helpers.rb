@@ -1,9 +1,11 @@
 module Futurism
   module Helpers
-    def futurize(records, extends:, **options, &block)
+    def futurize(extends, records, **options, &block)
       placeholder = capture(&block)
       Array(records).map { |record|
         case extends
+        when :div
+          content_tag :div, placeholder, {data: {sgid: record.to_sgid.to_s}, is: "futurism-div"}.merge(options)
         when :li
           content_tag :li, placeholder, {data: {sgid: record.to_sgid.to_s}, is: "futurism-li"}.merge(options)
         when :tr

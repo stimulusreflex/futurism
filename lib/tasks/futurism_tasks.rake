@@ -24,8 +24,10 @@ namespace :futurism do
     puts "Updating #{filepath}"
     lines = File.open(filepath, "r") { |f| f.readlines }
 
-    lines << "\nimport 'elements'"
+    unless lines.find { |line| line.include?("import 'elements'") }
+      lines << "\nimport 'elements'"
+      File.open(filepath, "w") { |f| f.write lines.join }
+    end
 
-    File.open(filepath, "w") { |f| f.write lines.join }
   end
 end
