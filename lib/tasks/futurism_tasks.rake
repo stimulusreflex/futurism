@@ -3,17 +3,11 @@ require "fileutils"
 namespace :futurism do
   desc "Let's look into a brighter future with futurism and CableReady"
   task install: :environment do
-    system "yarn add cable_ready"
-
-    app_path_part = Webpacker && Rails ? Webpacker.config.source_path.relative_path_from(Rails.root) : "app/javascript"
-
-    FileUtils.mkdir_p "./#{app_path_part}/channels"
-    FileUtils.mkdir_p "./#{app_path_part}/elements"
-
-    FileUtils.cp File.expand_path("../templates/futurism_channel.js", __dir__), "./#{app_path_part}/channels"
-    FileUtils.cp_r File.expand_path("../templates/elements", __dir__), "./#{app_path_part}"
+    system "yarn add @minthesize/futurism"
 
     filepath = %w[
+      app/javascript/channels/index.js
+      app/javascript/channels/index.ts
       app/javascript/packs/application.js
       app/javascript/packs/application.ts
     ]
@@ -24,7 +18,21 @@ namespace :futurism do
     puts "Updating #{filepath}"
     lines = File.open(filepath, "r") { |f| f.readlines }
 
-    lines << "\nimport 'elements'"
+    unless lines.find { |line| line.start_with?("import * as Futurism") }
+      matches = lines.select { |line| line =~ /\A(require|import)/ }
+      lines.insert lines.index(matches.last).to_i + 1, "import * as Futurism from '@minthesize/futurism'\n"
+    end
+
+    unless lines.find { |line| line.start_with?("import consumer") }
+      matches = lines.select { |line| line =~ /\A(require|import)/ }
+      lines.insert lines.index(matches.last).to_i + 1, "import consumer from '../channels/consumer'\n"
+    end
+
+    initialize_line = lines.find { |line| line.start_with?("Futurism.initializeElements") }
+    lines << "Futurism.initializeElements()\n" unless initialize_line
+
+    subscribe_line = lines.find { |line| line.start_with?("Futurism.createSubscription") }
+    lines << "Futurism.createSubscription(consumer)\n" unless subscribe_line
 
     File.open(filepath, "w") { |f| f.write lines.join }
   end
