@@ -4,6 +4,10 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
+## Facts
+- only one dependency: CableReady
+- bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
+
 ## Usage
 with a helper in your template
 
@@ -57,6 +61,25 @@ To copy over the javascript files to your application, run
 $ bin/rails futurism:install
 ```
 
+** ! Note that the installer will run `yarn install @minthesize/futurism` for you ! **
+
+### Manual Installation
+After `bundle`, install the Javascript library:
+
+```bash
+$ bin/yarn install @minthesize/futurism
+```
+
+In your `app/javascript/channels/index.js`, add the following
+
+```js
+import * as Futurism
+
+import consumer from './consumer'
+
+Futurism.initializeElements()
+Futurism.createSubscription(consumer)
+```
 
 ## Contributing
 
