@@ -20,4 +20,4 @@ jobs:
         node-version: '12.x'
     - name: Run prettier-standard check
       run: npx prettier-standard --lint
-      working-directory: lib/templates
+      working-directory: javascript
