@@ -1,6 +1,6 @@
 {
   "name": "@minthesize/futurism",
-  "version": "1.0.0",
+  "version": "0.1.3",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,8 @@
   },
   "keywords": [
     "cable_ready",
-    "\"lazy",
-    "loading\""
+    "lazy",
+    "loading"
   ],
   "author": "Julian Rubisch <julian.rubisch@hey.com>",
   "license": "MIT",
