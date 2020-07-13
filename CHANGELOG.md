@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 
 ## [v0.1.2](https://github.com/julianrubisch/futurism/tree/v0.1.2) (2020-07-12)
