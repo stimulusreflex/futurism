@@ -7,13 +7,13 @@ module Futurism
     end
 
     def receive(data)
-      resources = data["sgids"].map { |sgid|
-        [sgid, GlobalID::Locator.locate_signed(sgid)]
+      resources = data["signed_params"].map { |signed_params|
+        [signed_params, Rails.application.message_verifier("futurism").verify(signed_params)]
       }
 
-      resources.each do |sgid, resource|
+      resources.each do |signed_params, resource|
         cable_ready["Futurism::Channel"].outer_html(
-          selector: "[data-sgid='#{sgid}']",
+          selector: "[data-signed-params='#{signed_params}']",
           html: ApplicationController.render(resource)
         )
       end
