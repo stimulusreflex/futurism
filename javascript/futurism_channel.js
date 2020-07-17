@@ -1,6 +1,6 @@
 import CableReady from 'cable_ready'
 
-const debounceEvents = (callback, delay = 250) => {
+const debounceEvents = (callback, delay = 20) => {
   let timeoutId
   let events = []
   return (...args) => {
