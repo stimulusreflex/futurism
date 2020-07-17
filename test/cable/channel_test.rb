@@ -21,4 +21,15 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
     assert renderer_spy.has_been_called_with? post
   end
+
+  test "broadcasts a rendered partial after receiving signed params" do
+    renderer_spy = Spy.on(ApplicationController, :render)
+    post = Post.create title: "Lorem"
+    signed_params = futurism_signed_params(partial: "posts/card", locals: {post: post})
+    subscribe
+
+    perform :receive, {"signed_params" => [signed_params]}
+
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: post})
+  end
 end
