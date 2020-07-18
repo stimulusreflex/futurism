@@ -1,11 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.1.2...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.1.2...v0.1.4)
 
 **Merged pull requests:**
 
+- Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
+- docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 

@@ -41,6 +41,16 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "excid3",
+      "name": "Chris Oliver",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/67093?v=4",
+      "profile": "http://gorails.com",
+      "contributions": [
+        "code",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
