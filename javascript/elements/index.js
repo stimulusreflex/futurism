@@ -3,7 +3,7 @@
 import FuturismElement from './futurism_element'
 import FuturismTableRow from './futurism_table_row'
 
-export const initializeElements = () => {
+const polyfillCustomElements = () => {
   if (customElements) {
     try {
       customElements.define(
@@ -21,11 +21,18 @@ export const initializeElements = () => {
       '<script src="//unpkg.com/document-register-element"><\x2fscript>'
     )
   }
+}
 
-  setTimeout(() => {
-    customElements.define('futurism-element', FuturismElement)
-    customElements.define('futurism-table-row', FuturismTableRow, {
-      extends: 'tr'
-    })
-  }, 150)
+const defineElements = e => {
+  customElements.define('futurism-element', FuturismElement)
+  customElements.define('futurism-table-row', FuturismTableRow, {
+    extends: 'tr'
+  })
+}
+
+export const initializeElements = () => {
+  document.addEventListener('DOMContentLoaded', defineElements)
+  document.addEventListener('turbolinks:load', defineElements)
+
+  polyfillCustomElements()
 }
