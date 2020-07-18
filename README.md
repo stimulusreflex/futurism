@@ -72,7 +72,7 @@ To copy over the javascript files to your application, run
 $ bin/rails futurism:install
 ```
 
-** ! Note that the installer will run `yarn install @minthesize/futurism` for you ! **
+**! Note that the installer will run `yarn add @minthesize/futurism` for you !**
 
 ### Manual Installation
 After `bundle`, install the Javascript library:
