@@ -9,6 +9,16 @@ Lazy-load Rails partials via CableReady
 - only one dependency: CableReady
 - bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
 
+### Browser Support
+
+- Chrome v67+ (v54+ via Polyfill)
+- Firefox v63+
+- Edge v79+
+- Safari v10.1+ via Polyfill
+- iOS Safari & Chrome v10.3+ via Polyfill
+
+[Caniuse](https://www.caniuse.com/#search=custom%20elements)
+
 ## Usage
 with a helper in your template
 
