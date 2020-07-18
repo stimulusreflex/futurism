@@ -78,7 +78,7 @@ $ bin/rails futurism:install
 After `bundle`, install the Javascript library:
 
 ```bash
-$ bin/yarn install @minthesize/futurism
+$ bin/yarn add @minthesize/futurism
 ```
 
 In your `app/javascript/channels/index.js`, add the following
