@@ -24,10 +24,12 @@ const polyfillCustomElements = () => {
 }
 
 const defineElements = e => {
-  customElements.define('futurism-element', FuturismElement)
-  customElements.define('futurism-table-row', FuturismTableRow, {
-    extends: 'tr'
-  })
+  if (!customElements.get('futurism-element')) {
+    customElements.define('futurism-element', FuturismElement)
+    customElements.define('futurism-table-row', FuturismTableRow, {
+      extends: 'tr'
+    })
+  }
 }
 
 export const initializeElements = () => {
