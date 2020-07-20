@@ -1,4 +1,4 @@
-/* global HTMLElement */
+/* global HTMLLIElement */
 
 import { extendElementWithIntersectionObserver } from './futurism_utils'
 
