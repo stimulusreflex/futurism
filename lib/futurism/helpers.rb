@@ -33,7 +33,7 @@ module Futurism
     end
 
     def futurism_signed_params(params)
-      Rails.application.message_verifier("futurism").generate(params, expires_in: 1.hour)
+      Rails.application.message_verifier("futurism").generate(params)
     end
   end
 end
