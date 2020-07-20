@@ -4,6 +4,8 @@ module Futurism
       placeholder = capture(&block)
       Array(records).map { |record|
         case extends
+        when :li
+          content_tag :li, placeholder, {data: {sgid: record.to_sgid.to_s}, is: "futurism-li"}.merge(options)
         when :tr
           content_tag :tr, placeholder, {data: {sgid: record.to_sgid.to_s}, is: "futurism-table-row"}.merge(options)
         else
