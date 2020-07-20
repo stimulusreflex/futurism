@@ -11,6 +11,8 @@ module Futurism
         [signed_params, Rails.application.message_verifier("futurism").verify(signed_params)]
       }
 
+      ApplicationController.renderer.instance_variable_set(:@env, connection.env)
+
       resources.each do |signed_params, resource|
         cable_ready["Futurism::Channel"].outer_html(
           selector: "[data-signed-params='#{signed_params}']",
