@@ -21,8 +21,8 @@ module Futurism
       end
     end
 
-    def futurize_active_record(records_or_string, extends:, placeholder:)
-      Array(records_or_string).map { |record|
+    def futurize_active_record(records, extends:, placeholder:)
+      Array(records).map { |record|
         case extends
         when :tr
           content_tag :tr, placeholder, data: {signed_params: futurism_signed_params(record)}, is: "futurism-table-row"
