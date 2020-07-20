@@ -1,10 +1,12 @@
 module Futurism
   module Helpers
-    def futurize(records = nil, extends:, **options, &block)
+    def futurize(records_or_string = nil, extends:, **options, &block)
       placeholder = capture(&block)
 
-      if records.is_a?(ActiveRecord::Base) || records.is_a?(ActiveRecord::Relation)
-        futurize_active_record(records, extends: extends, placeholder: placeholder)
+      if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
+        futurize_active_record(records_or_string, extends: extends, placeholder: placeholder)
+      elsif records_or_string.is_a?(String)
+        futurize_with_options(extends: extends, partial: records_or_string, locals: options, placeholder: placeholder)
       else
         futurize_with_options(extends: extends, placeholder: placeholder, **options)
       end
@@ -19,8 +21,8 @@ module Futurism
       end
     end
 
-    def futurize_active_record(records, extends:, placeholder:)
-      Array(records).map { |record|
+    def futurize_active_record(records_or_string, extends:, placeholder:)
+      Array(records_or_string).map { |record|
         case extends
         when :tr
           content_tag :tr, placeholder, data: {signed_params: futurism_signed_params(record)}, is: "futurism-table-row"

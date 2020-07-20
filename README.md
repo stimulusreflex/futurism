@@ -5,6 +5,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
+:rotating_light: *Futurism is still in pre-1.0 state. As much as I hope to keep the API backwards-compatible, I cannot guarantee it* :rotating_light:
+
 ## Facts
 - only one dependency: CableReady
 - bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
@@ -68,18 +70,24 @@ class Post < ApplicationRecord
 end
 ```
 
+That way you get maximal flexibility when just specifying a single resource.
+
 ### Explicit Partial
 
 Call `futurize` with a `partial` keyword:
 
 ```erb
-<%= futurize partial: "items/card", locals: {card: @card} %>
+<%= futurize partial: "items/card", locals: {card: @card}, extends: :div %>
   <div class="spinner"></div>
 <% end %>
 ```
 
+You can also use the shorthand syntax:
 
-That way you get maximal flexibility when just specifying a single resource.
+```erb
+<%= futurize "items/card", card: @card, extends: :div %>
+  <div class="spinner"></div>
+<% end %>
 
 ## Installation
 Add this line to your application's Gemfile:
