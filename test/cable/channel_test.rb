@@ -5,6 +5,10 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include ActionView::Helpers
   include ActionView::Context
 
+  setup do
+    stub_connection(env: {})
+  end
+
   test "subscribed" do
     subscribe
 
