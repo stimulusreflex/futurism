@@ -69,4 +69,21 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
     assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: post})
   end
+
+  test "broadcasts a collection" do
+    renderer_spy = Spy.on(ApplicationController, :render)
+    Post.create title: "Lorem"
+    Post.create title: "Ipsum"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe
+
+    perform :receive, {"signed_params" => [signed_params]}
+
+    signed_params = fragment.children.last["data-signed-params"]
+    perform :receive, {"signed_params" => [signed_params]}
+
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.first})
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.last})
+  end
 end
