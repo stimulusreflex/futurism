@@ -25,11 +25,13 @@ const polyfillCustomElements = () => {
 }
 
 const defineElements = e => {
-  customElements.define('futurism-element', FuturismElement)
-  customElements.define('futurism-table-row', FuturismTableRow, {
-    extends: 'tr'
-  })
-  customElements.define('futurism-li', FuturismLI, { extends: 'li' })
+  if (!customElements.get('futurism-element')) {
+    customElements.define('futurism-element', FuturismElement)
+    customElements.define('futurism-table-row', FuturismTableRow, {
+      extends: 'tr'
+    })
+    customElements.define('futurism-li', FuturismLI, { extends: 'li' })
+  }
 }
 
 export const initializeElements = () => {

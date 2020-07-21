@@ -21,7 +21,9 @@ export const createSubscription = consumer => {
       document.addEventListener(
         'futurism:appear',
         debounceEvents(events => {
-          this.send({ sgids: events.map(e => e.target.dataset.sgid) })
+          this.send({
+            signed_params: events.map(e => e.target.dataset.signedParams)
+          })
         })
       )
     },

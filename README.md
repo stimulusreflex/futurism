@@ -5,6 +5,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
+:rotating_light: *Futurism is still in pre-1.0 state. As much as I hope to keep the API backwards-compatible, I cannot guarantee it* :rotating_light:
+
 ## Facts
 - only one dependency: CableReady
 - bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
@@ -23,7 +25,9 @@ Lazy-load Rails partials via CableReady
 with a helper in your template
 
 ```erb
-<%= futurize @posts %>
+<%= futurize @posts, extends: :div do %>
+  <!-- placeholder -->
+<% end %>
 ```
 
 custom `<futurism-element>`s (in the form of a `<div>` or a `<tr is="futurism-table-row">` are rendered. Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
@@ -40,7 +44,21 @@ You can pass the placeholder as a block:
 
 ![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
 
-### Partial Path
+## API
+
+Currently there are two ways to call `futurize`, designed to wrap `render`'s behavior:
+
+### Resource
+
+You can pass a single `ActiveRecord` or an `ActiveRecord::Relation` to `futurize`, just as you would call `render`:
+
+```erb
+<%= futurize @posts, extends: :tr do %>
+  <td class="placeholder"></td>
+<% end %>
+```
+
+#### Partial Path
 
 Remember that you can override the partial path in you models, like so:
 
@@ -53,6 +71,23 @@ end
 ```
 
 That way you get maximal flexibility when just specifying a single resource.
+
+### Explicit Partial
+
+Call `futurize` with a `partial` keyword:
+
+```erb
+<%= futurize partial: "items/card", locals: {card: @card}, extends: :div %>
+  <div class="spinner"></div>
+<% end %>
+```
+
+You can also use the shorthand syntax:
+
+```erb
+<%= futurize "items/card", card: @card, extends: :div %>
+  <div class="spinner"></div>
+<% end %>
 
 ## Installation
 Add this line to your application's Gemfile:
