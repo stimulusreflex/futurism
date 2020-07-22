@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Allow futurizing collections via partial render [\#18](https://github.com/julianrubisch/futurism/pull/18) ([julianrubisch](https://github.com/julianrubisch))
+
 ## [v0.2.0](https://github.com/julianrubisch/futurism/tree/v0.2.0) (2020-07-21)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.1.4...v0.2.0)
