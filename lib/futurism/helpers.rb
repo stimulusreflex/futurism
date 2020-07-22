@@ -13,23 +13,30 @@ module Futurism
     end
 
     def futurize_with_options(extends:, placeholder:, **options)
+      collection = options.delete(:collection)
+      if collection.nil?
+        render_element(extends: extends, placeholder: placeholder, options: options)
+      else
+        collection_class_name = collection.first.class.name
+        collection.map { |record|
+          render_element(extends: extends, placeholder: placeholder, options: options.merge(locals: {collection_class_name.downcase.to_sym => record}))
+        }.join.html_safe
+      end
+    end
+
+    def futurize_active_record(records, extends:, placeholder:)
+      Array(records).map { |record|
+        render_element(extends: extends, placeholder: placeholder, options: record)
+      }.join.html_safe
+    end
+
+    def render_element(extends:, options:, placeholder:)
       case extends
       when :tr
         content_tag :tr, placeholder, data: {signed_params: futurism_signed_params(options)}, is: "futurism-table-row"
       else
         content_tag :"futurism-element", placeholder, data: {signed_params: futurism_signed_params(options)}
       end
-    end
-
-    def futurize_active_record(records, extends:, placeholder:)
-      Array(records).map { |record|
-        case extends
-        when :tr
-          content_tag :tr, placeholder, data: {signed_params: futurism_signed_params(record)}, is: "futurism-table-row"
-        else
-          content_tag :"futurism-element", placeholder, data: {signed_params: futurism_signed_params(record)}
-        end
-      }.join.html_safe
     end
 
     def futurism_signed_params(params)
