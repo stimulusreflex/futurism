@@ -77,7 +77,7 @@ That way you get maximal flexibility when just specifying a single resource.
 Call `futurize` with a `partial` keyword:
 
 ```erb
-<%= futurize partial: "items/card", locals: {card: @card}, extends: :div %>
+<%= futurize partial: "items/card", locals: {card: @card}, extends: :div do %>
   <div class="spinner"></div>
 <% end %>
 ```
@@ -85,9 +85,20 @@ Call `futurize` with a `partial` keyword:
 You can also use the shorthand syntax:
 
 ```erb
-<%= futurize "items/card", card: @card, extends: :div %>
+<%= futurize "items/card", card: @card, extends: :div do %>
   <div class="spinner"></div>
 <% end %>
+```
+
+#### Collections
+
+Collection rendering is also possible:
+
+```erb
+<%= futurize partial: "items/card", collection: @cards, extends: :div do %>
+  <div class="spinner"></div>
+<% end %>
+```
 
 ## Installation
 Add this line to your application's Gemfile:
