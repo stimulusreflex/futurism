@@ -130,7 +130,7 @@ $ bin/yarn add @minthesize/futurism
 In your `app/javascript/channels/index.js`, add the following
 
 ```js
-import * as Futurism
+import * as Futurism from '@minthesize/futurism''
 
 import consumer from './consumer'
 
