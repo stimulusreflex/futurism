@@ -32,6 +32,8 @@ module Futurism
 
     def render_element(extends:, options:, placeholder:)
       case extends
+      when :li
+        content_tag :li, placeholder, data: {signed_params: futurism_signed_params(options)}, is: "futurism-li"
       when :tr
         content_tag :tr, placeholder, data: {signed_params: futurism_signed_params(options)}, is: "futurism-table-row"
       else
