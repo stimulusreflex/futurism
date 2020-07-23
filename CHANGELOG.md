@@ -7,6 +7,7 @@
 **Merged pull requests:**
 
 - docs: add mepatterson as a contributor [\#21](https://github.com/julianrubisch/futurism/pull/21) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- add LI support to Rails helper [\#17](https://github.com/julianrubisch/futurism/pull/17) ([leastbad](https://github.com/leastbad))
 
 ## [v0.3.0](https://github.com/julianrubisch/futurism/tree/v0.3.0) (2020-07-22)
 
