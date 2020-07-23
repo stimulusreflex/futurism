@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.3.0](https://github.com/julianrubisch/futurism/tree/v0.3.0) (2020-07-22)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.2.0...v0.3.0)
+
+**Merged pull requests:**
+
+- Allow futurizing collections via partial render [\#18](https://github.com/julianrubisch/futurism/pull/18) ([julianrubisch](https://github.com/julianrubisch))
+
+## [v0.2.0](https://github.com/julianrubisch/futurism/tree/v0.2.0) (2020-07-21)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.1.4...v0.2.0)
+
+**Merged pull requests:**
+
+- docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
+- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
+
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.1.2...v0.1.4)

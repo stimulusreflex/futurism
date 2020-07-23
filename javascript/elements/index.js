@@ -2,6 +2,7 @@
 
 import FuturismElement from './futurism_element'
 import FuturismTableRow from './futurism_table_row'
+import FuturismLI from './futurism_li'
 
 const polyfillCustomElements = () => {
   if (customElements) {
@@ -24,10 +25,13 @@ const polyfillCustomElements = () => {
 }
 
 const defineElements = e => {
-  customElements.define('futurism-element', FuturismElement)
-  customElements.define('futurism-table-row', FuturismTableRow, {
-    extends: 'tr'
-  })
+  if (!customElements.get('futurism-element')) {
+    customElements.define('futurism-element', FuturismElement)
+    customElements.define('futurism-table-row', FuturismTableRow, {
+      extends: 'tr'
+    })
+    customElements.define('futurism-li', FuturismLI, { extends: 'li' })
+  }
 }
 
 export const initializeElements = () => {
