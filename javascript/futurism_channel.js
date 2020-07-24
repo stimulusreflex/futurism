@@ -33,6 +33,10 @@ export const createSubscription = consumer => {
         CableReady.perform(data.operations, {
           emitMissingElementWarnings: false
         })
+        
+        document.dispatchEvent(
+          new CustomEvent('futurism:appear', { bubbles: true, cancelable: true })
+        )
       }
     }
   })
