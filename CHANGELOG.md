@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.3.1](https://github.com/julianrubisch/futurism/tree/v0.3.1) (2020-07-25)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.0...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.0...v0.3.1)
 
 **Implemented enhancements:**
 
