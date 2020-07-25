@@ -93,6 +93,24 @@ You can also use the shorthand syntax:
 <% end %>
 ```
 
+### HTML Options
+
+You can pass a hash of attribute/value pairs which will be mixed into the HTML markup for the placeholder element. This is important for layouts that require elements to have dimensionality. For example, many scripts calculate size based on element height and width. This option ensures that your elements have integrity, even if they are gone before you see them.
+
+```erb
+<%= futurize @posts, extends: :tr, html_options: {style: "width: 50px; height: 50px;"} do %>
+  <td class="placeholder"></td>
+<% end %>
+```
+
+This will output the following:
+
+```html
+<tr style="width: 50px; height: 50px;">
+  <td class="placeholder"></td>
+</tr>
+```
+
 #### Collections
 
 Collection rendering is also possible:
