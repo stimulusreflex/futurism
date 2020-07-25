@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.0...HEAD)
 
+**Implemented enhancements:**
+
+- Emit futurism:appeared event after morphing is done [\#19](https://github.com/julianrubisch/futurism/issues/19)
+
 **Closed issues:**
 
 - NoMethodError - undefined method `map' for nil:NilClass [\#22](https://github.com/julianrubisch/futurism/issues/22)
@@ -11,6 +15,7 @@
 **Merged pull requests:**
 
 - enable passing of html\_options hash [\#26](https://github.com/julianrubisch/futurism/pull/26) ([leastbad](https://github.com/leastbad))
+- Dispatch futurism:appear method [\#24](https://github.com/julianrubisch/futurism/pull/24) ([fractaledmind](https://github.com/fractaledmind))
 - docs: add mepatterson as a contributor [\#21](https://github.com/julianrubisch/futurism/pull/21) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - add LI support to Rails helper [\#17](https://github.com/julianrubisch/futurism/pull/17) ([leastbad](https://github.com/leastbad))
 
@@ -41,7 +46,6 @@
 - Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
-- docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 
 ## [v0.1.2](https://github.com/julianrubisch/futurism/tree/v0.1.2) (2020-07-12)
 
@@ -49,6 +53,7 @@
 
 **Merged pull requests:**
 
+- docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add ParamagicDev as a contributor [\#7](https://github.com/julianrubisch/futurism/pull/7) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - feat\(active\_record\): Add ActiveRecord for testing. [\#6](https://github.com/julianrubisch/futurism/pull/6) ([ParamagicDev](https://github.com/ParamagicDev))
