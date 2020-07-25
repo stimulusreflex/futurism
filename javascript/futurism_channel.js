@@ -1,3 +1,5 @@
+/* global CustomEvent, setTimeout */
+
 import CableReady from 'cable_ready'
 
 const debounceEvents = (callback, delay = 20) => {
