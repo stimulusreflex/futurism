@@ -1,3 +1,5 @@
+/* global CustomEvent, setTimeout */
+
 import CableReady from 'cable_ready'
 
 const debounceEvents = (callback, delay = 20) => {
@@ -33,6 +35,10 @@ export const createSubscription = consumer => {
         CableReady.perform(data.operations, {
           emitMissingElementWarnings: false
         })
+        
+        document.dispatchEvent(
+          new CustomEvent('futurism:appeared', { bubbles: true, cancelable: true })
+        )
       }
     }
   })
