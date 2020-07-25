@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.0...HEAD)
 
+**Closed issues:**
+
+- NoMethodError - undefined method `map' for nil:NilClass [\#22](https://github.com/julianrubisch/futurism/issues/22)
+
 **Merged pull requests:**
 
+- enable passing of html\_options hash [\#26](https://github.com/julianrubisch/futurism/pull/26) ([leastbad](https://github.com/leastbad))
 - docs: add mepatterson as a contributor [\#21](https://github.com/julianrubisch/futurism/pull/21) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - add LI support to Rails helper [\#17](https://github.com/julianrubisch/futurism/pull/17) ([leastbad](https://github.com/leastbad))
 
