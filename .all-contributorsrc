@@ -69,6 +69,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "fractaledmind",
+      "name": "Stephen Margheim",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5077225?v=4",
+      "profile": "http://fractaledmind.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
