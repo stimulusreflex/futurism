@@ -32,14 +32,14 @@ module Futurism
 
     def render_element(extends:, options:, placeholder:)
       html_options = options.delete(:html_options) || {}
-      options = options.delete(:model) || options
+      model_or_options = options.delete(:model) || options
       case extends
       when :li
-        content_tag :li, placeholder, {data: {signed_params: futurism_signed_params(options)}, is: "futurism-li"}.merge(html_options)
+        content_tag :li, placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}, is: "futurism-li"}.merge(html_options)
       when :tr
-        content_tag :tr, placeholder, {data: {signed_params: futurism_signed_params(options)}, is: "futurism-table-row"}.merge(html_options)
+        content_tag :tr, placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}, is: "futurism-table-row"}.merge(html_options)
       else
-        content_tag :"futurism-element", placeholder, {data: {signed_params: futurism_signed_params(options)}}.merge(html_options)
+        content_tag :"futurism-element", placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}}.merge(html_options)
       end
     end
 
