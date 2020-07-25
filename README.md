@@ -103,6 +103,10 @@ Collection rendering is also possible:
 <% end %>
 ```
 
+## Events
+
+Once your futurize element has been rendered, the `futurize:appeared` custom event will be called.
+
 ## Installation
 Add this line to your application's Gemfile:
 
