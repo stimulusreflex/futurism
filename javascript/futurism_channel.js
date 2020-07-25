@@ -37,7 +37,7 @@ export const createSubscription = consumer => {
         })
         
         document.dispatchEvent(
-          new CustomEvent('futurism:appear', { bubbles: true, cancelable: true })
+          new CustomEvent('futurism:appeared', { bubbles: true, cancelable: true })
         )
       }
     }
