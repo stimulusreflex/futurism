@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
@@ -50,7 +51,6 @@
 **Merged pull requests:**
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
 - Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
@@ -59,6 +59,7 @@
 
 **Merged pull requests:**
 
+- list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
 - Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
