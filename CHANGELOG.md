@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 - Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
@@ -51,6 +52,8 @@
 **Merged pull requests:**
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
+- Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
@@ -59,8 +62,6 @@
 
 **Merged pull requests:**
 
-- list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
-- Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
