@@ -86,4 +86,21 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.first, important_local: "needed to render"})
     assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.last, important_local: "needed to render"})
   end
+
+  test "broadcasts a collection with :as" do
+    renderer_spy = Spy.on(ApplicationController, :render)
+    Post.create title: "Lorem"
+    Post.create title: "Ipsum"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :post_item, extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe
+
+    perform :receive, {"signed_params" => [signed_params]}
+
+    signed_params = fragment.children.last["data-signed-params"]
+    perform :receive, {"signed_params" => [signed_params]}
+
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post_item: Post.first})
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post_item: Post.last})
+  end
 end
