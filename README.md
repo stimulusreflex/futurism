@@ -93,6 +93,16 @@ You can also use the shorthand syntax:
 <% end %>
 ```
 
+#### Collections
+
+Collection rendering is also possible:
+
+```erb
+<%= futurize partial: "items/card", collection: @cards, extends: :div do %>
+  <div class="spinner"></div>
+<% end %>
+```
+
 ### HTML Options
 
 You can pass a hash of attribute/value pairs which will be mixed into the HTML markup for the placeholder element. This is important for layouts that require elements to have dimensionality. For example, many scripts calculate size based on element height and width. This option ensures that your elements have integrity, even if they are gone before you see them.
@@ -109,16 +119,6 @@ This will output the following:
 <tr style="width: 50px; height: 50px;">
   <td class="placeholder"></td>
 </tr>
-```
-
-#### Collections
-
-Collection rendering is also possible:
-
-```erb
-<%= futurize partial: "items/card", collection: @cards, extends: :div do %>
-  <div class="spinner"></div>
-<% end %>
 ```
 
 ## Events
