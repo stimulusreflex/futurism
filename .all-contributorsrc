@@ -87,6 +87,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "marcoroth",
+      "name": "Marco Roth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6411752?v=4",
+      "profile": "https://marcoroth.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
