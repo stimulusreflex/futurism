@@ -74,7 +74,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     renderer_spy = Spy.on(ApplicationController, :render)
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
-    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, extends: :div) {})
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, extends: :div, locals: {important_local: "needed to render"}) {})
     signed_params = fragment.children.first["data-signed-params"]
     subscribe
 
@@ -83,7 +83,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     signed_params = fragment.children.last["data-signed-params"]
     perform :receive, {"signed_params" => [signed_params]}
 
-    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.first})
-    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.last})
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.first, important_local: "needed to render"})
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: Post.last, important_local: "needed to render"})
   end
 end
