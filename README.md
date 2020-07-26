@@ -1,7 +1,7 @@
 # Futurism
 [![Twitter follow](https://img.shields.io/twitter/follow/julian_rubisch?style=social)](https://twitter.com/julian_rubisch)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
@@ -187,6 +187,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://fractaledmind.com"><img src="https://avatars3.githubusercontent.com/u/5077225?v=4" width="100px;" alt=""/><br /><sub><b>Stephen Margheim</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=fractaledmind" title="Code">💻</a></td>
+    <td align="center"><a href="http://hass.codes"><img src="https://avatars2.githubusercontent.com/u/1064205?v=4" width="100px;" alt=""/><br /><sub><b>Hassanin Ahmed</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=sas1ni69" title="Code">💻</a></td>
   </tr>
 </table>
 
