@@ -18,8 +18,9 @@ module Futurism
         render_element(extends: extends, placeholder: placeholder, options: options)
       else
         collection_class_name = collection.klass.name
+        as = options.delete(:as) || collection_class_name.downcase.to_sym
         collection.map { |record|
-          render_element(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {collection_class_name.downcase.to_sym => record}))
+          render_element(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as => record}))
         }.join.html_safe
       end
     end
