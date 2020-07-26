@@ -35,7 +35,6 @@ If applicable, add screenshots (errors, example of the behavior, etc.) to help e
 - Ruby: [e.g. 2.6.4]
 - Rails: [e.g. 6.0.0]
 - CableReady: [e.g. 4.3.0]
-- StimulusReflex: [e.g. 3.2.0]
 - Node: [e.g. 12.4.0]
 
 ### Browser
