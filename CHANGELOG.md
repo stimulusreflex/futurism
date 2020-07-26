@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
 - Allow to pass locals when rendering a collection [\#28](https://github.com/julianrubisch/futurism/pull/28) ([marcoroth](https://github.com/marcoroth))
