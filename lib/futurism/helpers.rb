@@ -17,7 +17,7 @@ module Futurism
       if collection.nil?
         render_element(extends: extends, placeholder: placeholder, options: options)
       else
-        collection_class_name = collection.first.class.name
+        collection_class_name = collection.klass.name
         collection.map { |record|
           render_element(extends: extends, placeholder: placeholder, options: options.merge(locals: {collection_class_name.downcase.to_sym => record}))
         }.join.html_safe
