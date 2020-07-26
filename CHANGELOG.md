@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.1...HEAD)
+
+**Merged pull requests:**
+
+- uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
+
 ## [v0.3.1](https://github.com/julianrubisch/futurism/tree/v0.3.1) (2020-07-25)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.0...v0.3.1)
@@ -45,6 +53,7 @@
 **Merged pull requests:**
 
 - Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
+- docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 
@@ -54,7 +63,6 @@
 
 **Merged pull requests:**
 
-- docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add ParamagicDev as a contributor [\#7](https://github.com/julianrubisch/futurism/pull/7) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - feat\(active\_record\): Add ActiveRecord for testing. [\#6](https://github.com/julianrubisch/futurism/pull/6) ([ParamagicDev](https://github.com/ParamagicDev))
