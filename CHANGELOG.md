@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
 
 ## [v0.3.1](https://github.com/julianrubisch/futurism/tree/v0.3.1) (2020-07-25)
