@@ -19,7 +19,7 @@ module Futurism
       else
         collection_class_name = collection.klass.name
         collection.map { |record|
-          render_element(extends: extends, placeholder: placeholder, options: options.merge(locals: {collection_class_name.downcase.to_sym => record}))
+          render_element(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {collection_class_name.downcase.to_sym => record}))
         }.join.html_safe
       end
     end
