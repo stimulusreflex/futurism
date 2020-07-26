@@ -4,10 +4,15 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.1...HEAD)
 
+**Implemented enhancements:**
+
+- Allow to pass locals when rendering a collection [\#27](https://github.com/julianrubisch/futurism/issues/27)
+
 **Merged pull requests:**
 
 - docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
+- Allow to pass locals when rendering a collection [\#28](https://github.com/julianrubisch/futurism/pull/28) ([marcoroth](https://github.com/marcoroth))
 
 ## [v0.3.1](https://github.com/julianrubisch/futurism/tree/v0.3.1) (2020-07-25)
 
@@ -43,6 +48,7 @@
 
 **Merged pull requests:**
 
+- docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
 - Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
@@ -52,7 +58,6 @@
 
 **Merged pull requests:**
 
-- docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
