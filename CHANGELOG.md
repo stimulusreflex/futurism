@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.3.2](https://github.com/julianrubisch/futurism/tree/v0.3.2) (2020-07-27)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.1...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.1...v0.3.2)
 
 **Implemented enhancements:**
 
@@ -53,7 +53,6 @@
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
-- Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
@@ -62,6 +61,7 @@
 
 **Merged pull requests:**
 
+- Add safari polyfill [\#14](https://github.com/julianrubisch/futurism/pull/14) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
