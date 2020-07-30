@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.2...HEAD)
+
+**Fixed bugs:**
+
+- Generated URLs start with /cable [\#20](https://github.com/julianrubisch/futurism/issues/20)
+
 ## [v0.3.2](https://github.com/julianrubisch/futurism/tree/v0.3.2) (2020-07-27)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.3.1...v0.3.2)
@@ -10,6 +18,7 @@
 
 **Merged pull requests:**
 
+- 20 fix generated urls [\#35](https://github.com/julianrubisch/futurism/pull/35) ([julianrubisch](https://github.com/julianrubisch))
 - Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 - Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
