@@ -11,7 +11,8 @@ module Futurism
         [signed_params, Rails.application.message_verifier("futurism").verify(signed_params)]
       }
 
-      ApplicationController.renderer.instance_variable_set(:@env, connection.env)
+      new_env = connection.env.merge(ApplicationController.renderer.instance_variable_get(:@env))
+      ApplicationController.renderer.instance_variable_set(:@env, new_env)
 
       resources.each do |signed_params, resource|
         cable_ready["Futurism::Channel"].outer_html(
