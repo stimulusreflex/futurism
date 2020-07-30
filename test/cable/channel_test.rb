@@ -7,7 +7,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include CableReady::Broadcaster
 
   setup do
-    stub_connection(env: {})
+    stub_connection(env: { "SCRIPT_NAME" => "/cable"})
   end
 
   test "subscribed" do
@@ -111,6 +111,17 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe
 
     assert_broadcast_on("Futurism::Channel", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "3"}]}) do
+      perform :receive, {"signed_params" => [signed_params]}
+    end
+  end
+
+  test "broadcasts a correctly formed path" do
+    post = Post.create title: "Lorem"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe
+
+    assert_broadcast_on("Futurism::Channel", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n"}]}) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
