@@ -7,7 +7,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include CableReady::Broadcaster
 
   setup do
-    stub_connection(env: { "SCRIPT_NAME" => "/cable"})
+    stub_connection(env: {"SCRIPT_NAME" => "/cable"})
   end
 
   test "subscribed" do
