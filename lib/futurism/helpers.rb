@@ -32,20 +32,37 @@ module Futurism
     end
 
     def render_element(extends:, options:, placeholder:)
-      html_options = options.delete(:html_options) || {}
-      model_or_options = options.delete(:model) || options
-      case extends
-      when :li
-        content_tag :li, placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}, is: "futurism-li"}.merge(html_options)
-      when :tr
-        content_tag :tr, placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}, is: "futurism-table-row"}.merge(html_options)
-      else
-        content_tag :"futurism-element", placeholder, {data: {signed_params: futurism_signed_params(model_or_options)}}.merge(html_options)
-      end
+      Element.new(extends: extends, options: options, placeholder: placeholder).render
     end
 
-    def futurism_signed_params(params)
-      Rails.application.message_verifier("futurism").generate(params)
+    class Element
+      include ActionView::Helpers
+
+      attr_reader :extends, :placeholder, :html_options, :model_or_options
+
+      def initialize(extends:, placeholder:, options:)
+        @extends = extends
+        @placeholder = placeholder
+        @html_options = options.delete(:html_options) || {}
+        @model_or_options = options.delete(:model) || options
+      end
+
+      def render
+        case extends
+        when :li
+          content_tag :li, placeholder, {data: {signed_params: signed_params(model_or_options)}, is: "futurism-li"}.merge(html_options)
+        when :tr
+          content_tag :tr, placeholder, {data: {signed_params: signed_params(model_or_options)}, is: "futurism-table-row"}.merge(html_options)
+        else
+          content_tag :"futurism-element", placeholder, {data: {signed_params: signed_params(model_or_options)}}.merge(html_options)
+        end
+      end
+
+      private
+
+      def signed_params(params)
+        Rails.application.message_verifier("futurism").generate(params)
+      end
     end
   end
 end
