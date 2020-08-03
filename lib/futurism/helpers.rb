@@ -15,26 +15,23 @@ module Futurism
     def futurize_with_options(extends:, placeholder:, **options)
       collection = options.delete(:collection)
       if collection.nil?
-        render_element(extends: extends, placeholder: placeholder, options: options)
+        Element.new(extends: extends, placeholder: placeholder, options: options).render
       else
         collection_class_name = collection.klass.name
         as = options.delete(:as) || collection_class_name.downcase
         collection.map { |record|
-          render_element(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record}))
+          Element.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record})).render
         }.join.html_safe
       end
     end
 
     def futurize_active_record(records, extends:, placeholder:, **options)
       Array(records).map { |record|
-        render_element(extends: extends, placeholder: placeholder, options: options.merge(model: record))
+        Element.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
       }.join.html_safe
     end
 
-    def render_element(extends:, options:, placeholder:)
-      Element.new(extends: extends, options: options, placeholder: placeholder).render
-    end
-
+    # wraps functionality for rendering a futurism element
     class Element
       include ActionView::Helpers
 
