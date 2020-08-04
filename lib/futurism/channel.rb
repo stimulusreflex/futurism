@@ -13,7 +13,7 @@ module Futurism
       ApplicationController.renderer.instance_variable_set(:@env, new_env)
 
       resources.each do |signed_params, sgid|
-        selector = "[data-signed-params='#{signed_params}']"
+        selector = "[data-signed-params='%s'%s]" % [signed_params, sgid.present? ? " data-sgid='#{sgid}'" : ""]
         cable_ready["Futurism::Channel"].outer_html(
           selector: selector,
           html: ApplicationController.render(resource(signed_params: signed_params, sgid: sgid))
@@ -26,7 +26,7 @@ module Futurism
     private
 
     def resource(signed_params:, sgid:)
-      return GlobalID::Locator.locate_signed(sgid) if sgid.present? 
+      return GlobalID::Locator.locate_signed(sgid) if sgid.present?
 
       Rails.application.message_verifier("futurism").verify(signed_params)
     end
