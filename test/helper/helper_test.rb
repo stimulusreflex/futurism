@@ -9,7 +9,7 @@ class Futurism::HelperTest < ActionView::TestCase
     element = Nokogiri::HTML.fragment(futurize(post, extends: :div, html_options: {class: "absolute inset-0"}) {})
 
     assert_equal "futurism-element", element.children.first.name
-    assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"]) 
+    assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
     assert_equal signed_params({}), element.children.first["data-signed-params"]
     assert_equal "absolute inset-0", element.children.first["class"]
 
