@@ -13,7 +13,8 @@ module Futurism
       ApplicationController.renderer.instance_variable_set(:@env, new_env)
 
       resources.each do |signed_params, sgid|
-        selector = "[data-signed-params='%s'%s]" % [signed_params, sgid.present? ? " data-sgid='#{sgid}'" : ""]
+        selector = "[data-signed-params='#{signed_params}']"
+        selector << "[data-sgid='#{sgid}']" if sgid.present?
         cable_ready["Futurism::Channel"].outer_html(
           selector: selector,
           html: ApplicationController.render(resource(signed_params: signed_params, sgid: sgid))
