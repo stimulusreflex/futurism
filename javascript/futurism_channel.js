@@ -24,7 +24,8 @@ export const createSubscription = consumer => {
         'futurism:appear',
         debounceEvents(events => {
           this.send({
-            signed_params: events.map(e => e.target.dataset.signedParams)
+            signed_params: events.map(e => e.target.dataset.signedParams),
+            sgids: events.map(e => e.target.dataset.sgid)
           })
         })
       )
@@ -35,9 +36,12 @@ export const createSubscription = consumer => {
         CableReady.perform(data.operations, {
           emitMissingElementWarnings: false
         })
-        
+
         document.dispatchEvent(
-          new CustomEvent('futurism:appeared', { bubbles: true, cancelable: true })
+          new CustomEvent('futurism:appeared', {
+            bubbles: true,
+            cancelable: true
+          })
         )
       }
     }

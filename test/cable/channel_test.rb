@@ -22,10 +22,11 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     renderer_spy = Spy.on(ApplicationController, :render)
     post = Post.create title: "Lorem"
     fragment = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
-    signed_params = fragment.children.first["data-signed-params"]
+    signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
+    sgids = fragment.children.map { |element| element["data-sgid"] }
     subscribe
 
-    perform :receive, {"signed_params" => [signed_params]}
+    perform :receive, {"signed_params" => signed_params_array, "sgids" => sgids}
 
     assert renderer_spy.has_been_called_with? post
   end
@@ -35,13 +36,11 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
     fragment = Nokogiri::HTML.fragment(futurize(Post.all, extends: :div) {})
-    signed_params = fragment.children.first["data-signed-params"]
+    signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
+    sgids = fragment.children.map { |element| element["data-sgid"] }
     subscribe
 
-    perform :receive, {"signed_params" => [signed_params]}
-
-    signed_params = fragment.children.last["data-signed-params"]
-    perform :receive, {"signed_params" => [signed_params]}
+    perform :receive, {"signed_params" => signed_params_array, "sgids" => sgids}
 
     assert renderer_spy.has_been_called_with? Post.first
     assert renderer_spy.has_been_called_with? Post.last
