@@ -61,6 +61,42 @@
         "code",
         "review"
       ]
+    },
+    {
+      "login": "mepatterson",
+      "name": "M. E. Patterson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/74207?v=4",
+      "profile": "http://code.digimonkey.com",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "fractaledmind",
+      "name": "Stephen Margheim",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5077225?v=4",
+      "profile": "http://fractaledmind.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sas1ni69",
+      "name": "Hassanin Ahmed",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1064205?v=4",
+      "profile": "http://hass.codes",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "marcoroth",
+      "name": "Marco Roth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6411752?v=4",
+      "profile": "https://marcoroth.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

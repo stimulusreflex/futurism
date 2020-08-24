@@ -1,3 +1,5 @@
+/* global CustomEvent, setTimeout */
+
 import CableReady from 'cable_ready'
 
 const debounceEvents = (callback, delay = 20) => {
@@ -21,7 +23,10 @@ export const createSubscription = consumer => {
       document.addEventListener(
         'futurism:appear',
         debounceEvents(events => {
-          this.send({ sgids: events.map(e => e.target.dataset.sgid) })
+          this.send({
+            signed_params: events.map(e => e.target.dataset.signedParams),
+            sgids: events.map(e => e.target.dataset.sgid)
+          })
         })
       )
     },
@@ -31,6 +36,13 @@ export const createSubscription = consumer => {
         CableReady.perform(data.operations, {
           emitMissingElementWarnings: false
         })
+
+        document.dispatchEvent(
+          new CustomEvent('futurism:appeared', {
+            bubbles: true,
+            cancelable: true
+          })
+        )
       }
     }
   })
