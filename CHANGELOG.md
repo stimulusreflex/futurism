@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Fix partial shorthand bug [\#41](https://github.com/julianrubisch/futurism/pull/41) ([leastbad](https://github.com/leastbad))
 - docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
 
