@@ -6,7 +6,8 @@ module Futurism
       if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
         futurize_active_record(records_or_string, extends: extends, placeholder: placeholder, **options)
       elsif records_or_string.is_a?(String)
-        futurize_with_options(extends: extends, placeholder: placeholder, partial: records_or_string, **options)
+        html_options = options.delete(:html_options)
+        futurize_with_options(extends: extends, placeholder: placeholder, partial: records_or_string, locals: options, html_options: html_options)
       else
         futurize_with_options(extends: extends, placeholder: placeholder, **options)
       end

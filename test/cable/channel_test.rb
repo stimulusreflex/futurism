@@ -70,6 +70,18 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: post})
   end
 
+  test "broadcasts a rendered partial after receiving the shorthand syntax with html options" do
+    renderer_spy = Spy.on(ApplicationController, :render)
+    post = Post.create title: "Lorem"
+    fragment = Nokogiri::HTML.fragment(futurize("posts/card", post: post, extends: :div, html_options: {style: "color: green"}) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe
+
+    perform :receive, {"signed_params" => [signed_params]}
+
+    assert renderer_spy.has_been_called_with?(partial: "posts/card", locals: {post: post})
+  end
+
   test "broadcasts a collection" do
     renderer_spy = Spy.on(ApplicationController, :render)
     Post.create title: "Lorem"
