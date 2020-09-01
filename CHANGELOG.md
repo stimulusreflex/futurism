@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
 
 ## [v0.4.0](https://github.com/julianrubisch/futurism/tree/v0.4.0) (2020-08-24)
