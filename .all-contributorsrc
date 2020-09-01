@@ -97,6 +97,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "vieditcom",
+      "name": "Viedit com",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/49990587?v=4",
+      "profile": "https://viedit.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
