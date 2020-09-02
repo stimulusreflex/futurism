@@ -10,6 +10,24 @@ Lazy-load Rails partials via CableReady
 <img src="https://user-images.githubusercontent.com/4352208/88374198-9e6f3500-cd99-11ea-804b-0216ed320eff.jpg" alt="birmingham-museums-trust-GrvC6MI-z4w-unsplash" width="50%" align="center"/>
 <span>Photo by <a href="https://unsplash.com/@birminghammuseumstrust?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Birmingham Museums Trust</a> on <a href="https://unsplash.com/s/photos/futurism?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Facts](#facts)
+  - [Browser Support](#browser-support)
+- [Usage](#usage)
+- [API](#api)
+  - [Resource](#resource)
+  - [Explicit Partial](#explicit-partial)
+  - [HTML Options](#html-options)
+- [Events](#events)
+- [Installation](#installation)
+  - [Manual Installation](#manual-installation)
+- [Authentication](#authentication)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contributors](#contributors)
+
 ## Facts
 - only one dependency: CableReady
 - bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
@@ -162,6 +180,23 @@ import consumer from './consumer'
 Futurism.initializeElements()
 Futurism.createSubscription(consumer)
 ```
+
+## Authentication
+For authentication, you can rely on ActionCable identifiers, for example, if you use Devise:
+
+```ruby
+module ApplicationCable
+  class Connection < ActionCable::Connection::Base
+    identified_by :current_user
+
+    def connect
+      self.current_user = env["warden"].user || reject_unauthorized_connection
+    end
+  end
+end
+```
+
+The [Stimulus Reflex Docs](https://docs.stimulusreflex.com/authentication) have an excellent section about all sorts of authentication.
 
 ## Contributing
 
