@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.4.0...HEAD)
 
+**Implemented enhancements:**
+
+- Identify channel \(cf StimulusReflex\) [\#34](https://github.com/julianrubisch/futurism/issues/34)
+
 **Merged pull requests:**
 
+- 34 identify channel [\#46](https://github.com/julianrubisch/futurism/pull/46) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
 
@@ -17,7 +22,6 @@
 
 - Fix partial shorthand bug [\#41](https://github.com/julianrubisch/futurism/pull/41) ([leastbad](https://github.com/leastbad))
 - docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.3.3](https://github.com/julianrubisch/futurism/tree/v0.3.3) (2020-07-30)
 
@@ -41,6 +45,7 @@
 
 **Merged pull requests:**
 
+- Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
 - Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 - Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
