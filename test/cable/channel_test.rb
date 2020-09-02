@@ -7,15 +7,15 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include CableReady::Broadcaster
 
   setup do
-    stub_connection(env: {"SCRIPT_NAME" => "/cable"})
+    stub_connection(env: {"SCRIPT_NAME" => "/cable"}, identifiers: [:current_user], current_user: Struct.new(:id)[1])
   end
 
   test "subscribed" do
-    subscribe
+    subscribe(channel: "Futurism::Channel")
 
     assert subscription.confirmed?
 
-    assert_has_stream "Futurism::Channel"
+    assert_has_stream "Futurism::Channel:1"
   end
 
   test "broadcasts a rendered model after receiving signed params" do
@@ -119,9 +119,9 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "broadcasts an inline rendered text" do
     fragment = Nokogiri::HTML.fragment(futurize(inline: "<%= 1 + 2 %>", extends: :div) {})
     signed_params = fragment.children.first["data-signed-params"]
-    subscribe
+    subscribe(channel: "Futurism::Channel")
 
-    assert_broadcast_on("Futurism::Channel", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "3"}]}) do
+    assert_broadcast_on("Futurism::Channel:1", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "3"}]}) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -130,9 +130,9 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     post = Post.create title: "Lorem"
     fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
     signed_params = fragment.children.first["data-signed-params"]
-    subscribe
+    subscribe(channel: "Futurism::Channel")
 
-    assert_broadcast_on("Futurism::Channel", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n"}]}) do
+    assert_broadcast_on("Futurism::Channel:1", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n"}]}) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
