@@ -2,8 +2,16 @@ module Futurism
   class Channel < ActionCable::Channel::Base
     include CableReady::Broadcaster
 
+    def stream_name
+      ids = connection.identifiers.map { |identifier| send(identifier).try(:id) || send(identifier) }
+      [
+        params[:channel],
+        ids.select(&:present?).join(";")
+      ].select(&:present?).join(":")
+    end
+
     def subscribed
-      stream_from "Futurism::Channel"
+      stream_from stream_name
     end
 
     def receive(data)
@@ -15,7 +23,7 @@ module Futurism
       resources.each do |signed_params, sgid|
         selector = "[data-signed-params='#{signed_params}']"
         selector << "[data-sgid='#{sgid}']" if sgid.present?
-        cable_ready["Futurism::Channel"].outer_html(
+        cable_ready[stream_name].outer_html(
           selector: selector,
           html: ApplicationController.render(resource(signed_params: signed_params, sgid: sgid))
         )
