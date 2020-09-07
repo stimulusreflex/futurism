@@ -22,6 +22,15 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "flex justify-center", element.children.first["class"]
   end
 
+  test "ensures signed_params and sgid are not overwritable" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, html_options: {data: {controller: "test", sgid: "test", signed_params: "test"}}) {})
+
+    assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
+    assert_equal signed_params({data: {controller: "test"}}), element.children.first["data-signed-params"]
+  end
+
   def signed_params(params)
     Rails.application.message_verifier("futurism").generate(params)
   end
