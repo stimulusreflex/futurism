@@ -31,8 +31,6 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal signed_params({data: {controller: "test"}}), element.children.first["data-signed-params"]
   end
 
-
-
   def signed_params(params)
     Rails.application.message_verifier("futurism").generate(params)
   end
