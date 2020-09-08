@@ -6,11 +6,14 @@
 
 **Implemented enhancements:**
 
+- Allow passing data attributes into html\_options [\#43](https://github.com/julianrubisch/futurism/issues/43)
 - Identify channel \(cf StimulusReflex\) [\#34](https://github.com/julianrubisch/futurism/issues/34)
 
 **Merged pull requests:**
 
 - docs: add scottbarrow as a contributor [\#49](https://github.com/julianrubisch/futurism/pull/49) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- 43 data attributes html options [\#48](https://github.com/julianrubisch/futurism/pull/48) ([julianrubisch](https://github.com/julianrubisch))
+- Add data attributes from html options [\#47](https://github.com/julianrubisch/futurism/pull/47) ([scottbarrow](https://github.com/scottbarrow))
 - 34 identify channel [\#46](https://github.com/julianrubisch/futurism/pull/46) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
