@@ -24,6 +24,7 @@ Lazy-load Rails partials via CableReady
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
 - [Authentication](#authentication)
+- [Gotchas](#gotchas)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contributors](#contributors)
@@ -197,6 +198,22 @@ end
 ```
 
 The [Stimulus Reflex Docs](https://docs.stimulusreflex.com/authentication) have an excellent section about all sorts of authentication.
+
+## Gotchas
+
+### ActiveStorage URLs aren't correct in development
+
+Out of the box, Rails will prefix generated urls with `http://example.org` rather than `http://localhost`, much like ActionMailer. To amend this, add
+
+```ruby
+  # config/environments/development.rb
+  config.action_controller.default_url_options = {host: "localhost", port: 3000}
+
+  # config/environments/production.rb
+  config.action_controller.default_url_options = {host: "mysite.com"}
+```
+
+to your environments.
 
 ## Contributing
 
