@@ -206,10 +206,14 @@ The [Stimulus Reflex Docs](https://docs.stimulusreflex.com/authentication) have 
 Out of the box, Rails will prefix generated urls with `http://example.org` rather than `http://localhost`, much like ActionMailer. To amend this, add
 
 ```ruby
+  # config/environments/development.rb
   config.action_controller.default_url_options = {host: "localhost", port: 3000}
+
+  # config/environments/production.rb
+  config.action_controller.default_url_options = {host: "mysite.com"}
 ```
 
-to your `config/environments/development.rb`.
+to your environments.
 
 ## Contributing
 
