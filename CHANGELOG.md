@@ -1,16 +1,21 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.4.1](https://github.com/julianrubisch/futurism/tree/v0.4.1) (2020-09-09)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.4.0...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.4.0...v0.4.1)
 
 **Implemented enhancements:**
 
 - Allow passing data attributes into html\_options [\#43](https://github.com/julianrubisch/futurism/issues/43)
 - Identify channel \(cf StimulusReflex\) [\#34](https://github.com/julianrubisch/futurism/issues/34)
 
+**Fixed bugs:**
+
+- ActiveStorage image url isn't correct on localhost [\#39](https://github.com/julianrubisch/futurism/issues/39)
+
 **Merged pull requests:**
 
+- Add Gotcha hint to README \#39 [\#50](https://github.com/julianrubisch/futurism/pull/50) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add scottbarrow as a contributor [\#49](https://github.com/julianrubisch/futurism/pull/49) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - 43 data attributes html options [\#48](https://github.com/julianrubisch/futurism/pull/48) ([julianrubisch](https://github.com/julianrubisch))
 - Add data attributes from html options [\#47](https://github.com/julianrubisch/futurism/pull/47) ([scottbarrow](https://github.com/scottbarrow))
