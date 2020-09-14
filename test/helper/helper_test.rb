@@ -32,6 +32,12 @@ class Futurism::HelperTest < ActionView::TestCase
   end
 
   def signed_params(params)
-    Rails.application.message_verifier("futurism").generate(params)
+    Rails.application.message_verifier("futurism").generate(transformed_options(params))
+  end
+
+  def transformed_options(options)
+    options.deep_transform_values do |value|
+      value.is_a?(ActiveRecord::Base) ? value.to_global_id.to_s : value
+    end
   end
 end

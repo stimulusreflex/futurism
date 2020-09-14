@@ -65,10 +65,16 @@ module Futurism
         end
       end
 
+      def transformed_options
+        options.deep_transform_values do |value|
+          value.is_a?(ActiveRecord::Base) ? value.to_global_id.to_s : value
+        end
+      end
+
       private
 
       def signed_params
-        Rails.application.message_verifier("futurism").generate(options)
+        Rails.application.message_verifier("futurism").generate(transformed_options)
       end
     end
   end
