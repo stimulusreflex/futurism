@@ -4,7 +4,7 @@ PATH
     futurism (0.4.1)
       cable_ready (>= 4)
       rack (~> 2.0)
-      rails (>= 6)
+      rails (>= 5.2)
 
 GEM
   remote: https://rubygems.org/
@@ -64,6 +64,10 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    appraisal (2.3.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
     ast (2.4.1)
     builder (3.2.4)
     cable_ready (4.3.0)
@@ -172,6 +176,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appraisal
   bundler (~> 2.0)
   futurism!
   nokogiri
