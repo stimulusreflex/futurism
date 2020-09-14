@@ -37,7 +37,11 @@ module Futurism
     def resource(signed_params:, sgid:)
       return GlobalID::Locator.locate_signed(sgid) if sgid.present?
 
-      Rails.application.message_verifier("futurism").verify(signed_params)
+      Rails
+        .application
+        .message_verifier("futurism")
+        .verify(signed_params)
+        .deep_transform_values { |value| value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
     end
   end
 end
