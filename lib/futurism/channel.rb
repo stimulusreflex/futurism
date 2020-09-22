@@ -41,7 +41,7 @@ module Futurism
         .application
         .message_verifier("futurism")
         .verify(signed_params)
-        .deep_transform_values { |value| value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
+        .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
     end
   end
 end
