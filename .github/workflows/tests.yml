@@ -60,7 +60,11 @@ jobs:
       - name: Bundle install
         run: |
           gem install bundler
+          gem update --system
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+      - name: Appraisal
+        run: |
+          bundle exec appraisal install
       - name: Run ruby tests
-        run: bundle exec rake test
+        run: bundle exec appraisal rake test
