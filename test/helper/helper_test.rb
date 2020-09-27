@@ -31,13 +31,31 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal signed_params({data: {controller: "test"}}), element.children.first["data-signed-params"]
   end
 
+  test "allows to specify a new record" do
+    post = Post.new
+
+    element = Nokogiri::HTML.fragment(futurize("posts/form", post: post, extends: :div) {})
+
+    assert resource(signed_params: element.children.first["data-signed-params"], sgid: nil)[:locals][:post].new_record?
+  end
+
   def signed_params(params)
     Rails.application.message_verifier("futurism").generate(transformed_options(params))
   end
 
   def transformed_options(options)
     options.deep_transform_values do |value|
-      value.is_a?(ActiveRecord::Base) ? value.to_global_id.to_s : value
+      value.is_a?(ActiveRecord::Base) && !value.new_record? ? value.to_global_id.to_s : value
     end
+  end
+
+  def resource(signed_params:, sgid:)
+    return GlobalID::Locator.locate_signed(sgid) if sgid.present?
+
+    Rails
+      .application
+      .message_verifier("futurism")
+      .verify(signed_params)
+      .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
   end
 end
