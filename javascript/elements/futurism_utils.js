@@ -1,20 +1,22 @@
 /* global IntersectionObserver, CustomEvent, setTimeout */
 
-const dispatchAppearEvent = (entry, observer) => {
+const dispatchAppearEvent = (entry, observer = null) => {
   if (!window.Futurism) {
     setTimeout(() => dispatchAppearEvent(entry, observer), 1)
     return
   }
 
+  const target = entry.target ? entry.target : entry
+
   const evt = new CustomEvent('futurism:appear', {
     bubbles: true,
     detail: {
-      target: entry.target,
+      target,
       observer
     }
   })
 
-  entry.target.dispatchEvent(evt)
+  target.dispatchEvent(evt)
 }
 
 const observerCallback = (entries, observer) => {
@@ -30,4 +32,11 @@ export const extendElementWithIntersectionObserver = element => {
   })
 
   element.observer.observe(element)
+}
+
+export const extendElementWithEagerLoading = element => {
+  if (element.dataset['eager'] === 'true') {
+    element.observer.disconnect()
+    dispatchAppearEvent(element)
+  }
 }
