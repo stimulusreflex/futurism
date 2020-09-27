@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.4.1...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.0...HEAD)
+
+**Merged pull requests:**
+
+- Fix global ID locating of new records [\#55](https://github.com/julianrubisch/futurism/pull/55) ([julianrubisch](https://github.com/julianrubisch))
+
+## [v0.5.0](https://github.com/julianrubisch/futurism/tree/v0.5.0) (2020-09-22)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.4.1...v0.5.0)
 
 **Closed issues:**
 
