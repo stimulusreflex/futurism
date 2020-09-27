@@ -36,7 +36,7 @@ export const extendElementWithIntersectionObserver = element => {
 
 export const extendElementWithEagerLoading = element => {
   if (element.dataset['eager'] === 'true') {
-    element.observer.disconnect()
+    if (element.observer) element.observer.disconnect()
     dispatchAppearEvent(element)
   }
 }
