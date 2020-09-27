@@ -36,11 +36,12 @@ module Futurism
     class Element
       include ActionView::Helpers
 
-      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options
+      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager
 
       def initialize(extends:, placeholder:, options:)
         @extends = extends
         @placeholder = placeholder
+        @eager = options.delete(:eager)
         @html_options = options.delete(:html_options) || {}
         @data_attributes = html_options.fetch(:data, {}).except(:sgid, :signed_params)
         @model = options.delete(:model)
@@ -50,7 +51,8 @@ module Futurism
       def dataset
         data_attributes.merge({
           signed_params: signed_params,
-          sgid: model && model.to_sgid.to_s
+          sgid: model && model.to_sgid.to_s,
+          eager: eager.presence
         })
       end
 

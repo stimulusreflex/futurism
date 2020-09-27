@@ -11,6 +11,7 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "futurism-element", element.children.first.name
     assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
     assert_equal signed_params({data: {controller: "test"}}), element.children.first["data-signed-params"]
+    assert_nil element.children.first["data-eager"]
     assert_equal "absolute inset-0", element.children.first["class"]
 
     params = {partial: "posts/card", locals: {post: post}}
@@ -18,6 +19,7 @@ class Futurism::HelperTest < ActionView::TestCase
 
     assert_equal "futurism-element", element.children.first.name
     assert_nil element.children.first["data-sgid"]
+    assert_nil element.children.first["data-eager"]
     assert_equal signed_params(params.merge({data: {action: "test#click"}})), element.children.first["data-signed-params"]
     assert_equal "flex justify-center", element.children.first["class"]
   end
@@ -37,6 +39,17 @@ class Futurism::HelperTest < ActionView::TestCase
     element = Nokogiri::HTML.fragment(futurize("posts/form", post: post, extends: :div) {})
 
     assert resource(signed_params: element.children.first["data-signed-params"], sgid: nil)[:locals][:post].new_record?
+  end
+
+  test "renders an eager loading data attribute" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, eager: true) {})
+
+    assert_equal "true", element.children.first["data-eager"]
+
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, eager: true, extends: :div) {})
+    assert_equal "true", element.children.first["data-eager"]
   end
 
   def signed_params(params)
