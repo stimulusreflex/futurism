@@ -20,6 +20,7 @@ Lazy-load Rails partials via CableReady
   - [Resource](#resource)
   - [Explicit Partial](#explicit-partial)
   - [HTML Options](#html-options)
+  - [Eager Loading](#eager-loading)
 - [Events](#events)
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
@@ -138,6 +139,19 @@ This will output the following:
 <tr style="width: 50px; height: 50px;">
   <td class="placeholder"></td>
 </tr>
+```
+
+### Eager Loading
+It may sound surprising to support eager loading in a lazy loading library :joy:, but there's a quite simple use case:
+
+Suppose you have some hidden interactive portion of your page, like a tab or dropdown. You don't want its content to block the initial page load, but once that is done, you occasionally don't want to wait for the element to become visible and trigger the `IntersectionObserver`, you want to lazy load its contents right after it's added to the DOM.
+
+Futurism makes that dead simple:
+
+```erb
+<%= futurize 'some_tab', eager: true, extends: :tr do %>
+  <div class="placeholder"</td>
+<% end %>
 ```
 
 ## Events
