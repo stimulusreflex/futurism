@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.1...HEAD)
+
+**Implemented enhancements:**
+
+- Question: eager trigger futurism [\#42](https://github.com/julianrubisch/futurism/issues/42)
+
+**Merged pull requests:**
+
+- 42 eager loading [\#56](https://github.com/julianrubisch/futurism/pull/56) ([julianrubisch](https://github.com/julianrubisch))
+
 ## [v0.5.1](https://github.com/julianrubisch/futurism/tree/v0.5.1) (2020-09-27)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.0...v0.5.1)
