@@ -4,6 +4,8 @@ import FuturismElement from './futurism_element'
 import FuturismTableRow from './futurism_table_row'
 import FuturismLI from './futurism_li'
 
+import { sha256 } from '../utils/crypto'
+
 const polyfillCustomElements = () => {
   if (customElements) {
     try {
@@ -37,6 +39,12 @@ const defineElements = e => {
 export const initializeElements = () => {
   document.addEventListener('DOMContentLoaded', defineElements)
   document.addEventListener('turbolinks:load', defineElements)
+  document.addEventListener('cable-ready:after-outer-html', e => {
+    sha256(e.detail.element.outerHTML).then(hashedContent => {
+      sessionStorage.setItem(hashedContent, e.detail.element.outerHTML)
+      e.target.dataset.futurismHash = hashedContent
+    })
+  })
 
   polyfillCustomElements()
 }
