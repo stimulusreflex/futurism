@@ -37,7 +37,6 @@ const defineElements = e => {
 }
 
 const cleanUp = e => {
-  document.querySelector('.count').innerHTML = 'test'
   Object.entries(sessionStorage).forEach(([key, payload]) => {
     const targetElement = document.querySelector(
       `[data-futurism-hash="${key}"]`
