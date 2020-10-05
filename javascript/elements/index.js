@@ -56,6 +56,7 @@ export const initializeElements = () => {
   document.addEventListener('turbolinks:before-cache', cleanUp)
   document.addEventListener('cable-ready:after-outer-html', e => {
     sha256(e.detail.element.outerHTML).then(hashedContent => {
+      e.detail.element.setAttribute('keep', '')
       sessionStorage.setItem(hashedContent, e.detail.element.outerHTML)
       e.target.dataset.futurismHash = hashedContent
     })
