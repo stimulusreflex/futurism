@@ -31,7 +31,9 @@ export const extendElementWithIntersectionObserver = element => {
     observer: new IntersectionObserver(observerCallback.bind(element), {})
   })
 
-  element.observer.observe(element)
+  if (!element.hasAttribute('keep')) {
+    element.observer.observe(element)
+  }
 }
 
 export const extendElementWithEagerLoading = element => {
