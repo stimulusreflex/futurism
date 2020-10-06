@@ -1,7 +1,7 @@
 # Futurism
 [![Twitter follow](https://img.shields.io/twitter/follow/julian_rubisch?style=social)](https://twitter.com/julian_rubisch)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
@@ -257,6 +257,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=marcoroth" title="Code">💻</a></td>
     <td align="center"><a href="https://viedit.com"><img src="https://avatars1.githubusercontent.com/u/49990587?v=4" width="100px;" alt=""/><br /><sub><b>Viedit com</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=vieditcom" title="Documentation">📖</a></td>
     <td align="center"><a href="http://scottbarrow.ca"><img src="https://avatars2.githubusercontent.com/u/5571736?v=4" width="100px;" alt=""/><br /><sub><b>Scott Barrow</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=scottbarrow" title="Code">💻</a></td>
+    <td align="center"><a href="http://domchristie.co.uk"><img src="https://avatars0.githubusercontent.com/u/111734?v=4" width="100px;" alt=""/><br /><sub><b>Dom Christie</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Adomchristie" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
