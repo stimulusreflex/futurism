@@ -7,9 +7,12 @@
 **Implemented enhancements:**
 
 - Question: eager trigger futurism [\#42](https://github.com/julianrubisch/futurism/issues/42)
+- Restore placeholders before turbolinks caches [\#23](https://github.com/julianrubisch/futurism/issues/23)
 
 **Merged pull requests:**
 
+- docs: add rickychilcott as a contributor [\#58](https://github.com/julianrubisch/futurism/pull/58) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Reset before turbolinks caching [\#57](https://github.com/julianrubisch/futurism/pull/57) ([julianrubisch](https://github.com/julianrubisch))
 - 42 eager loading [\#56](https://github.com/julianrubisch/futurism/pull/56) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.5.1](https://github.com/julianrubisch/futurism/tree/v0.5.1) (2020-09-27)
@@ -131,6 +134,7 @@
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
+- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
 
@@ -149,7 +153,6 @@
 
 **Merged pull requests:**
 
-- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 - Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add ParamagicDev as a contributor [\#7](https://github.com/julianrubisch/futurism/pull/7) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - feat\(active\_record\): Add ActiveRecord for testing. [\#6](https://github.com/julianrubisch/futurism/pull/6) ([ParamagicDev](https://github.com/ParamagicDev))

@@ -120,7 +120,16 @@
       "login": "domchristie",
       "name": "Dom Christie",
       "avatar_url": "https://avatars0.githubusercontent.com/u/111734?v=4",
-      "profile": "http://domchristie.co.uk",
+      "profile": "http://domchristie.co.uk",      
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "rickychilcott",
+      "name": "Ricky Chilcott",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/445759?v=4",
+      "profile": "http://www.rickychilcott.com",
       "contributions": [
         "review"
       ]
