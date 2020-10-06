@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    futurism (0.5.1)
+    futurism (0.5.2)
       cable_ready (>= 4)
       rack (~> 2.0)
       rails (>= 5.2)
@@ -92,7 +92,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
-    nio4r (2.5.3)
+    nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.2)
