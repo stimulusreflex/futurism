@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.5.2](https://github.com/julianrubisch/futurism/tree/v0.5.2) (2020-10-06)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.1...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.1...v0.5.2)
 
 **Implemented enhancements:**
 
@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- docs: add domchristie as a contributor [\#60](https://github.com/julianrubisch/futurism/pull/60) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add rickychilcott as a contributor [\#58](https://github.com/julianrubisch/futurism/pull/58) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Reset before turbolinks caching [\#57](https://github.com/julianrubisch/futurism/pull/57) ([julianrubisch](https://github.com/julianrubisch))
 - 42 eager loading [\#56](https://github.com/julianrubisch/futurism/pull/56) ([julianrubisch](https://github.com/julianrubisch))
