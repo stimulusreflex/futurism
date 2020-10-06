@@ -36,7 +36,15 @@ const defineElements = e => {
   }
 }
 
-const cleanUp = e => {
+const cachePlaceholders = e => {
+  sha256(e.detail.element.outerHTML).then(hashedContent => {
+    e.detail.element.setAttribute('keep', '')
+    sessionStorage.setItem(hashedContent, e.detail.element.outerHTML)
+    e.target.dataset.futurismHash = hashedContent
+  })
+}
+
+const restorePlaceholders = e => {
   Object.entries(sessionStorage).forEach(([key, payload]) => {
     const targetElement = document.querySelector(
       `[data-futurism-hash="${key}"]`
@@ -52,14 +60,8 @@ const cleanUp = e => {
 export const initializeElements = () => {
   document.addEventListener('DOMContentLoaded', defineElements)
   document.addEventListener('turbolinks:load', defineElements)
-  document.addEventListener('turbolinks:before-cache', cleanUp)
-  document.addEventListener('cable-ready:after-outer-html', e => {
-    sha256(e.detail.element.outerHTML).then(hashedContent => {
-      e.detail.element.setAttribute('keep', '')
-      sessionStorage.setItem(hashedContent, e.detail.element.outerHTML)
-      e.target.dataset.futurismHash = hashedContent
-    })
-  })
+  document.addEventListener('turbolinks:before-cache', restorePlaceholders)
+  document.addEventListener('cable-ready:after-outer-html', cachePlaceholders)
 
   polyfillCustomElements()
 }
