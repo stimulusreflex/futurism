@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.2...HEAD)
+
+**Merged pull requests:**
+
+- Add skip\_in\_test flag [\#61](https://github.com/julianrubisch/futurism/pull/61) ([julianrubisch](https://github.com/julianrubisch))
+
 ## [v0.5.2](https://github.com/julianrubisch/futurism/tree/v0.5.2) (2020-10-06)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.1...v0.5.2)
