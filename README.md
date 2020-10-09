@@ -134,7 +134,7 @@ You can also pass in the controller that will be used to render the partial.
 <% end %>
 ```
 
-By default (i.e. not passing in a value), futurize will use ApplicationController, but you may override by setting the Futurism default controller in an initializer, for example `config/initializers/futurism.rb`.
+By default (i.e. not passing in a value), futurize will use `ApplicationController`, but you may override by setting the Futurism default controller in an initializer, for example `config/initializers/futurism.rb`.
 
 ```ruby
 Futurism.default_controller = MyController
