@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.4](https://github.com/julianrubisch/futurism/tree/v0.5.4) (2020-10-09)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.3...v0.5.4)
+
 ## [v0.5.3](https://github.com/julianrubisch/futurism/tree/v0.5.3) (2020-10-09)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.2...v0.5.3)
@@ -143,6 +147,7 @@
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
+- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
 
@@ -161,7 +166,6 @@
 
 **Merged pull requests:**
 
-- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 - Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add ParamagicDev as a contributor [\#7](https://github.com/julianrubisch/futurism/pull/7) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - feat\(active\_record\): Add ActiveRecord for testing. [\#6](https://github.com/julianrubisch/futurism/pull/6) ([ParamagicDev](https://github.com/ParamagicDev))
