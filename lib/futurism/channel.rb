@@ -48,7 +48,8 @@ module Futurism
 
       message_verifier
         .verify(signed_controller)
-        .yield_self { |controller_string| Kernel.const_get(controller_string) }
+        .to_s
+        .safe_constantize
     end
   end
 end
