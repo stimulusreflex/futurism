@@ -16,7 +16,7 @@ module Futurism
     end
 
     def receive(data)
-      resources = data.fetch_values("signed_params", "sgids", "signed_controllers") { |key|; Array.new(data["signed_params"].length, nil) }.transpose
+      resources = data.fetch_values("signed_params", "sgids", "signed_controllers") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
       new_env = connection.env.merge(ApplicationController.renderer.instance_variable_get(:@env))
       ApplicationController.renderer.instance_variable_set(:@env, new_env)
 
