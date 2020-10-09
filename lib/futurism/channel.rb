@@ -17,13 +17,23 @@ module Futurism
 
     def receive(data)
       resources = data.fetch_values("signed_params", "sgids", "signed_controllers") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
-      new_env = connection.env.merge(ApplicationController.renderer.instance_variable_get(:@env))
-      ApplicationController.renderer.instance_variable_set(:@env, new_env)
 
       resources.each do |signed_params, sgid, signed_controller|
         selector = "[data-signed-params='#{signed_params}']"
         selector << "[data-sgid='#{sgid}']" if sgid.present?
-        html = controller(signed_controller: signed_controller).render(resource(signed_params: signed_params, sgid: sgid))
+
+        controller_lookup = ControllerLookup.from(signed_string: signed_controller)
+        controller_lookup.setup(connection: connection)
+        controller = controller_lookup.controller
+
+        html =
+          controller.render(
+            resource(
+              signed_params: signed_params,
+              sgid: sgid
+            )
+          )
+
         cable_ready[stream_name].outer_html(
           selector: selector,
           html: html
@@ -43,17 +53,40 @@ module Futurism
         .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
     end
 
-    def controller(signed_controller:)
-      return default_controller unless signed_controller.present?
+    class ControllerLookup
+      include Futurism::MessageVerifier
 
-      message_verifier
-        .verify(signed_controller)
-        .to_s
-        .safe_constantize
-    end
+      def self.from(signed_string:)
+        new(signed_string)
+      end
 
-    def default_controller
-      Futurism.default_controller || ::ApplicationController
+      def initialize(signed_string)
+        @signed_string = signed_string
+      end
+
+      def controller
+        if @signed_string.present?
+          message_verifier
+            .verify(signed_string)
+            .to_s
+            .safe_constantize
+        else
+          default_controller
+        end
+      end
+
+      def setup(connection:)
+        new_env = connection.env.merge(controller.renderer.instance_variable_get(:@env))
+        controller.renderer.instance_variable_set(:@env, new_env)
+      end
+
+      private
+
+      attr_reader :signed_string
+
+      def default_controller
+        Futurism.default_controller || ::ApplicationController
+      end
     end
   end
 end
