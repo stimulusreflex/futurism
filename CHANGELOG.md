@@ -143,7 +143,6 @@
 
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
-- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.4](https://github.com/julianrubisch/futurism/tree/v0.1.4) (2020-07-18)
 
@@ -155,7 +154,6 @@
 - docs: add excid3 as a contributor [\#13](https://github.com/julianrubisch/futurism/pull/13) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Extract JS code to dedicated npm package [\#11](https://github.com/julianrubisch/futurism/pull/11) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add andrewmcodes as a contributor [\#10](https://github.com/julianrubisch/futurism/pull/10) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.1.2](https://github.com/julianrubisch/futurism/tree/v0.1.2) (2020-07-12)
 
@@ -163,6 +161,8 @@
 
 **Merged pull requests:**
 
+- Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
+- Testing [\#8](https://github.com/julianrubisch/futurism/pull/8) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add ParamagicDev as a contributor [\#7](https://github.com/julianrubisch/futurism/pull/7) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - feat\(active\_record\): Add ActiveRecord for testing. [\#6](https://github.com/julianrubisch/futurism/pull/6) ([ParamagicDev](https://github.com/ParamagicDev))
 - docs: add darkrubyist as a contributor [\#5](https://github.com/julianrubisch/futurism/pull/5) ([allcontributors[bot]](https://github.com/apps/allcontributors))
