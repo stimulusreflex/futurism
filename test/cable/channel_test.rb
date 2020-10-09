@@ -1,5 +1,7 @@
 require "test_helper"
 
+class DummyController < ActionController::Base; end
+
 class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include Futurism::Helpers
   include ActionView::Helpers
@@ -32,7 +34,6 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts a rendered model with :controller" do
-    class ::DummyController < ApplicationController; end
     renderer_spy = Spy.on(DummyController, :render)
     post = Post.create title: "Lorem"
     fragment = Nokogiri::HTML.fragment(futurize(post, controller: DummyController, extends: :div) {})
@@ -63,7 +64,6 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts an ActiveRecord::Relation with :controller" do
-    class ::DummyController < ApplicationController; end
     renderer_spy = Spy.on(DummyController, :render)
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
@@ -133,7 +133,6 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts a collection with :controller" do
-    class ::DummyController < ApplicationController; end
     renderer_spy = Spy.on(DummyController, :render)
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
