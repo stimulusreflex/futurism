@@ -2,6 +2,7 @@ require "rails"
 require "action_cable"
 require "cable_ready"
 require "futurism/engine"
+require "futurism/message_verifier"
 require "futurism/channel"
 require "futurism/helpers"
 

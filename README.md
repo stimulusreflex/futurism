@@ -124,6 +124,17 @@ Collection rendering is also possible:
 <% end %>
 ```
 
+#### Specifying Controller to Render
+
+You can also pass in the controller that will be used to render the partial. By default (i.e. not passing in a value), futurize will use
+ApplicationController
+
+```erb
+<%= futurize partial: "items/card", collection: @cards, controller: MyController, extends: :div do %>
+  <div class="spinner"></div>
+<% end %>
+```
+
 ### HTML Options
 
 You can pass a hash of attribute/value pairs which will be mixed into the HTML markup for the placeholder element. This is important for layouts that require elements to have dimensionality. For example, many scripts calculate size based on element height and width. This option ensures that your elements have integrity, even if they are gone before you see them.

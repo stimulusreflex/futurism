@@ -44,13 +44,15 @@ module Futurism
     # wraps functionality for rendering a futurism element
     class Element
       include ActionView::Helpers
+      include Futurism::MessageVerifier
 
-      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager
+      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :controller
 
       def initialize(extends:, placeholder:, options:)
         @extends = extends
         @placeholder = placeholder
         @eager = options.delete(:eager)
+        @controller = options.delete(:controller)
         @html_options = options.delete(:html_options) || {}
         @data_attributes = html_options.fetch(:data, {}).except(:sgid, :signed_params)
         @model = options.delete(:model)
@@ -61,7 +63,8 @@ module Futurism
         data_attributes.merge({
           signed_params: signed_params,
           sgid: model && model.to_sgid.to_s,
-          eager: eager.presence
+          eager: eager.presence,
+          signed_controller: signed_controller
         })
       end
 
@@ -87,7 +90,13 @@ module Futurism
       private
 
       def signed_params
-        Rails.application.message_verifier("futurism").generate(transformed_options)
+        message_verifier.generate(transformed_options)
+      end
+
+      def signed_controller
+        return unless controller.present?
+
+        message_verifier.generate(controller.to_s)
       end
     end
   end
