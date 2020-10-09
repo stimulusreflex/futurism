@@ -3,11 +3,10 @@ module Futurism
     def futurize(records_or_string = nil, extends:, **options, &block)
       if Rails.env.test? && Futurism.skip_in_test
         if records_or_string.nil?
-          render options
+          return render **options
         else
-          render records_or_string, options
+          return render records_or_string, **options
         end
-        return
       end
 
       placeholder = capture(&block)
