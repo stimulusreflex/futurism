@@ -10,6 +10,8 @@ module Futurism
 
   autoload :Helpers, "futurism/helpers"
 
+  mattr_accessor :skip_in_test
+
   ActiveSupport.on_load(:action_view) {
     include Futurism::Helpers
   }
