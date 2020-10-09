@@ -25,6 +25,7 @@ Lazy-load Rails partials via CableReady
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
 - [Authentication](#authentication)
+- [Testing](#testing)
 - [Gotchas](#gotchas)
 - [Contributing](#contributing)
 - [License](#license)
@@ -212,6 +213,15 @@ end
 ```
 
 The [Stimulus Reflex Docs](https://docs.stimulusreflex.com/authentication) have an excellent section about all sorts of authentication.
+
+## Testing
+In Rails system tests there is a chance that flaky errors will occur due to Capybara not waiting for the placeholder elements to be replaced. To overcome this, add the flag
+
+```ruby
+Futurism.skip_in_test = true
+```
+
+to an initializer, for example `config/initializers/futurism.rb`.
 
 ## Gotchas
 

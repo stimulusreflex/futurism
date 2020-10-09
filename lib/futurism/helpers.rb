@@ -1,6 +1,15 @@
 module Futurism
   module Helpers
     def futurize(records_or_string = nil, extends:, **options, &block)
+      if Rails.env.test? && Futurism.skip_in_test
+        if records_or_string.nil?
+          render options
+        else
+          render records_or_string, options
+        end
+        return
+      end
+
       placeholder = capture(&block)
 
       if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
