@@ -189,4 +189,23 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
+
+  test "broadcasts a rendered model with Futurism.default_controller" do
+    Futurism.default_controller = DummyController
+    renderer_spy = Spy.on(DummyController, :render)
+    post = Post.create title: "Lorem"
+    fragment = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
+
+    signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
+    sgids = fragment.children.map { |element| element["data-sgid"] }
+    subscribe
+
+    perform :receive, {"signed_params" => signed_params_array, "sgids" => sgids}
+
+    assert_equal DummyController, Futurism.default_controller
+    assert renderer_spy.has_been_called_with? post
+
+    # Set back to default
+    Futurism.default_controller = nil
+  end
 end
