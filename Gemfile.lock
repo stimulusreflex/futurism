@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    futurism (0.5.2)
+    futurism (0.5.3)
       cable_ready (>= 4)
       rack (~> 2.0)
       rails (>= 5.2)
