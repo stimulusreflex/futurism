@@ -44,12 +44,16 @@ module Futurism
     end
 
     def controller(signed_controller:)
-      return ApplicationController unless signed_controller.present?
+      return default_controller unless signed_controller.present?
 
       message_verifier
         .verify(signed_controller)
         .to_s
         .safe_constantize
+    end
+
+    def default_controller
+      Futurism.default_controller || ::ApplicationController
     end
   end
 end
