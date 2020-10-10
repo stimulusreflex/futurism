@@ -268,6 +268,10 @@ git checkout futurism
 cd path/to/futurism/javascript
 # Stop using the local npm package
 yarn unlink
+
+# Instruct your project to reinstall the published version of the npm package
+cd path/to/project
+yarn install --force
 ```
 
 ## License
