@@ -26,13 +26,8 @@ module Futurism
         controller_lookup.setup(connection: connection)
         controller = controller_lookup.controller
 
-        html =
-          controller.render(
-            resource(
-              signed_params: signed_params,
-              sgid: sgid
-            )
-          )
+        resource = lookup_resource(signed_params: signed_params, sgid: sgid)
+        html = controller.render(resource)
 
         cable_ready[stream_name].outer_html(
           selector: selector,
@@ -45,7 +40,7 @@ module Futurism
 
     private
 
-    def resource(signed_params:, sgid:)
+    def lookup_resource(signed_params:, sgid:)
       return GlobalID::Locator.locate_signed(sgid) if sgid.present?
 
       message_verifier
@@ -65,7 +60,7 @@ module Futurism
       end
 
       def controller
-        if @signed_string.present?
+        if signed_string.present?
           message_verifier
             .verify(signed_string)
             .to_s
