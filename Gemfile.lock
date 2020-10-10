@@ -167,6 +167,8 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
+    view_component (2.19.1)
+      activesupport (>= 5.0.0, < 7.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -185,6 +187,7 @@ DEPENDENCIES
   spy
   sqlite3
   standardrb
+  view_component
 
 BUNDLED WITH
    2.1.4

@@ -4,6 +4,7 @@ require "cable_ready"
 require "futurism/engine"
 require "futurism/channel"
 require "futurism/helpers"
+require "futurism/shims/view_component_serializer"
 
 module Futurism
   extend ActiveSupport::Autoload
