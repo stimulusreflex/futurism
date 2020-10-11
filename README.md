@@ -241,6 +241,39 @@ to your environments.
 
 ## Contributing
 
+### Get local environment setup
+
+Below are a set of instructions that may help you get a local development environment working
+
+```shell
+# Get the gem/npm package source locally
+git clone futurism
+cd futurism/javascript
+yarn install # install all of the npm package's dependencies
+yarn link # set the local machine's futurism npm package's lookup to this local path
+
+# Setup a sample project, use the information below directly or use your own project
+git clone https://github.com/leastbad/stimulus_reflex_harness.git
+cd stimulus_reflex_harness
+git checkout futurism
+# Edit Gemfile to point point to local gem (e.g. `gem "futurism", path: "../futurism"`)
+# yarn link @minthesize/futurism
+
+
+# Do your work, Submit PR, Profit!
+
+
+# To stop using your local version of futurism
+# change your Gemfile back to the published (e.g. `gem "futurism"`)
+cd path/to/futurism/javascript
+# Stop using the local npm package
+yarn unlink
+
+# Instruct your project to reinstall the published version of the npm package
+cd path/to/project
+yarn install --force
+```
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
