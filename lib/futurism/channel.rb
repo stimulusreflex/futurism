@@ -23,7 +23,7 @@ module Futurism
         selector << "[data-sgid='#{sgid}']" if sgid.present?
 
         controller_lookup = ControllerLookup.from(signed_string: signed_controller)
-        controller_lookup.setup(connection: connection)
+        controller_lookup.setup_env!(connection: connection)
         controller = controller_lookup.controller
 
         resource = lookup_resource(signed_params: signed_params, sgid: sgid)
@@ -70,7 +70,7 @@ module Futurism
         end
       end
 
-      def setup(connection:)
+      def setup_env!(connection:)
         new_env = connection.env.merge(controller.renderer.instance_variable_get(:@env))
         controller.renderer.instance_variable_set(:@env, new_env)
       end
