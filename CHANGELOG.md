@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.4...HEAD)
+
+**Merged pull requests:**
+
+- Add instructions to setup local environment [\#65](https://github.com/julianrubisch/futurism/pull/65) ([rickychilcott](https://github.com/rickychilcott))
+
 ## [v0.5.4](https://github.com/julianrubisch/futurism/tree/v0.5.4) (2020-10-09)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.3...v0.5.4)
