@@ -1,12 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.6.0](https://github.com/julianrubisch/futurism/tree/v0.6.0) (2020-10-12)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.4...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.4...v0.6.0)
 
 **Closed issues:**
 
 - ApplicationController context [\#54](https://github.com/julianrubisch/futurism/issues/54)
+- PG::InvalidParameterValue - ERROR:  payload string too long [\#51](https://github.com/julianrubisch/futurism/issues/51)
 
 **Merged pull requests:**
 
