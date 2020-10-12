@@ -25,7 +25,8 @@ export const createSubscription = consumer => {
         debounceEvents(events => {
           this.send({
             signed_params: events.map(e => e.target.dataset.signedParams),
-            sgids: events.map(e => e.target.dataset.sgid)
+            sgids: events.map(e => e.target.dataset.sgid),
+            signed_controllers: events.map(e => e.target.dataset.signedController)
           })
         })
       )
