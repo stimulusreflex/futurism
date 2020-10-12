@@ -4,9 +4,14 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.4...HEAD)
 
+**Closed issues:**
+
+- ApplicationController context [\#54](https://github.com/julianrubisch/futurism/issues/54)
+
 **Merged pull requests:**
 
 - Add instructions to setup local environment [\#65](https://github.com/julianrubisch/futurism/pull/65) ([rickychilcott](https://github.com/rickychilcott))
+- Allow passing in controller [\#62](https://github.com/julianrubisch/futurism/pull/62) ([rickychilcott](https://github.com/rickychilcott))
 
 ## [v0.5.4](https://github.com/julianrubisch/futurism/tree/v0.5.4) (2020-10-09)
 
