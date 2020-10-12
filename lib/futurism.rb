@@ -5,6 +5,7 @@ require "futurism/engine"
 require "futurism/message_verifier"
 require "futurism/channel"
 require "futurism/helpers"
+require "futurism/shims/view_component_serializer"
 
 module Futurism
   extend ActiveSupport::Autoload
