@@ -23,7 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "nokogiri"
   spec.add_development_dependency "standardrb"
   spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency "spy"
 
   spec.add_dependency "rack", "~> 2.0"
   spec.add_dependency "rails", ">= 5.2"

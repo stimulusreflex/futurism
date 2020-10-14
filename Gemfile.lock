@@ -156,7 +156,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    spy (1.0.0)
     sqlite3 (1.4.2)
     standard (0.7)
       rubocop (= 0.92)
@@ -183,7 +182,6 @@ DEPENDENCIES
   nokogiri
   pry (~> 0.12.2)
   rake (~> 13.0)
-  spy
   sqlite3
   standardrb
 

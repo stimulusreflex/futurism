@@ -3,6 +3,8 @@ require "action_cable"
 require "cable_ready"
 require "futurism/engine"
 require "futurism/message_verifier"
+require "futurism/resolver/controller"
+require "futurism/resolver/controller/renderer"
 require "futurism/channel"
 require "futurism/helpers"
 

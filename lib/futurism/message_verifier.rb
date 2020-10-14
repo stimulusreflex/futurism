@@ -1,6 +1,8 @@
 module Futurism
   module MessageVerifier
-    private
+    def self.message_verifier
+      @message_verifier ||= Rails.application.message_verifier("futurism")
+    end
 
     def message_verifier
       @message_verifier ||= Rails.application.message_verifier("futurism")
