@@ -9,12 +9,8 @@ module Futurism
             .to_s
             .safe_constantize
         else
-          default_controller
+          Futurism.default_controller
         end
-      end
-
-      def self.default_controller
-        Futurism.default_controller || ::ApplicationController
       end
     end
   end
