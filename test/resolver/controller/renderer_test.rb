@@ -24,6 +24,8 @@ def dummy_connection
 end
 
 class Futurism::Resolver::Controller::RendererTest < ActiveSupport::TestCase
+  include Rails.application.routes.url_helpers
+
   test ".for controller configures renderer" do
     renderer = Futurism::Resolver::Controller::Renderer.for(controller: ApplicationController,
                                                             connection: dummy_connection,
@@ -78,5 +80,18 @@ class Futurism::Resolver::Controller::RendererTest < ActiveSupport::TestCase
     rendered_html = renderer.render(inline: "Hi <%= name_from_params_helper %>")
 
     assert_equal rendered_html, "Hi the future!"
+  end
+
+  test "renderer.render renders partials that contain a link_to helper" do
+    post = Post.create(title: "Lorem")
+
+    renderer = Futurism::Resolver::Controller::Renderer.for(controller: ApplicationController,
+                                                            connection: dummy_connection,
+                                                            url: "http://www.example.org",
+                                                            params: {})
+
+    rendered_html = renderer.render(inline: "<%= link_to post_path(id: #{post.id}) %>")
+
+    assert_equal rendered_html, "<a href=\"/posts/1\">Lorem</a>"
   end
 end
