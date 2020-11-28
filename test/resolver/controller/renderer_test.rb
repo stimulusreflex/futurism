@@ -65,7 +65,7 @@ class Futurism::Resolver::Controller::RendererTest < ActiveSupport::TestCase
     renderer = Futurism::Resolver::Controller::Renderer.for(controller: DummyController,
                                                             connection: dummy_connection,
                                                             url: "http://www.example.org?name=the%20future!",
-                                                            params: {"controller" => "home", "action" => "index"})
+                                                            params: {})
 
     rendered_html = renderer.render(inline: "Hi <%= controller_and_action_helper %>")
 
@@ -92,6 +92,6 @@ class Futurism::Resolver::Controller::RendererTest < ActiveSupport::TestCase
 
     rendered_html = renderer.render(inline: "<%= link_to post_path(id: #{post.id}) %>")
 
-    assert_equal rendered_html, "<a href=\"/posts/1\">Lorem</a>"
+    assert_equal rendered_html, "<a href=\"/\">/posts/1</a>"
   end
 end

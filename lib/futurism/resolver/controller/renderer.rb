@@ -30,6 +30,8 @@ module Futurism
             path = ActionDispatch::Journey::Router::Utils.normalize_path(uri.path)
             query_hash = Rack::Utils.parse_nested_query(uri.query)
 
+            path_params = Rails.application.routes.recognize_path(path)
+
             self.renderer =
               renderer.new(
                 "rack.request.query_hash" => query_hash,
@@ -40,7 +42,7 @@ module Futurism
                 Rack::PATH_INFO => path,
                 Rack::REQUEST_PATH => path,
                 Rack::QUERY_STRING => uri.query,
-                ActionDispatch::Http::Parameters::PARAMETERS_KEY => params.merge(query_hash)
+                ActionDispatch::Http::Parameters::PARAMETERS_KEY => params.symbolize_keys.merge(path_params).merge(query_hash)
               )
           end
 
