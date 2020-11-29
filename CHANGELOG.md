@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.7.0](https://github.com/julianrubisch/futurism/tree/v0.7.0) (2020-11-29)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.6.0...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.6.0...v0.7.0)
 
 **Merged pull requests:**
 
@@ -101,8 +101,6 @@
 **Merged pull requests:**
 
 - Fix partial shorthand bug [\#41](https://github.com/julianrubisch/futurism/pull/41) ([leastbad](https://github.com/leastbad))
-- docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.3.3](https://github.com/julianrubisch/futurism/tree/v0.3.3) (2020-07-30)
 
@@ -126,6 +124,8 @@
 
 **Merged pull requests:**
 
+- docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
 - Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 - Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
