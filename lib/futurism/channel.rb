@@ -16,18 +16,20 @@ module Futurism
     end
 
     def receive(data)
-      resources = data.fetch_values("signed_params", "sgids", "signed_controllers") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
+      resources = data.fetch_values("signed_params", "sgids", "signed_controllers", "urls") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
 
-      resources.each do |signed_params, sgid, signed_controller|
+      resources.each do |signed_params, sgid, signed_controller, url|
         selector = "[data-signed-params='#{signed_params}']"
         selector << "[data-sgid='#{sgid}']" if sgid.present?
 
-        controller_lookup = ControllerLookup.from(signed_string: signed_controller)
-        controller_lookup.setup_env!(connection: connection)
-        controller = controller_lookup.controller
+        controller = Resolver::Controller.from(signed_string: signed_controller)
+        renderer = Resolver::Controller::Renderer.for(controller: controller,
+                                                      connection: connection,
+                                                      url: url,
+                                                      params: @params)
 
         resource = lookup_resource(signed_params: signed_params, sgid: sgid)
-        html = controller.render(resource)
+        html = renderer.render(resource)
 
         cable_ready[stream_name].outer_html(
           selector: selector,
@@ -46,42 +48,6 @@ module Futurism
       message_verifier
         .verify(signed_params)
         .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
-    end
-
-    class ControllerLookup
-      include Futurism::MessageVerifier
-
-      def self.from(signed_string:)
-        new(signed_string)
-      end
-
-      def initialize(signed_string)
-        @signed_string = signed_string
-      end
-
-      def controller
-        if signed_string.present?
-          message_verifier
-            .verify(signed_string)
-            .to_s
-            .safe_constantize
-        else
-          default_controller
-        end
-      end
-
-      def setup_env!(connection:)
-        new_env = connection.env.merge(controller.renderer.instance_variable_get(:@env))
-        controller.renderer.instance_variable_set(:@env, new_env)
-      end
-
-      private
-
-      attr_reader :signed_string
-
-      def default_controller
-        Futurism.default_controller || ::ApplicationController
-      end
     end
   end
 end

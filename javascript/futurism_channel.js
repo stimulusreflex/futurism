@@ -18,7 +18,7 @@ const debounceEvents = (callback, delay = 20) => {
 
 export const createSubscription = consumer => {
   consumer.subscriptions.create('Futurism::Channel', {
-    connected () {
+    connected() {
       window.Futurism = this
       document.addEventListener(
         'futurism:appear',
@@ -26,13 +26,14 @@ export const createSubscription = consumer => {
           this.send({
             signed_params: events.map(e => e.target.dataset.signedParams),
             sgids: events.map(e => e.target.dataset.sgid),
-            signed_controllers: events.map(e => e.target.dataset.signedController)
+            signed_controllers: events.map(e => e.target.dataset.signedController),
+            urls: events.map(_ => window.location.href)
           })
         })
       )
     },
 
-    received (data) {
+    received(data) {
       if (data.cableReady) {
         CableReady.perform(data.operations, {
           emitMissingElementWarnings: false
