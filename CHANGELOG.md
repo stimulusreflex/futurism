@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.6.0...HEAD)
+
+**Merged pull requests:**
+
+- Pass url on each request and parse to build params hash [\#69](https://github.com/julianrubisch/futurism/pull/69) ([rickychilcott](https://github.com/rickychilcott))
+
 ## [v0.6.0](https://github.com/julianrubisch/futurism/tree/v0.6.0) (2020-10-12)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.5.4...v0.6.0)
@@ -187,7 +195,7 @@
 - docs: add darkrubyist as a contributor [\#4](https://github.com/julianrubisch/futurism/pull/4) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add julianrubisch as a contributor [\#3](https://github.com/julianrubisch/futurism/pull/3) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Fix pipeline errors [\#2](https://github.com/julianrubisch/futurism/pull/2) ([julianrubisch](https://github.com/julianrubisch))
-- Created a futurism\_utils file to DRY HTMLElement code [\#1](https://github.com/julianrubisch/futurism/pull/1) ([darkrubyist](https://github.com/darkrubyist))
+- Created a futurism\_utils file to DRY HTMLElement code [\#1](https://github.com/julianrubisch/futurism/pull/1) ([dark88888](https://github.com/dark88888))
 
 ## [v0.1.1](https://github.com/julianrubisch/futurism/tree/v0.1.1) (2020-07-09)
 
