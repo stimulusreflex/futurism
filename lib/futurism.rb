@@ -13,7 +13,12 @@ module Futurism
 
   autoload :Helpers, "futurism/helpers"
 
-  mattr_accessor :skip_in_test, :default_controller
+  mattr_accessor :skip_in_test, default: false
+
+  mattr_writer :default_controller
+  def self.default_controller
+    (@@default_controller || "::ApplicationController").to_s.constantize
+  end
 
   ActiveSupport.on_load(:action_view) {
     include Futurism::Helpers
