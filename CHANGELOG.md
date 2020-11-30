@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.7.1](https://github.com/julianrubisch/futurism/tree/v0.7.1) (2020-11-30)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.0...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.0...v0.7.1)
 
 **Closed issues:**
 
@@ -105,6 +105,7 @@
 - 34 identify channel [\#46](https://github.com/julianrubisch/futurism/pull/46) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
+- Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 
 ## [v0.4.0](https://github.com/julianrubisch/futurism/tree/v0.4.0) (2020-08-24)
 
@@ -115,7 +116,6 @@
 - Fix partial shorthand bug [\#41](https://github.com/julianrubisch/futurism/pull/41) ([leastbad](https://github.com/leastbad))
 - docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
-- Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 
 ## [v0.3.3](https://github.com/julianrubisch/futurism/tree/v0.3.3) (2020-07-30)
 
@@ -139,7 +139,7 @@
 
 **Merged pull requests:**
 
-- Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
+- Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add sas1ni69 as a contributor [\#30](https://github.com/julianrubisch/futurism/pull/30) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - uses AR Collection klass method [\#29](https://github.com/julianrubisch/futurism/pull/29) ([sas1ni69](https://github.com/sas1ni69))
@@ -163,7 +163,6 @@
 - docs: add fractaledmind as a contributor [\#25](https://github.com/julianrubisch/futurism/pull/25) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Dispatch futurism:appear method [\#24](https://github.com/julianrubisch/futurism/pull/24) ([fractaledmind](https://github.com/fractaledmind))
 - docs: add mepatterson as a contributor [\#21](https://github.com/julianrubisch/futurism/pull/21) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- add LI support to Rails helper [\#17](https://github.com/julianrubisch/futurism/pull/17) ([leastbad](https://github.com/leastbad))
 
 ## [v0.3.0](https://github.com/julianrubisch/futurism/tree/v0.3.0) (2020-07-22)
 
@@ -179,6 +178,7 @@
 
 **Merged pull requests:**
 
+- add LI support to Rails helper [\#17](https://github.com/julianrubisch/futurism/pull/17) ([leastbad](https://github.com/leastbad))
 - docs: add leastbad as a contributor [\#16](https://github.com/julianrubisch/futurism/pull/16) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - list element [\#15](https://github.com/julianrubisch/futurism/pull/15) ([leastbad](https://github.com/leastbad))
 - Allow to use arbitrary partials [\#12](https://github.com/julianrubisch/futurism/pull/12) ([julianrubisch](https://github.com/julianrubisch))
