@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.7.2](https://github.com/julianrubisch/futurism/tree/v0.7.2) (2020-12-07)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.1...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.1...v0.7.2)
 
 **Merged pull requests:**
 
@@ -112,6 +112,7 @@
 - Add data attributes from html options [\#47](https://github.com/julianrubisch/futurism/pull/47) ([scottbarrow](https://github.com/scottbarrow))
 - 34 identify channel [\#46](https://github.com/julianrubisch/futurism/pull/46) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
 
 ## [v0.4.0](https://github.com/julianrubisch/futurism/tree/v0.4.0) (2020-08-24)
 
@@ -145,7 +146,6 @@
 
 **Merged pull requests:**
 
-- Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
 - Update bug report template to feature 'Futurism' [\#33](https://github.com/julianrubisch/futurism/pull/33) ([marcoroth](https://github.com/marcoroth))
 - Allow to specify :as when rendering a collection [\#32](https://github.com/julianrubisch/futurism/pull/32) ([marcoroth](https://github.com/marcoroth))
 - docs: add marcoroth as a contributor [\#31](https://github.com/julianrubisch/futurism/pull/31) ([allcontributors[bot]](https://github.com/apps/allcontributors))
