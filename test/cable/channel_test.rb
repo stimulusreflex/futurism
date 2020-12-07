@@ -115,8 +115,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
       subscribe
 
       mock_renderer
-        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post: Post.first, important_local: "needed to render"}])
-        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post: Post.last, important_local: "needed to render"}])
+        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post: Post.first, important_local: "needed to render", post_counter: 0}])
+        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post: Post.last, important_local: "needed to render", post_counter: 1}])
 
       signed_params = fragment.children.first["data-signed-params"]
       perform :receive, {"signed_params" => [signed_params]}
@@ -135,11 +135,11 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
       fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :post_item, extends: :div) {})
       subscribe
 
-      mock_renderer.expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post_item: Post.first}])
+      mock_renderer.expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post_item: Post.first, post_item_counter: 0}])
       signed_params = fragment.children.first["data-signed-params"]
       perform :receive, {"signed_params" => [signed_params]}
 
-      mock_renderer.expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post_item: Post.last}])
+      mock_renderer.expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post_item: Post.last, post_item_counter: 1}])
       signed_params = fragment.children.last["data-signed-params"]
       perform :receive, {"signed_params" => [signed_params]}
 

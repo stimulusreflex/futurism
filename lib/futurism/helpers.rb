@@ -28,8 +28,8 @@ module Futurism
       else
         collection_class_name = collection.klass.name
         as = options.delete(:as) || collection_class_name.downcase
-        collection.map { |record|
-          Element.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record})).render
+        collection.each_with_index.map { |record, index|
+          Element.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
         }.join.html_safe
       end
     end
