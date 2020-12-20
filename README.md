@@ -33,7 +33,7 @@ Lazy-load Rails partials via CableReady
 
 ## Facts
 - only one dependency: CableReady
-- bundle size (without CableReady) is around [~1.04kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.1.3)
+- bundle size (without CableReady) is around [~2.46kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.7.2)
 
 ### Browser Support
 
