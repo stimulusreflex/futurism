@@ -71,4 +71,5 @@ jobs:
           bundle exec appraisal install
       - name: Run ruby tests
         run: |
+          gem update --system 3.0.8 && gem update --system
           bundle exec appraisal rake test
