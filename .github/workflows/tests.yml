@@ -63,7 +63,7 @@ jobs:
       - name: Bundle install
         run: |
           gem install bundler
-          gem update --system 3.0.8 && gem update --system
+          gem update --system
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
       - name: Appraisal
@@ -71,5 +71,5 @@ jobs:
           bundle exec appraisal install
       - name: Run ruby tests
         run: |
-          gem update --system 3.0.8 && gem update --system
+          gem update --system
           bundle exec appraisal rake test
