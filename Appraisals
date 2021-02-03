@@ -8,8 +8,10 @@ appraise "rails-6-0" do
   gem "sqlite3", "~> 1.4"
 end
 
-appraise "rails-5-2" do
-  gem "rails", "~> 5.2"
-  gem "sqlite3", "~> 1.3", "< 1.4"
-  gem "action-cable-testing"
+if RUBY_VERSION < "3.0"
+  appraise "rails-5-2" do
+    gem "rails", "~> 5.2"
+    gem "sqlite3", "~> 1.3", "< 1.4"
+    gem "action-cable-testing"
+  end
 end
