@@ -15,7 +15,7 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "absolute inset-0", element.children.first["class"]
 
     params = {partial: "posts/card", locals: {post: post}}
-    element = Nokogiri::HTML.fragment(futurize(params.merge({html_options: {class: "flex justify-center", data: {action: "test#click"}}, extends: :div})) {})
+    element = Nokogiri::HTML.fragment(futurize(**params.merge({html_options: {class: "flex justify-center", data: {action: "test#click"}}, extends: :div})) {})
 
     assert_equal "futurism-element", element.children.first.name
     assert_nil element.children.first["data-sgid"]
