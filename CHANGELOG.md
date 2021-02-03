@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.2...HEAD)
+
+**Merged pull requests:**
+
+- Bump nokogiri from 1.10.10 to 1.11.0 [\#74](https://github.com/julianrubisch/futurism/pull/74) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.7.2](https://github.com/julianrubisch/futurism/tree/v0.7.2) (2020-12-07)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.1...v0.7.2)
@@ -111,6 +119,7 @@
 - 43 data attributes html options [\#48](https://github.com/julianrubisch/futurism/pull/48) ([julianrubisch](https://github.com/julianrubisch))
 - Add data attributes from html options [\#47](https://github.com/julianrubisch/futurism/pull/47) ([scottbarrow](https://github.com/scottbarrow))
 - 34 identify channel [\#46](https://github.com/julianrubisch/futurism/pull/46) ([julianrubisch](https://github.com/julianrubisch))
+- docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Update README.md [\#44](https://github.com/julianrubisch/futurism/pull/44) ([vieditcom](https://github.com/vieditcom))
 
 ## [v0.4.0](https://github.com/julianrubisch/futurism/tree/v0.4.0) (2020-08-24)
@@ -119,7 +128,6 @@
 
 **Merged pull requests:**
 
-- docs: add vieditcom as a contributor [\#45](https://github.com/julianrubisch/futurism/pull/45) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Fix partial shorthand bug [\#41](https://github.com/julianrubisch/futurism/pull/41) ([leastbad](https://github.com/leastbad))
 - docs: add leastbad as a contributor [\#40](https://github.com/julianrubisch/futurism/pull/40) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Refactor element - use SGIDs where possible to minimize over-the-wire size [\#37](https://github.com/julianrubisch/futurism/pull/37) ([julianrubisch](https://github.com/julianrubisch))
