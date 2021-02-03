@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/excid3/appraisal.git
+  revision: 8bb003b273ae074356dc67b59ecc67c8ae2f3a27
+  branch: fix-bundle-env
+  specs:
+    appraisal (2.3.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
+
 PATH
   remote: .
   specs:
@@ -64,10 +74,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    appraisal (2.3.0)
-      bundler
-      rake
-      thor (>= 0.14.0)
     ast (2.4.1)
     builder (3.2.4)
     cable_ready (4.3.0)
@@ -178,7 +184,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  appraisal
+  appraisal!
   bundler (~> 2.0)
   futurism!
   nokogiri
