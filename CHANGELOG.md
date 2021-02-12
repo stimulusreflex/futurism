@@ -4,9 +4,16 @@
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.2...HEAD)
 
+**Closed issues:**
+
+- Use locate\_many to avoid N+1 [\#78](https://github.com/julianrubisch/futurism/issues/78)
+- Discussion: Futurism Improvements [\#64](https://github.com/julianrubisch/futurism/issues/64)
+
 **Merged pull requests:**
 
+- Use locate\_many to avoid N+1 [\#80](https://github.com/julianrubisch/futurism/pull/80) ([julianrubisch](https://github.com/julianrubisch))
 - Bump nokogiri from 1.10.10 to 1.11.0 [\#74](https://github.com/julianrubisch/futurism/pull/74) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update Appraisals [\#73](https://github.com/julianrubisch/futurism/pull/73) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.7.2](https://github.com/julianrubisch/futurism/tree/v0.7.2) (2020-12-07)
 
