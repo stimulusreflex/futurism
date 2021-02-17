@@ -10,4 +10,8 @@ export default class FuturismLI extends HTMLLIElement {
     extendElementWithIntersectionObserver(this)
     extendElementWithEagerLoading(this)
   }
+
+  disconnectedCallback () {
+    clearInterval(this.retryTimeout)
+  }
 }
