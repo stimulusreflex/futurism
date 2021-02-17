@@ -22,7 +22,13 @@ const dispatchAppearEvent = (entry, observer = null) => {
 const observerCallback = (entries, observer) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return
+
+    // give it a try, then start the interval
     dispatchAppearEvent(entry, observer)
+
+    entry.target.retryTimeout = setInterval(() => {
+      dispatchAppearEvent(entry, observer)
+    }, 3000)
   })
 }
 
