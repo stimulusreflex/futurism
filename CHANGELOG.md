@@ -11,6 +11,8 @@
 
 **Merged pull requests:**
 
+- Bump activerecord from 6.0.3.4 to 6.1.3 [\#84](https://github.com/julianrubisch/futurism/pull/84) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actionpack from 6.0.3.4 to 6.1.3 [\#83](https://github.com/julianrubisch/futurism/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use locate\_many to avoid N+1 [\#80](https://github.com/julianrubisch/futurism/pull/80) ([julianrubisch](https://github.com/julianrubisch))
 - Bump nokogiri from 1.10.10 to 1.11.0 [\#74](https://github.com/julianrubisch/futurism/pull/74) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update Appraisals [\#73](https://github.com/julianrubisch/futurism/pull/73) ([julianrubisch](https://github.com/julianrubisch))
