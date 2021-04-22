@@ -26,7 +26,7 @@ module Futurism
       if collection.nil?
         Element.new(extends: extends, placeholder: placeholder, options: options).render
       else
-        collection_class_name = collection.klass.name
+        collection_class_name = collection.try(:klass).try(:name) || collection.first.class.to_s
         as = options.delete(:as) || collection_class_name.downcase
         collection.each_with_index.map { |record, index|
           Element.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
