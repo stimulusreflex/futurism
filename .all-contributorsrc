@@ -120,7 +120,7 @@
       "login": "domchristie",
       "name": "Dom Christie",
       "avatar_url": "https://avatars0.githubusercontent.com/u/111734?v=4",
-      "profile": "http://domchristie.co.uk",      
+      "profile": "http://domchristie.co.uk",
       "contributions": [
         "review"
       ]
@@ -132,6 +132,15 @@
       "profile": "http://www.rickychilcott.com",
       "contributions": [
         "review"
+      ]
+    },
+    {
+      "login": "mansakondo",
+      "name": "mansakondo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47113995?v=4",
+      "profile": "https://github.com/mansakondo",
+      "contributions": [
+        "code"
       ]
     }
   ],
