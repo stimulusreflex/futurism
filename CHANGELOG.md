@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+## [v0.8.0](https://github.com/julianrubisch/futurism/tree/v0.8.0) (2021-04-23)
 
-[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.2...HEAD)
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.2...v0.8.0)
 
 **Closed issues:**
 
