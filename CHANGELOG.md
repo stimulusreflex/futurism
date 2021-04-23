@@ -23,7 +23,7 @@
 
 **Merged pull requests:**
 
-- Allow rendered partials to use the `partial\_counter` variable [\#71](https://github.com/julianrubisch/futurism/pull/71) ([julianrubisch](https://github.com/julianrubisch))
+- Allow rendered partials to use the `partial_counter` variable [\#71](https://github.com/julianrubisch/futurism/pull/71) ([julianrubisch](https://github.com/julianrubisch))
 
 ## [v0.7.1](https://github.com/julianrubisch/futurism/tree/v0.7.1) (2020-11-30)
 
