@@ -1,6 +1,6 @@
 {
   "name": "@minthesize/futurism",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "index.js",
   "scripts": {
