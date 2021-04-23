@@ -1,7 +1,7 @@
 # Futurism
 [![Twitter follow](https://img.shields.io/twitter/follow/julian_rubisch?style=social)](https://twitter.com/julian_rubisch)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
@@ -302,27 +302,31 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4" width="100px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=julianrubisch" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/darkrubyist"><img src="https://avatars2.githubusercontent.com/u/11207292?v=4" width="100px;" alt=""/><br /><sub><b>darkrubyist</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://ParamagicDev.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4" width="100px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=ParamagicDev" title="Code">💻</a></td>
-    <td align="center"><a href="https://www.andrewm.codes"><img src="https://avatars1.githubusercontent.com/u/18423853?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Mason</b></sub></a><br /><a href="#maintenance-andrewmcodes" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="http://gorails.com"><img src="https://avatars1.githubusercontent.com/u/67093?v=4" width="100px;" alt=""/><br /><sub><b>Chris Oliver</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=excid3" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aexcid3" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/leastbad"><img src="https://avatars2.githubusercontent.com/u/38150464?v=4" width="100px;" alt=""/><br /><sub><b>leastbad</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=leastbad" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aleastbad" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4" width="100px;" alt=""/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=julianrubisch" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/darkrubyist"><img src="https://avatars2.githubusercontent.com/u/11207292?v=4?s=100" width="100px;" alt=""/><br /><sub><b>darkrubyist</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://ParamagicDev.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=ParamagicDev" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.andrewm.codes"><img src="https://avatars1.githubusercontent.com/u/18423853?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Mason</b></sub></a><br /><a href="#maintenance-andrewmcodes" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://gorails.com"><img src="https://avatars1.githubusercontent.com/u/67093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Oliver</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=excid3" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aexcid3" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/leastbad"><img src="https://avatars2.githubusercontent.com/u/38150464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leastbad</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=leastbad" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aleastbad" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4?s=100" width="100px;" alt=""/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://fractaledmind.com"><img src="https://avatars3.githubusercontent.com/u/5077225?v=4" width="100px;" alt=""/><br /><sub><b>Stephen Margheim</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=fractaledmind" title="Code">💻</a></td>
-    <td align="center"><a href="http://hass.codes"><img src="https://avatars2.githubusercontent.com/u/1064205?v=4" width="100px;" alt=""/><br /><sub><b>Hassanin Ahmed</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=sas1ni69" title="Code">💻</a></td>
-    <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=marcoroth" title="Code">💻</a></td>
-    <td align="center"><a href="https://viedit.com"><img src="https://avatars1.githubusercontent.com/u/49990587?v=4" width="100px;" alt=""/><br /><sub><b>Viedit com</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=vieditcom" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://scottbarrow.ca"><img src="https://avatars2.githubusercontent.com/u/5571736?v=4" width="100px;" alt=""/><br /><sub><b>Scott Barrow</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=scottbarrow" title="Code">💻</a></td>
-    <td align="center"><a href="http://domchristie.co.uk"><img src="https://avatars0.githubusercontent.com/u/111734?v=4" width="100px;" alt=""/><br /><sub><b>Dom Christie</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Adomchristie" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://www.rickychilcott.com"><img src="https://avatars1.githubusercontent.com/u/445759?v=4" width="100px;" alt=""/><br /><sub><b>Ricky Chilcott</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Arickychilcott" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://fractaledmind.com"><img src="https://avatars3.githubusercontent.com/u/5077225?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Margheim</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=fractaledmind" title="Code">💻</a></td>
+    <td align="center"><a href="http://hass.codes"><img src="https://avatars2.githubusercontent.com/u/1064205?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hassanin Ahmed</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=sas1ni69" title="Code">💻</a></td>
+    <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=marcoroth" title="Code">💻</a></td>
+    <td align="center"><a href="https://viedit.com"><img src="https://avatars1.githubusercontent.com/u/49990587?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viedit com</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=vieditcom" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://scottbarrow.ca"><img src="https://avatars2.githubusercontent.com/u/5571736?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Barrow</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=scottbarrow" title="Code">💻</a></td>
+    <td align="center"><a href="http://domchristie.co.uk"><img src="https://avatars0.githubusercontent.com/u/111734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dom Christie</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Adomchristie" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://www.rickychilcott.com"><img src="https://avatars1.githubusercontent.com/u/445759?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricky Chilcott</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Arickychilcott" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/mansakondo"><img src="https://avatars.githubusercontent.com/u/47113995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mansakondo</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=mansakondo" title="Code">💻</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
