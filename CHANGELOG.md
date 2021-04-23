@@ -6,11 +6,13 @@
 
 **Closed issues:**
 
+- Adapt for Turbo [\#82](https://github.com/julianrubisch/futurism/issues/82)
 - Use locate\_many to avoid N+1 [\#78](https://github.com/julianrubisch/futurism/issues/78)
 - Discussion: Futurism Improvements [\#64](https://github.com/julianrubisch/futurism/issues/64)
 
 **Merged pull requests:**
 
+- Add turbo events \#82 [\#88](https://github.com/julianrubisch/futurism/pull/88) ([julianrubisch](https://github.com/julianrubisch))
 - docs: add mansakondo as a contributor [\#87](https://github.com/julianrubisch/futurism/pull/87) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Make collection rendering work with any Ruby class [\#86](https://github.com/julianrubisch/futurism/pull/86) ([mansakondo](https://github.com/mansakondo))
 - Bump y18n from 4.0.0 to 4.0.1 in /javascript [\#85](https://github.com/julianrubisch/futurism/pull/85) ([dependabot[bot]](https://github.com/apps/dependabot))
