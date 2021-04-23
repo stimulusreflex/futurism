@@ -11,6 +11,9 @@
 
 **Merged pull requests:**
 
+- docs: add mansakondo as a contributor [\#87](https://github.com/julianrubisch/futurism/pull/87) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Make collection rendering work with any Ruby class [\#86](https://github.com/julianrubisch/futurism/pull/86) ([mansakondo](https://github.com/mansakondo))
+- Bump y18n from 4.0.0 to 4.0.1 in /javascript [\#85](https://github.com/julianrubisch/futurism/pull/85) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump activerecord from 6.0.3.4 to 6.1.3 [\#84](https://github.com/julianrubisch/futurism/pull/84) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actionpack from 6.0.3.4 to 6.1.3 [\#83](https://github.com/julianrubisch/futurism/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use locate\_many to avoid N+1 [\#80](https://github.com/julianrubisch/futurism/pull/80) ([julianrubisch](https://github.com/julianrubisch))
