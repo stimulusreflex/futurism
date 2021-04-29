@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/julianrubisch/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.8.0...HEAD)
+
+**Closed issues:**
+
+- Name collision if your project uses `Element` [\#90](https://github.com/julianrubisch/futurism/issues/90)
+
+**Merged pull requests:**
+
+- Rename Element to WrappingFuturismElement [\#92](https://github.com/julianrubisch/futurism/pull/92) ([rickychilcott](https://github.com/rickychilcott))
+
 ## [v0.8.0](https://github.com/julianrubisch/futurism/tree/v0.8.0) (2021-04-23)
 
 [Full Changelog](https://github.com/julianrubisch/futurism/compare/v0.7.2...v0.8.0)
