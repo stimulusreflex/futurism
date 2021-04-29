@@ -64,9 +64,9 @@ module Futurism
             # Route not matched, try next
           end
 
-          warn "We were unable to find a matching rails route for '#{url}'. " +
-            "This may be because there are proc-based routing constraints for this particular url, or " +
-            "it truly is an unrecognizable url."
+          warn "We were unable to find a matching rails route for '#{url}'. " \
+               "This may be because there are proc-based routing constraints for this particular url, or " \
+               "it truly is an unrecognizable url."
 
           {}
         end
