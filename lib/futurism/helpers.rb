@@ -24,24 +24,24 @@ module Futurism
     def futurize_with_options(extends:, placeholder:, **options)
       collection = options.delete(:collection)
       if collection.nil?
-        Element.new(extends: extends, placeholder: placeholder, options: options).render
+        WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options).render
       else
         collection_class_name = collection.try(:klass).try(:name) || collection.first.class.to_s
         as = options.delete(:as) || collection_class_name.downcase
         collection.each_with_index.map { |record, index|
-          Element.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
+          WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
         }.join.html_safe
       end
     end
 
     def futurize_active_record(records, extends:, placeholder:, **options)
       Array(records).map { |record|
-        Element.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
+        WrappingFuturismElement.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
       }.join.html_safe
     end
 
     # wraps functionality for rendering a futurism element
-    class Element
+    class WrappingFuturismElement
       include ActionView::Helpers
       include Futurism::MessageVerifier
 
