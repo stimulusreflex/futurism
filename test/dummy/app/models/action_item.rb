@@ -1,0 +1,2 @@
+class ActionItem < ApplicationRecord
+end

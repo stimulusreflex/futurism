@@ -128,6 +128,28 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     end
   end
 
+  test "broadcasts a collection (with multi-word class)" do
+    with_mocked_renderer do |mock_renderer|
+      ActionItem.create description: "Do this"
+      ActionItem.create description: "Do that"
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: ActionItem.all, extends: :div, locals: {important_local: "needed to render"}) {})
+
+      subscribe
+
+      mock_renderer
+        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {action_item: ActionItem.first, important_local: "needed to render", action_item_counter: 0}])
+        .expect(:render, "<tag></tag>", [partial: "posts/card", locals: {action_item: ActionItem.last, important_local: "needed to render", action_item_counter: 1}])
+
+      signed_params = fragment.children.first["data-signed-params"]
+      perform :receive, {"signed_params" => [signed_params]}
+
+      signed_params = fragment.children.last["data-signed-params"]
+      perform :receive, {"signed_params" => [signed_params]}
+
+      assert_mock mock_renderer
+    end
+  end
+
   test "broadcasts a collection with :as" do
     with_mocked_renderer do |mock_renderer|
       Post.create title: "Lorem"

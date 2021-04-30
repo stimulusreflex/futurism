@@ -27,7 +27,7 @@ module Futurism
         WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options).render
       else
         collection_class_name = collection.try(:klass).try(:name) || collection.first.class.to_s
-        as = options.delete(:as) || collection_class_name.downcase
+        as = options.delete(:as) || collection_class_name.underscore
         collection.each_with_index.map { |record, index|
           WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
         }.join.html_safe
