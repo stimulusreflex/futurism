@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Use rails convention to underscore collection class names [\#95](https://github.com/julianrubisch/futurism/pull/95) ([rickychilcott](https://github.com/rickychilcott))
 - Rename Element to WrappingFuturismElement [\#92](https://github.com/julianrubisch/futurism/pull/92) ([rickychilcott](https://github.com/rickychilcott))
 
 ## [v0.8.0](https://github.com/julianrubisch/futurism/tree/v0.8.0) (2021-04-23)
