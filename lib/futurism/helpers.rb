@@ -82,7 +82,10 @@ module Futurism
         require_relative "shims/deep_transform_values" unless options.respond_to? :deep_transform_values
 
         options.deep_transform_values do |value|
-          value.is_a?(ActiveRecord::Base) && !value.new_record? ? value.to_global_id.to_s : value
+          next(value) unless value.respond_to?(:to_global_id)
+          next(value) if value.is_a?(ActiveRecord::Base) && value.new_record?
+
+          value.to_global_id.to_s
         end
       end
 

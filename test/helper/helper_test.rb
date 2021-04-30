@@ -54,6 +54,26 @@ class Futurism::HelperTest < ActionView::TestCase
     assert extract_params(element.children.first["data-signed-params"])[:locals][:post].new_record?
   end
 
+  # PORO that is serializable/de-serializable
+  class GlobalIdableEntity
+    include GlobalID::Identification
+
+    def id
+      "fake-id"
+    end
+
+    def self.find(id)
+      new if id == "fake-id"
+    end
+  end
+
+  test "allows to specify any GlobalId-able entity" do
+    entity = GlobalIdableEntity.new
+    element = Nokogiri::HTML.fragment(futurize("posts/form", entity: entity, extends: :div) {})
+
+    assert_equal "gid://dummy/Futurism::HelperTest::GlobalIdableEntity/fake-id", extract_params(element.children.first["data-signed-params"])[:locals][:entity]
+  end
+
   test "renders an eager loading data attribute" do
     post = Post.create title: "Lorem"
 
