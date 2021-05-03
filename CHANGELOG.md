@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Bump rexml from 3.2.4 to 3.2.5 [\#96](https://github.com/julianrubisch/futurism/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use rails convention to underscore collection class names [\#95](https://github.com/julianrubisch/futurism/pull/95) ([rickychilcott](https://github.com/rickychilcott))
 - Support GlobalId objects [\#94](https://github.com/julianrubisch/futurism/pull/94) ([rickychilcott](https://github.com/rickychilcott))
 - Rename Element to WrappingFuturismElement [\#92](https://github.com/julianrubisch/futurism/pull/92) ([rickychilcott](https://github.com/rickychilcott))
