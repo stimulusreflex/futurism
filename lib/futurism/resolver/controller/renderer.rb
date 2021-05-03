@@ -34,7 +34,7 @@ module Futurism
             path = ActionDispatch::Journey::Router::Utils.normalize_path(uri.path)
             query_hash = Rack::Utils.parse_nested_query(uri.query)
 
-            path_params = recognize_path(url) # use full url to be more likely to match a url with subdomain constraints
+            path_params = recognize_url(url) # use full url to be more likely to match a url with subdomain constraints
 
             self.renderer =
               renderer.new(
@@ -56,7 +56,7 @@ module Futurism
           renderer.instance_variable_set(:@env, new_env)
         end
 
-        def recognize_path(url)
+        def recognize_url(url)
           HTTP_METHODS.each do |http_method|
             path = Rails.application.routes.recognize_path(url, method: http_method)
             return path if path
