@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 module Futurism
   module Resolver
     class Controller
       class Renderer
+        HTTP_METHODS = [:get, :post, :put, :patch, :delete]
+
         def self.for(controller:, connection:, url:, params:)
           new(controller: controller, connection: connection, url: url, params: params).renderer
         end
@@ -30,7 +34,7 @@ module Futurism
             path = ActionDispatch::Journey::Router::Utils.normalize_path(uri.path)
             query_hash = Rack::Utils.parse_nested_query(uri.query)
 
-            path_params = Rails.application.routes.recognize_path(path)
+            path_params = recognize_url(url) # use full url to be more likely to match a url with subdomain constraints
 
             self.renderer =
               renderer.new(
@@ -50,6 +54,21 @@ module Futurism
           # Warden or Devise
           new_env = connection.env.merge(renderer.instance_variable_get(:@env))
           renderer.instance_variable_set(:@env, new_env)
+        end
+
+        def recognize_url(url)
+          HTTP_METHODS.each do |http_method|
+            path = Rails.application.routes.recognize_path(url, method: http_method)
+            return path if path
+          rescue ActionController::RoutingError
+            # Route not matched, try next
+          end
+
+          warn "We were unable to find a matching rails route for '#{url}'. " \
+               "This may be because there are proc-based routing constraints for this particular url, or " \
+               "it truly is an unrecognizable url."
+
+          {}
         end
       end
     end

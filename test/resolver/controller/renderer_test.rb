@@ -94,4 +94,27 @@ class Futurism::Resolver::Controller::RendererTest < ActiveSupport::TestCase
 
     assert_equal rendered_html, "<a href=\"/\">/posts/1</a>"
   end
+
+  ["get", "put", "patch", "post", "delete"].each do |http_method|
+    test "renderer.render handles an #{http_method} route" do
+      renderer = Futurism::Resolver::Controller::Renderer.for(controller: ApplicationController,
+                                                              connection: dummy_connection,
+                                                              url: "http://example.org/known/#{http_method}",
+                                                              params: {})
+
+      rendered_html = renderer.render(inline: "<%= request.url %>")
+      assert_equal rendered_html, "http://example.org/known/#{http_method}"
+    end
+  end
+
+  test "renderer.render handles an umatchable url" do
+    renderer = Futurism::Resolver::Controller::Renderer.for(controller: ApplicationController,
+                                                            connection: dummy_connection,
+                                                            url: "http://example.org/unknown/place",
+                                                            params: {})
+
+    assert_nothing_raised do
+      renderer.render(inline: "<%= request.url %>")
+    end
+  end
 end
