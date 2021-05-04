@@ -8,12 +8,14 @@
 
 - Fully support any GlobalId-able entity [\#91](https://github.com/julianrubisch/futurism/issues/91)
 - Name collision if your project uses `Element` [\#90](https://github.com/julianrubisch/futurism/issues/90)
+- Better Error Handling if routes are not "recognized" [\#89](https://github.com/julianrubisch/futurism/issues/89)
 
 **Merged pull requests:**
 
 - Bump rexml from 3.2.4 to 3.2.5 [\#96](https://github.com/julianrubisch/futurism/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use rails convention to underscore collection class names [\#95](https://github.com/julianrubisch/futurism/pull/95) ([rickychilcott](https://github.com/rickychilcott))
 - Support GlobalId objects [\#94](https://github.com/julianrubisch/futurism/pull/94) ([rickychilcott](https://github.com/rickychilcott))
+- Better recognize urls [\#93](https://github.com/julianrubisch/futurism/pull/93) ([rickychilcott](https://github.com/rickychilcott))
 - Rename Element to WrappingFuturismElement [\#92](https://github.com/julianrubisch/futurism/pull/92) ([rickychilcott](https://github.com/rickychilcott))
 
 ## [v0.8.0](https://github.com/julianrubisch/futurism/tree/v0.8.0) (2021-04-23)
