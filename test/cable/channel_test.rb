@@ -209,6 +209,31 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     end
   end
 
+  test "renders error message when rendering invalid partial error" do
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "INVALID/PARTIAL", extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe(channel: "Futurism::Channel")
+
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
+                                                           selector: "[data-signed-params='#{signed_params}']",
+                                                           html: /Missing partial INVALID\/_PARTIAL/) do
+      perform :receive, {"signed_params" => [signed_params]}
+    end
+  end
+
+  test "renders error message when wrong variable name" do
+    Post.create title: "Lorem"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :wrong_variable_name, extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe(channel: "Futurism::Channel")
+
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
+                                                           selector: "[data-signed-params='#{signed_params}']",
+                                                           html: /undefined local variable or method/) do
+      perform :receive, {"signed_params" => [signed_params]}
+    end
+  end
+
   def assert_cable_ready_operation_on(stream, operation:, selector:, html:, &block)
     data = {
       "cableReady" => true,

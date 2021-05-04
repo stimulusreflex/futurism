@@ -21,13 +21,23 @@ module Futurism
 
         @resources_without_sgids.each do |resource_definition|
           resource = lookup_resource(resource_definition)
-          html = renderer_for(resource_definition: resource_definition).render(resource)
+          renderer = renderer_for(resource_definition: resource_definition)
+          html =
+            begin
+              renderer.render(resource)
+            rescue => exception
+              error_render.render(exception)
+            end
 
           yield(resource_definition.selector, html)
         end
       end
 
       private
+
+      def error_render
+        ErrorRenderer.new
+      end
 
       class ResourceDefinition
         attr_reader :signed_params, :sgid, :signed_controller, :url
@@ -45,6 +55,25 @@ module Futurism
         def controller
           Resolver::Controller.from(signed_string: @signed_controller)
         end
+      end
+
+      class ErrorRenderer
+        include ActionView::Helpers::TagHelper
+
+        def render(exception)
+          return "" unless render?
+
+          Futurism.logger.error(exception.to_s)
+          Futurism.logger.error(exception.backtrace)
+
+          tag.div { tag.span(exception.to_s) + tag.div(exception.backtrace.join("\n"), style: "display: none;") }
+        end
+
+        def render?
+          Rails.env.development? || Rails.env.test?
+        end
+
+        attr_accessor :output_buffer
       end
 
       def renderer_for(resource_definition:)
