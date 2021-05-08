@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Bump lodash from 4.17.19 to 4.17.21 in /javascript [\#99](https://github.com/julianrubisch/futurism/pull/99) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actionpack from 6.1.3.1 to 6.1.3.2 [\#98](https://github.com/julianrubisch/futurism/pull/98) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump rexml from 3.2.4 to 3.2.5 [\#96](https://github.com/julianrubisch/futurism/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use rails convention to underscore collection class names [\#95](https://github.com/julianrubisch/futurism/pull/95) ([rickychilcott](https://github.com/rickychilcott))
