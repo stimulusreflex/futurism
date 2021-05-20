@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Bump nokogiri from 1.11.3 to 1.11.4 [\#101](https://github.com/julianrubisch/futurism/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump handlebars from 4.7.6 to 4.7.7 in /javascript [\#100](https://github.com/julianrubisch/futurism/pull/100) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump lodash from 4.17.19 to 4.17.21 in /javascript [\#99](https://github.com/julianrubisch/futurism/pull/99) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actionpack from 6.1.3.1 to 6.1.3.2 [\#98](https://github.com/julianrubisch/futurism/pull/98) ([dependabot[bot]](https://github.com/apps/dependabot))
