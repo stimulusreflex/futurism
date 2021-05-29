@@ -9,3 +9,6 @@ require "pry"
 
 # Filter out the backtrace from minitest while preserving the one from other libraries.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
+
+# Turn off logger output as to not have poor test output
+Futurism.logger = Logger.new(IO::NULL)

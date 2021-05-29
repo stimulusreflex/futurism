@@ -174,7 +174,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
-    assert_broadcast_on("Futurism::Channel:1", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "3"}]}) do
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml", selector: "[data-signed-params='#{signed_params}']", html: "3") do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -185,7 +185,9 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
-    assert_broadcast_on("Futurism::Channel:1", "cableReady" => true, "operations" => {"outerHtml" => [{"selector" => "[data-signed-params='#{signed_params}']", "html" => "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n"}]}) do
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
+                                                           selector: "[data-signed-params='#{signed_params}']",
+                                                           html: "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n") do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -205,5 +207,72 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
       assert_mock mock_renderer
     end
+  end
+
+  test "renders error message when rendering invalid partial error" do
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "INVALID/PARTIAL", extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe(channel: "Futurism::Channel")
+
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
+                                                           selector: "[data-signed-params='#{signed_params}']",
+                                                           html: /Missing partial INVALID\/_PARTIAL/) do
+      perform :receive, {"signed_params" => [signed_params]}
+    end
+  end
+
+  test "renders error message when wrong variable name" do
+    Post.create title: "Lorem"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :wrong_variable_name, extends: :div) {})
+    signed_params = fragment.children.first["data-signed-params"]
+    subscribe(channel: "Futurism::Channel")
+
+    assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
+                                                           selector: "[data-signed-params='#{signed_params}']",
+                                                           html: /undefined local variable or method/) do
+      perform :receive, {"signed_params" => [signed_params]}
+    end
+  end
+
+  def assert_cable_ready_operation_on(stream, operation:, selector:, html:, &block)
+    data = {
+      "cableReady" => true,
+      "operations" => {
+        operation => [{
+          "selector" => selector,
+          "html" => html
+        }]
+      }
+    }
+
+    old_messages = broadcasts(stream)
+    clear_messages(stream)
+
+    assert_nothing_raised(&block)
+
+    new_messages = broadcasts(stream)
+    clear_messages(stream)
+
+    # Restore all sent messages
+    (old_messages + new_messages).each { |m| pubsub_adapter.broadcast(stream, m) }
+
+    message = new_messages.find { |msg| cableReadyMatch?(operation, ActiveSupport::JSON.decode(msg), data) }
+
+    assert message, "No messages sent with #{data} to #{stream}"
+  end
+
+  def cableReadyMatch?(operation, message, matcher)
+    return true if message == matcher
+
+    first_matching_operation = ["operations", operation, 0]
+
+    matcher_operation = matcher.dig(*first_matching_operation)
+    message_operation = message.dig(*first_matching_operation)
+
+    message.dig("cableReady") == true &&
+      (matcher_operation.dig("selector") === message_operation.dig("selector") ||
+        matcher_operation.dig("selector").match(message_operation.dig("selector"))) &&
+      (matcher_operation.dig("html") === message_operation.dig("html") ||
+        matcher_operation.dig("html").match(message_operation.dig("html")))
   end
 end

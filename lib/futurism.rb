@@ -21,7 +21,10 @@ module Futurism
     (@@default_controller || "::ApplicationController").to_s.constantize
   end
 
-  ActiveSupport.on_load(:action_view) {
+  ActiveSupport.on_load(:action_view) do
     include Futurism::Helpers
-  }
+  end
+
+  mattr_accessor :logger
+  self.logger ||= Rails.logger ? Rails.logger.new : Logger.new($stdout)
 end
