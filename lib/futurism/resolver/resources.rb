@@ -26,7 +26,7 @@ module Futurism
             begin
               renderer.render(resource)
             rescue => exception
-              error_render.render(exception)
+              error_renderer.render(exception)
             end
 
           yield(resource_definition.selector, html)
@@ -35,7 +35,7 @@ module Futurism
 
       private
 
-      def error_render
+      def error_renderer
         ErrorRenderer.new
       end
 
