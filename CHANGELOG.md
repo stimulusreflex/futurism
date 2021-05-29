@@ -9,6 +9,7 @@
 - Fully support any GlobalId-able entity [\#91](https://github.com/julianrubisch/futurism/issues/91)
 - Name collision if your project uses `Element` [\#90](https://github.com/julianrubisch/futurism/issues/90)
 - Better Error Handling if routes are not "recognized" [\#89](https://github.com/julianrubisch/futurism/issues/89)
+- Better Error Handling [\#63](https://github.com/julianrubisch/futurism/issues/63)
 
 **Merged pull requests:**
 
@@ -16,6 +17,7 @@
 - Bump handlebars from 4.7.6 to 4.7.7 in /javascript [\#100](https://github.com/julianrubisch/futurism/pull/100) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump lodash from 4.17.19 to 4.17.21 in /javascript [\#99](https://github.com/julianrubisch/futurism/pull/99) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actionpack from 6.1.3.1 to 6.1.3.2 [\#98](https://github.com/julianrubisch/futurism/pull/98) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Better errors [\#97](https://github.com/julianrubisch/futurism/pull/97) ([rickychilcott](https://github.com/rickychilcott))
 - Bump rexml from 3.2.4 to 3.2.5 [\#96](https://github.com/julianrubisch/futurism/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Use rails convention to underscore collection class names [\#95](https://github.com/julianrubisch/futurism/pull/95) ([rickychilcott](https://github.com/rickychilcott))
 - Support GlobalId objects [\#94](https://github.com/julianrubisch/futurism/pull/94) ([rickychilcott](https://github.com/rickychilcott))
