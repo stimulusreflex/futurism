@@ -10,8 +10,4 @@ export default class FuturismElement extends HTMLElement {
     extendElementWithIntersectionObserver(this)
     extendElementWithEagerLoading(this)
   }
-
-  disconnectedCallback () {
-    clearInterval(this.retryTimeout)
-  }
 }

@@ -10,8 +10,4 @@ export default class FuturismTableRow extends HTMLTableRowElement {
     extendElementWithIntersectionObserver(this)
     extendElementWithEagerLoading(this)
   }
-
-  disconnectedCallback () {
-    clearInterval(this.retryTimeout)
-  }
 }
