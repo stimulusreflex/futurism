@@ -19,10 +19,27 @@ const dispatchAppearEvent = (entry, observer = null) => {
   target.dispatchEvent(evt)
 }
 
+// from https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/#rejection-based-retrying
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const callWithRetry = async (fn, depth = 0) => {
+  try {
+    return await fn()
+  } catch (e) {
+    if (depth > 10) {
+      throw e
+    }
+    await wait(1.15 ** depth * 2000)
+
+    return callWithRetry(fn, depth + 1)
+  }
+}
+
 const observerCallback = (entries, observer) => {
-  entries.forEach(entry => {
+  entries.forEach(async entry => {
     if (!entry.isIntersecting) return
-    dispatchAppearEvent(entry, observer)
+
+    await callWithRetry(dispatchAppearEvent(entry, observer))
   })
 }
 
