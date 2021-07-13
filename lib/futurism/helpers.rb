@@ -9,7 +9,11 @@ module Futurism
         end
       end
 
-      placeholder = capture(&block)
+      if block_given?
+        placeholder = capture(&block)
+      else
+        options[:eager] = true
+      end
 
       if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
         futurize_active_record(records_or_string, extends: extends, placeholder: placeholder, **options)

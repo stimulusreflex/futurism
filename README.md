@@ -68,6 +68,8 @@ You can pass the placeholder as a block:
 
 ![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
 
+You can also omit the placeholder, which falls back to [eager loading](#eager-loading).
+
 ## API
 
 Currently there are two ways to call `futurize`, designed to wrap `render`'s behavior:
