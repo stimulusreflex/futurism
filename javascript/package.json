@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/julianrubisch/futurism#readme",
   "dependencies": {
-    "cable_ready": "^4.3.0"
+    "cable_ready": ">= 4.3.0"
   },
   "devDependencies": {
     "mocha": "^8.0.1",
