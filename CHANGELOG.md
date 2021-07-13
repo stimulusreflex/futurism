@@ -9,11 +9,13 @@
 - Fully support any GlobalId-able entity [\#91](https://github.com/julianrubisch/futurism/issues/91)
 - Name collision if your project uses `Element` [\#90](https://github.com/julianrubisch/futurism/issues/90)
 - Better Error Handling if routes are not "recognized" [\#89](https://github.com/julianrubisch/futurism/issues/89)
+- Make placeholder block optional [\#76](https://github.com/julianrubisch/futurism/issues/76)
 - Retry [\#75](https://github.com/julianrubisch/futurism/issues/75)
 - Better Error Handling [\#63](https://github.com/julianrubisch/futurism/issues/63)
 
 **Merged pull requests:**
 
+- Eager load if no placeholder block is present [\#103](https://github.com/julianrubisch/futurism/pull/103) ([julianrubisch](https://github.com/julianrubisch))
 - Bump glob-parent from 5.1.1 to 5.1.2 in /javascript [\#102](https://github.com/julianrubisch/futurism/pull/102) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump nokogiri from 1.11.3 to 1.11.4 [\#101](https://github.com/julianrubisch/futurism/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump handlebars from 4.7.6 to 4.7.7 in /javascript [\#100](https://github.com/julianrubisch/futurism/pull/100) ([dependabot[bot]](https://github.com/apps/dependabot))
