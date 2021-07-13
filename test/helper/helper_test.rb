@@ -85,6 +85,17 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "true", element.children.first["data-eager"]
   end
 
+  test "renders an eager loading data attribute for an empty placeholder block" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, eager: true) {})
+
+    assert_equal "true", element.children.first["data-eager"]
+
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div))
+    assert_equal "true", element.children.first["data-eager"]
+  end
+
   test "renders a collection " do
     Post.create title: "Lorem"
     Post.create title: "Lorem2"
