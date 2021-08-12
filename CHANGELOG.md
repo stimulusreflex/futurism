@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- Bump path-parse from 1.0.6 to 1.0.7 in /javascript [\#105](https://github.com/julianrubisch/futurism/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Eager load if no placeholder block is present [\#103](https://github.com/julianrubisch/futurism/pull/103) ([julianrubisch](https://github.com/julianrubisch))
 - Bump glob-parent from 5.1.1 to 5.1.2 in /javascript [\#102](https://github.com/julianrubisch/futurism/pull/102) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump nokogiri from 1.11.3 to 1.11.4 [\#101](https://github.com/julianrubisch/futurism/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
