@@ -15,14 +15,16 @@ module Futurism
     end
 
     def receive(data)
-      resources = data.fetch_values("signed_params", "sgids", "signed_controllers", "urls") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
+      resources = data.fetch_values("signed_params", "sgids", "signed_controllers", "urls", "broadcast_each") { |_key| Array.new(data["signed_params"].length, nil) }.transpose
 
       resolver = Resolver::Resources.new(resource_definitions: resources, connection: connection, params: @params)
-      resolver.resolve do |selector, html|
+      resolver.resolve do |selector, html, broadcast_each|
         cable_ready[stream_name].outer_html(
           selector: selector,
           html: html
         )
+
+        cable_ready.broadcast if broadcast_each
       end
 
       cable_ready.broadcast
