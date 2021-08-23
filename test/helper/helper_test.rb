@@ -96,7 +96,7 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "true", element.children.first["data-eager"]
   end
 
-  test "renders a collection " do
+  test "renders a collection" do
     Post.create title: "Lorem"
     Post.create title: "Lorem2"
 
@@ -114,6 +114,16 @@ class Futurism::HelperTest < ActionView::TestCase
 
     assert_equal({action_item: "gid://dummy/ActionItem/1", action_item_counter: 0}, Futurism::MessageVerifier.message_verifier.verify(element.children.first["data-signed-params"])[:locals])
     assert_equal({action_item: "gid://dummy/ActionItem/2", action_item_counter: 1}, Futurism::MessageVerifier.message_verifier.verify(element.children.last["data-signed-params"])[:locals])
+  end
+
+  test "renders a collection of items with a broadcast_each attribute" do
+    Post.create title: "Lorem"
+    Post.create title: "Lorem2"
+
+    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true, extends: :div) {})
+
+    assert_equal "true", element.children.first["data-broadcast-each"]
+    assert_equal "true", element.children.last["data-broadcast-each"]
   end
 
   def verifier
