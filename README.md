@@ -21,6 +21,7 @@ Lazy-load Rails partials via CableReady
   - [Explicit Partial](#explicit-partial)
   - [HTML Options](#html-options)
   - [Eager Loading](#eager-loading)
+  - [Broadcast Partials Individually](#broadcast-partials-individually)
 - [Events](#events)
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
@@ -169,6 +170,19 @@ Futurism makes that dead simple:
 
 ```erb
 <%= futurize 'some_tab', eager: true, extends: :tr do %>
+  <div class="placeholder"</td>
+<% end %>
+```
+
+### Broadcast Partials Individually
+Futurism's default behavior is to `broadcast` partials as they are generated in batches: 
+
+On the client side, `IntersectionObserver` events are triggered in a debounced fashion, so several `render`s are performed on the server for each of those events. By default, futurism will group those to a single `broadcast` call (to save server CPU time).
+
+For collections, however, you can opt into individual broadcasts by specifying `broadcast_each: true` in your helper usage:
+
+```erb
+<%= futurize @posts, broadcast_each: true, extends: :tr do %>
   <div class="placeholder"</td>
 <% end %>
 ```
