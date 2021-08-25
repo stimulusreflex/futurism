@@ -32,8 +32,12 @@ module Futurism
       else
         collection_class_name = collection.try(:klass).try(:name) || collection.first.class.to_s
         as = options.delete(:as) || collection_class_name.underscore
+        broadcast_each = options.delete(:broadcast_each) || false
         collection.each_with_index.map { |record, index|
-          WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(locals: {as.to_sym => record, "#{as}_counter".to_sym => index})).render
+          WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(
+            broadcast_each: broadcast_each,
+            locals: {as.to_sym => record, "#{as}_counter".to_sym => index}
+          )).render
         }.join.html_safe
       end
     end
@@ -49,12 +53,13 @@ module Futurism
       include ActionView::Helpers
       include Futurism::MessageVerifier
 
-      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :controller
+      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
 
       def initialize(extends:, placeholder:, options:)
         @extends = extends
         @placeholder = placeholder
         @eager = options.delete(:eager)
+        @broadcast_each = options.delete(:broadcast_each)
         @controller = options.delete(:controller)
         @html_options = options.delete(:html_options) || {}
         @data_attributes = html_options.fetch(:data, {}).except(:sgid, :signed_params)
@@ -67,6 +72,7 @@ module Futurism
           signed_params: signed_params,
           sgid: model && model.to_sgid.to_s,
           eager: eager.presence,
+          broadcast_each: broadcast_each.presence,
           signed_controller: signed_controller
         })
       end

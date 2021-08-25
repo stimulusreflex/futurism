@@ -8,6 +8,31 @@ def with_mocked_renderer
   end
 end
 
+def with_mocked_cable_ready
+  cable_ready_mock = MiniTest::Mock.new
+  cable_ready_channel = MiniTest::Mock.new
+  cable_ready_channel.expect(:outer_html, nil, [Hash])
+  cable_ready_channel.expect(:outer_html, nil, [Hash])
+
+  cable_ready_mock.expect(:[], cable_ready_channel, ["1"])
+  cable_ready_mock.expect(:[], cable_ready_channel, ["1"])
+  cable_ready_mock.expect(:broadcast, nil)
+  cable_ready_mock.expect(:broadcast, nil)
+  cable_ready_mock.expect(:broadcast, nil)
+
+  CableReady::Broadcaster.alias_method(:orig_cable_ready, :cable_ready)
+
+  CableReady::Broadcaster.define_method(:cable_ready) do
+    cable_ready_mock
+  end
+
+  yield cable_ready_mock
+
+  CableReady::Broadcaster.undef_method(:cable_ready)
+
+  CableReady::Broadcaster.alias_method(:cable_ready, :orig_cable_ready)
+end
+
 class Futurism::ChannelTest < ActionCable::Channel::TestCase
   include Futurism::Helpers
   include ActionView::Helpers
@@ -169,6 +194,23 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     end
   end
 
+  test "broadcasts elements of a collection immediately" do
+    with_mocked_cable_ready do |cable_ready_mock|
+      Post.create title: "Lorem"
+      Post.create title: "Ipsum"
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, broadcast_each: true, extends: :div, locals: {important_local: "needed to render"}) {})
+      subscribe
+
+      signed_params_1 = fragment.children.first["data-signed-params"]
+      broadcast_each_1 = fragment.children.first["data-broadcast-each"]
+      signed_params_2 = fragment.children.last["data-signed-params"]
+      broadcast_each_2 = fragment.children.last["data-broadcast-each"]
+      perform :receive, {"signed_params" => [signed_params_1, signed_params_2], "broadcast_each" => [broadcast_each_1, broadcast_each_2]}
+
+      assert_mock cable_ready_mock
+    end
+  end
+
   test "broadcasts an inline rendered text" do
     fragment = Nokogiri::HTML.fragment(futurize(inline: "<%= 1 + 2 %>", extends: :div) {})
     signed_params = fragment.children.first["data-signed-params"]
@@ -271,8 +313,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
     message.dig("cableReady") == true &&
       (matcher_operation.dig("selector") === message_operation.dig("selector") ||
-        matcher_operation.dig("selector").match(message_operation.dig("selector"))) &&
+       matcher_operation.dig("selector").match(message_operation.dig("selector"))) &&
       (matcher_operation.dig("html") === message_operation.dig("html") ||
-        matcher_operation.dig("html").match(message_operation.dig("html")))
+       matcher_operation.dig("html").match(message_operation.dig("html")))
   end
 end

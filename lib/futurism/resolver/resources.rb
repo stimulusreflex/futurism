@@ -3,7 +3,7 @@ module Futurism
     class Resources
       include Futurism::MessageVerifier
 
-      # resource definitions are an array of [signed_params, sgid, signed_controller, url]
+      # resource definitions are an array of [signed_params, sgid, signed_controller, url, broadcast_each]
       def initialize(resource_definitions:, connection:, params:)
         @connection = connection
         @params = params
@@ -16,7 +16,7 @@ module Futurism
         resolved_models.zip(@resources_with_sgids).each do |model, resource_definition|
           html = renderer_for(resource_definition: resource_definition).render(model)
 
-          yield(resource_definition.selector, html)
+          yield(resource_definition.selector, html, resource_definition.broadcast_each)
         end
 
         @resources_without_sgids.each do |resource_definition|
@@ -29,7 +29,7 @@ module Futurism
               error_renderer.render(exception)
             end
 
-          yield(resource_definition.selector, html)
+          yield(resource_definition.selector, html, resource_definition.broadcast_each)
         end
       end
 
@@ -43,7 +43,7 @@ module Futurism
         attr_reader :signed_params, :sgid, :signed_controller, :url
 
         def initialize(resource_definition)
-          @signed_params, @sgid, @signed_controller, @url = resource_definition
+          @signed_params, @sgid, @signed_controller, @url, @broadcast_each = resource_definition
         end
 
         def selector
@@ -54,6 +54,10 @@ module Futurism
 
         def controller
           Resolver::Controller.from(signed_string: @signed_controller)
+        end
+
+        def broadcast_each
+          @broadcast_each == "true"
         end
       end
 
