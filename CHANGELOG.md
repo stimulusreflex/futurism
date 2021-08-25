@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.1](https://github.com/stimulusreflex/futurism/tree/v1.0.1) (2021-08-25)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.0.0...v1.0.1)
+
 ## [v1.0.0](https://github.com/stimulusreflex/futurism/tree/v1.0.0) (2021-08-25)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v0.8.0...v1.0.0)
