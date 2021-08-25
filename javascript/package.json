@@ -1,5 +1,5 @@
 {
-  "name": "@minthesize/futurism",
+  "name": "@stimulus_reflex/futurism",
   "version": "0.8.0",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julianrubisch/futurism.git"
+    "url": "git+https://github.com/stimulusreflex/futurism.git"
   },
   "keywords": [
     "cable_ready",
@@ -18,9 +18,9 @@
   "author": "Julian Rubisch <julian.rubisch@hey.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julianrubisch/futurism/issues"
+    "url": "https://github.com/stimulusreflex/futurism/issues"
   },
-  "homepage": "https://github.com/julianrubisch/futurism#readme",
+  "homepage": "https://github.com/stimulusreflex/futurism#readme",
   "dependencies": {
     "cable_ready": ">= 4.3.0"
   },

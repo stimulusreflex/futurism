@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version = Futurism::VERSION
   spec.authors = ["Julian Rubisch"]
   spec.email = ["julian@julianrubisch.at"]
-  spec.homepage = "https://github.com/julianrubisch/futurism"
+  spec.homepage = "https://github.com/stimulusreflex/futurism"
   spec.summary = "Lazy-load Rails partials via CableReady"
   spec.description = "Uses custom html elements with attached IntersectionObserver to automatically lazy load partials via websockets"
   spec.license = "MIT"

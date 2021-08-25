@@ -3,7 +3,7 @@ require "fileutils"
 namespace :futurism do
   desc "Let's look into a brighter future with futurism and CableReady"
   task install: :environment do
-    system "yarn add @minthesize/futurism"
+    system "yarn add @stimulus_reflex/futurism"
 
     filepath = %w[
       app/javascript/channels/index.js
@@ -20,7 +20,7 @@ namespace :futurism do
 
     unless lines.find { |line| line.start_with?("import * as Futurism") }
       matches = lines.select { |line| line =~ /\A(require|import)/ }
-      lines.insert lines.index(matches.last).to_i + 1, "import * as Futurism from '@minthesize/futurism'\n"
+      lines.insert lines.index(matches.last).to_i + 1, "import * as Futurism from '@stimulus_reflex/futurism'\n"
     end
 
     unless lines.find { |line| line.start_with?("import consumer") }

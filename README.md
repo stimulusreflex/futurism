@@ -5,7 +5,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Lazy-load Rails partials via CableReady
 
-:rotating_light: *Futurism is still in pre-1.0 state. As much as I hope to keep the API backwards-compatible, I cannot guarantee it* :rotating_light:
+:rotating_light: *BREAKING CHANGE: With v1.0, futurism has been transferred to the [stimulusreflex](https://github.com/stimulusreflex) organization. Please update your npm package to `@stimulus_reflex/futurism` accordingly* :rotating_light:
 
 <img src="https://user-images.githubusercontent.com/4352208/88374198-9e6f3500-cd99-11ea-804b-0216ed320eff.jpg" alt="birmingham-museums-trust-GrvC6MI-z4w-unsplash" width="50%" align="center"/>
 <span>Photo by <a href="https://unsplash.com/@birminghammuseumstrust?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Birmingham Museums Trust</a> on <a href="https://unsplash.com/s/photos/futurism?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
@@ -34,7 +34,7 @@ Lazy-load Rails partials via CableReady
 
 ## Facts
 - only one dependency: CableReady
-- bundle size (without CableReady) is around [~2.46kB](https://bundlephobia.com/result?p=@minthesize/futurism@0.7.2)
+- bundle size (without CableReady) is around [~2.46kB](https://bundlephobia.com/result?p=@stimulus_reflex/futurism@0.7.2)
 
 ### Browser Support
 
@@ -209,19 +209,19 @@ To copy over the javascript files to your application, run
 $ bin/rails futurism:install
 ```
 
-**! Note that the installer will run `yarn add @minthesize/futurism` for you !**
+**! Note that the installer will run `yarn add @stimulus_reflex/futurism` for you !**
 
 ### Manual Installation
 After `bundle`, install the Javascript library:
 
 ```bash
-$ bin/yarn add @minthesize/futurism
+$ bin/yarn add @stimulus_reflex/futurism
 ```
 
 In your `app/javascript/channels/index.js`, add the following
 
 ```js
-import * as Futurism from '@minthesize/futurism'
+import * as Futurism from '@stimulus_reflex/futurism'
 
 import consumer from './consumer'
 
@@ -289,7 +289,7 @@ git clone https://github.com/leastbad/stimulus_reflex_harness.git
 cd stimulus_reflex_harness
 git checkout futurism
 # Edit Gemfile to point point to local gem (e.g. `gem "futurism", path: "../futurism"`)
-# yarn link @minthesize/futurism
+# yarn link @stimulus_reflex/futurism
 
 
 # Do your work, Submit PR, Profit!
@@ -306,6 +306,12 @@ cd path/to/project
 yarn install --force
 ```
 
+### Release
+
+1. Update the version numbers in `javascript/package.json` and `lib/futurism/version.rb`
+2. `rake release`
+3. `cd javascript && npm publish --access public`
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
@@ -318,25 +324,25 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=julianrubisch" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/darkrubyist"><img src="https://avatars2.githubusercontent.com/u/11207292?v=4?s=100" width="100px;" alt=""/><br /><sub><b>darkrubyist</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/commits?author=darkrubyist" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://ParamagicDev.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=ParamagicDev" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=julianrubisch" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/darkrubyist"><img src="https://avatars2.githubusercontent.com/u/11207292?v=4?s=100" width="100px;" alt=""/><br /><sub><b>darkrubyist</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=darkrubyist" title="Code">💻</a> <a href="https://github.com/stimulusreflex/futurism/commits?author=darkrubyist" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://ParamagicDev.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=ParamagicDev" title="Code">💻</a></td>
     <td align="center"><a href="https://www.andrewm.codes"><img src="https://avatars1.githubusercontent.com/u/18423853?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Mason</b></sub></a><br /><a href="#maintenance-andrewmcodes" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="http://gorails.com"><img src="https://avatars1.githubusercontent.com/u/67093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Oliver</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=excid3" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aexcid3" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/leastbad"><img src="https://avatars2.githubusercontent.com/u/38150464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leastbad</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=leastbad" title="Code">💻</a> <a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Aleastbad" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4?s=100" width="100px;" alt=""/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://gorails.com"><img src="https://avatars1.githubusercontent.com/u/67093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Oliver</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=excid3" title="Code">💻</a> <a href="https://github.com/stimulusreflex/futurism/pulls?q=is%3Apr+reviewed-by%3Aexcid3" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/leastbad"><img src="https://avatars2.githubusercontent.com/u/38150464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leastbad</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=leastbad" title="Code">💻</a> <a href="https://github.com/stimulusreflex/futurism/pulls?q=is%3Apr+reviewed-by%3Aleastbad" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4?s=100" width="100px;" alt=""/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://fractaledmind.com"><img src="https://avatars3.githubusercontent.com/u/5077225?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Margheim</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=fractaledmind" title="Code">💻</a></td>
-    <td align="center"><a href="http://hass.codes"><img src="https://avatars2.githubusercontent.com/u/1064205?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hassanin Ahmed</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=sas1ni69" title="Code">💻</a></td>
-    <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=marcoroth" title="Code">💻</a></td>
-    <td align="center"><a href="https://viedit.com"><img src="https://avatars1.githubusercontent.com/u/49990587?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viedit com</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=vieditcom" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://scottbarrow.ca"><img src="https://avatars2.githubusercontent.com/u/5571736?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Barrow</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=scottbarrow" title="Code">💻</a></td>
-    <td align="center"><a href="http://domchristie.co.uk"><img src="https://avatars0.githubusercontent.com/u/111734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dom Christie</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Adomchristie" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://www.rickychilcott.com"><img src="https://avatars1.githubusercontent.com/u/445759?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricky Chilcott</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/pulls?q=is%3Apr+reviewed-by%3Arickychilcott" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://fractaledmind.com"><img src="https://avatars3.githubusercontent.com/u/5077225?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Margheim</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=fractaledmind" title="Code">💻</a></td>
+    <td align="center"><a href="http://hass.codes"><img src="https://avatars2.githubusercontent.com/u/1064205?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hassanin Ahmed</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=sas1ni69" title="Code">💻</a></td>
+    <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=marcoroth" title="Code">💻</a></td>
+    <td align="center"><a href="https://viedit.com"><img src="https://avatars1.githubusercontent.com/u/49990587?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viedit com</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=vieditcom" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://scottbarrow.ca"><img src="https://avatars2.githubusercontent.com/u/5571736?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Barrow</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=scottbarrow" title="Code">💻</a></td>
+    <td align="center"><a href="http://domchristie.co.uk"><img src="https://avatars0.githubusercontent.com/u/111734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dom Christie</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/pulls?q=is%3Apr+reviewed-by%3Adomchristie" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://www.rickychilcott.com"><img src="https://avatars1.githubusercontent.com/u/445759?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricky Chilcott</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/pulls?q=is%3Apr+reviewed-by%3Arickychilcott" title="Reviewed Pull Requests">👀</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/mansakondo"><img src="https://avatars.githubusercontent.com/u/47113995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mansakondo</b></sub></a><br /><a href="https://github.com/julianrubisch/futurism/commits?author=mansakondo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mansakondo"><img src="https://avatars.githubusercontent.com/u/47113995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mansakondo</b></sub></a><br /><a href="https://github.com/stimulusreflex/futurism/commits?author=mansakondo" title="Code">💻</a></td>
   </tr>
 </table>
 
