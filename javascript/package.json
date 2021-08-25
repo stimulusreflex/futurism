@@ -1,6 +1,6 @@
 {
   "name": "@stimulus_reflex/futurism",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "index.js",
   "scripts": {
