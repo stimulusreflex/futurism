@@ -30,7 +30,7 @@ export const createSubscription = consumer => {
               e => e.target.dataset.signedController
             ),
             urls: events.map(_ => window.location.href),
-            broadcast_each: events.some(e => e.target.dataset.broadcastEach)
+            broadcast_each: events.map(e => e.target.dataset.broadcastEach)
           })
         })
       )
