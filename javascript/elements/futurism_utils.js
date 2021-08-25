@@ -2,8 +2,9 @@
 
 const dispatchAppearEvent = (entry, observer = null) => {
   if (!window.Futurism) {
-    setTimeout(() => dispatchAppearEvent(entry, observer), 1)
-    return
+    return () => {
+      setTimeout(() => dispatchAppearEvent(entry, observer)(), 1)
+    }
   }
 
   const target = entry.target ? entry.target : entry
@@ -16,7 +17,9 @@ const dispatchAppearEvent = (entry, observer = null) => {
     }
   })
 
-  target.dispatchEvent(evt)
+  return () => {
+    target.dispatchEvent(evt)
+  }
 }
 
 // from https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/#rejection-based-retrying
