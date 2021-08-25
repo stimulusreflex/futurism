@@ -309,8 +309,10 @@ yarn install --force
 ### Release
 
 1. Update the version numbers in `javascript/package.json` and `lib/futurism/version.rb`
-2. `rake release`
-3. `cd javascript && npm publish --access public`
+2. `git commit -m "Bump version to x.x.x"`
+3. Run `bundle exec rake build`
+4. Run `bundle exec rake release`
+5. `cd javascript && npm publish --access public`
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
