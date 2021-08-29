@@ -41,8 +41,8 @@ module Futurism
     end
 
     def futurize_active_record(records, extends:, **options, &block)
-      Array(records).map { |record|
-        placeholder = capture(&block) if block_given?
+      Array(records).map.with_index { |record, index|
+        placeholder = capture(record, index, &block) if block_given?
 
         WrappingFuturismElement.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
       }.join.html_safe
