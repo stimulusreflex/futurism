@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.0.1...HEAD)
+
+**Merged pull requests:**
+
+- Delete .DS\_Store [\#107](https://github.com/stimulusreflex/futurism/pull/107) ([dorianmariefr](https://github.com/dorianmariefr))
+
 ## [v1.0.1](https://github.com/stimulusreflex/futurism/tree/v1.0.1) (2021-08-25)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.0.0...v1.0.1)
