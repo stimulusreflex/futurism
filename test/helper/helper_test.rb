@@ -144,6 +144,16 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "2. Ipsum", element.children.last.children.first.text
   end
 
+  test "renders contextual placeholder arguments for any kind of collection" do
+    Post.create title: "Lorem"
+    Post.create title: "Ipsum"
+
+    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true, extends: :div) { |post, index| "#{index + 1}. #{post.title}" })
+
+    assert_equal "1. Lorem", element.children.first.children.first.text
+    assert_equal "2. Ipsum", element.children.last.children.first.text
+  end
+
   def verifier
     Futurism::MessageVerifier.message_verifier
   end

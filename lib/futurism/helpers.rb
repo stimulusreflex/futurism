@@ -22,16 +22,19 @@ module Futurism
     end
 
     def futurize_with_options(extends:, **options, &block)
-      placeholder = capture(&block) if block_given?
-
       collection = options.delete(:collection)
       if collection.nil?
+        placeholder = capture(&block) if block_given?
+
         WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options).render
       else
         collection_class_name = collection.try(:klass).try(:name) || collection.first.class.to_s
         as = options.delete(:as) || collection_class_name.underscore
         broadcast_each = options.delete(:broadcast_each) || false
+
         collection.each_with_index.map { |record, index|
+          placeholder = capture(record, index, &block) if block_given?
+
           WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(
             broadcast_each: broadcast_each,
             locals: {as.to_sym => record, "#{as}_counter".to_sym => index}
