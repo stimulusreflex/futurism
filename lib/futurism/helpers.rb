@@ -9,23 +9,21 @@ module Futurism
         end
       end
 
-      if block_given?
-        placeholder = capture(&block)
-      else
-        options[:eager] = true
-      end
+      options[:eager] = true unless block_given?
 
       if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
-        futurize_active_record(records_or_string, extends: extends, placeholder: placeholder, **options)
+        futurize_active_record(records_or_string, extends: extends, **options, &block)
       elsif records_or_string.is_a?(String)
         html_options = options.delete(:html_options)
-        futurize_with_options(extends: extends, placeholder: placeholder, partial: records_or_string, locals: options, html_options: html_options)
+        futurize_with_options(extends: extends, partial: records_or_string, locals: options, html_options: html_options, &block)
       else
-        futurize_with_options(extends: extends, placeholder: placeholder, **options)
+        futurize_with_options(extends: extends, **options, &block)
       end
     end
 
-    def futurize_with_options(extends:, placeholder:, **options)
+    def futurize_with_options(extends:, **options, &block)
+      placeholder = capture(&block) if block_given?
+
       collection = options.delete(:collection)
       if collection.nil?
         WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options).render
@@ -42,8 +40,10 @@ module Futurism
       end
     end
 
-    def futurize_active_record(records, extends:, placeholder:, **options)
+    def futurize_active_record(records, extends:, **options, &block)
       Array(records).map { |record|
+        placeholder = capture(&block) if block_given?
+
         WrappingFuturismElement.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
       }.join.html_safe
     end
