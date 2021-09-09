@@ -22,6 +22,7 @@ Lazy-load Rails partials via CableReady
   - [HTML Options](#html-options)
   - [Eager Loading](#eager-loading)
   - [Broadcast Partials Individually](#broadcast-partials-individually)
+  - [Contextual Placeholder Arguments](#contextual-placeholder-arguments)
 - [Events](#events)
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
@@ -185,6 +186,28 @@ For collections, however, you can opt into individual broadcasts by specifying `
 <%= futurize @posts, broadcast_each: true, extends: :tr do %>
   <div class="placeholder"</td>
 <% end %>
+```
+
+## Contextual Placeholder Arguments
+
+For individual models or arbitrary collections, you can pass `record` and `index` to the placeholder block as arguments:
+
+```erb
+<%= futurize @post, extends: :div do |post| %>
+  <div><%= post.title %></div>
+<% end %>
+```
+
+```erb
+<%= futurize @posts, extends: :tr do |post, index| %>
+  <td><%= index + 1 %></td><td><%= post.title %></td>
+<% end %>
+```
+
+```erb
+<%= futurize partial: "users/user", collection: users, extends: "tr" do |user, index| %>
+  <td><%= index + 1 %></td><td><%= user.name %></td>
+<% end >
 ```
 
 ## Events
