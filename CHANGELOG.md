@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.0.1...HEAD)
 
+**Closed issues:**
+
+- Pass contextual arguments to the futurize yield block [\#104](https://github.com/stimulusreflex/futurism/issues/104)
+
 **Merged pull requests:**
 
+- Contextual placeholder arguments [\#108](https://github.com/stimulusreflex/futurism/pull/108) ([julianrubisch](https://github.com/julianrubisch))
 - Delete .DS\_Store [\#107](https://github.com/stimulusreflex/futurism/pull/107) ([dorianmariefr](https://github.com/dorianmariefr))
 
 ## [v1.0.1](https://github.com/stimulusreflex/futurism/tree/v1.0.1) (2021-08-25)
