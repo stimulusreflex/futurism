@@ -279,12 +279,11 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   def assert_cable_ready_operation_on(stream, operation:, selector:, html:, &block)
     data = {
       "cableReady" => true,
-      "operations" => {
-        operation => [{
-          "selector" => selector,
-          "html" => html
-        }]
-      }
+      "operations" => [{
+        "selector" => selector,
+        "html" => html,
+        "operation" => operation
+      }]
     }
 
     old_messages = broadcasts(stream)
@@ -298,15 +297,15 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     # Restore all sent messages
     (old_messages + new_messages).each { |m| pubsub_adapter.broadcast(stream, m) }
 
-    message = new_messages.find { |msg| cableReadyMatch?(operation, ActiveSupport::JSON.decode(msg), data) }
+    message = new_messages.find { |msg| cable_ready_match?(ActiveSupport::JSON.decode(msg), data) }
 
     assert message, "No messages sent with #{data} to #{stream}"
   end
 
-  def cableReadyMatch?(operation, message, matcher)
+  def cable_ready_match?(message, matcher)
     return true if message == matcher
 
-    first_matching_operation = ["operations", operation, 0]
+    first_matching_operation = ["operations", 0]
 
     matcher_operation = matcher.dig(*first_matching_operation)
     message_operation = message.dig(*first_matching_operation)

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/stimulusreflex/futurism#readme",
   "dependencies": {
-    "cable_ready": ">= 4.3.0"
+    "cable_ready": "5.0.0-pre3"
   },
   "devDependencies": {
     "mocha": "^8.0.1",
