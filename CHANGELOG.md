@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre1...HEAD)
+
+**Merged pull requests:**
+
+- Bump nokogiri from 1.11.4 to 1.12.5 [\#112](https://github.com/stimulusreflex/futurism/pull/112) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.2.0.pre1](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre1) (2021-09-14)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.1.0...v1.2.0.pre1)
