@@ -7,17 +7,25 @@ import FuturismLI from './futurism_li'
 import { sha256 } from '../utils/crypto'
 
 const polyfillCustomElements = () => {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
   if (customElements) {
-    try {
-      customElements.define(
-        'built-in',
-        document.createElement('p').constructor,
-        { extends: 'p' }
-      )
-    } catch (_) {
+    if (isSafari) {
       document.write(
         '<script src="//unpkg.com/@ungap/custom-elements-builtin"><\x2fscript>'
       )
+    } else {
+      try {
+        customElements.define(
+          'built-in',
+          document.createElement('tr').constructor,
+          { extends: 'tr' }
+        )
+      } catch (_) {
+        document.write(
+          '<script src="//unpkg.com/@ungap/custom-elements-builtin"><\x2fscript>'
+        )
+      }
     }
   } else {
     document.write(
