@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre3...HEAD)
+
+**Merged pull requests:**
+
+- fix: run polyfill before eventListeners [\#116](https://github.com/stimulusreflex/futurism/pull/116) ([ParamagicDev](https://github.com/ParamagicDev))
+
 ## [v1.2.0.pre3](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre3) (2021-10-04)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre2...v1.2.0.pre3)
