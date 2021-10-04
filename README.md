@@ -35,15 +35,15 @@ Lazy-load Rails partials via CableReady
 
 ## Facts
 - only one dependency: CableReady
-- bundle size (without CableReady) is around [~2.46kB](https://bundlephobia.com/result?p=@stimulus_reflex/futurism@0.7.2)
+- bundle size (without CableReady) is around [~2.27kB](https://bundlephobia.com/package/@stimulus_reflex/futurism@1.2.0-pre2)
 
 ### Browser Support
 
 - Chrome v67+ (v54+ via Polyfill)
 - Firefox v63+
 - Edge v79+
-- Safari v10.1+ via Polyfill
-- iOS Safari & Chrome v10.3+ via Polyfill
+- Safari v10.1+
+- iOS Safari & Chrome v10.3+
 
 [Caniuse](https://www.caniuse.com/#search=custom%20elements)
 
@@ -56,7 +56,9 @@ with a helper in your template
 <% end %>
 ```
 
-custom `<futurism-element>`s (in the form of a `<div>` or a `<tr is="futurism-table-row">` are rendered. Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
+custom `<futurism-element>`s (Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
+
+**Update:** Due to Safari's inconsistent behavior concerning custom built-in elements, we've moved towards a more browser-agnostic way of defining the custom elements, allowing to wrap any kind of element (inline, block, flex, grid, table-row). **This means you can now pass any valid `display` value to the `extends:` parameter, e.g. `extends: list-item`**. The existing ones (`:tr` and `:li`) are still wrapped for compatibility, but considered deprecated.
 
 With that method, you could lazy load every class that has to_partial_path defined (ActiveModel has by default).
 

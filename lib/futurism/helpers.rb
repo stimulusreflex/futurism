@@ -56,7 +56,7 @@ module Futurism
       include ActionView::Helpers
       include Futurism::MessageVerifier
 
-      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
+      attr_reader :placeholder, :html_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
 
       def initialize(extends:, placeholder:, options:)
         @extends = extends
@@ -81,14 +81,7 @@ module Futurism
       end
 
       def render
-        case extends
-        when :li
-          content_tag :li, placeholder, html_options.deep_merge({data: dataset, is: "futurism-li"})
-        when :tr
-          content_tag :tr, placeholder, html_options.deep_merge({data: dataset, is: "futurism-table-row"})
-        else
-          content_tag :"futurism-element", placeholder, html_options.deep_merge({data: dataset})
-        end
+        content_tag :"futurism-element", placeholder, html_options.deep_merge({data: dataset, extends: extends})
       end
 
       def transformed_options
@@ -112,6 +105,15 @@ module Futurism
         return unless controller.present?
 
         message_verifier.generate(controller.to_s)
+      end
+
+      def extends
+        # TODO remove this in the next major version
+        case @extends
+        when :li then "list-item"
+        when :tr then "table-row"
+        else @extends
+        end
       end
     end
   end
