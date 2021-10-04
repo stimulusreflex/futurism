@@ -73,12 +73,11 @@ const restorePlaceholders = e => {
 }
 
 export const initializeElements = () => {
+  polyfillCustomElements()
   document.addEventListener('DOMContentLoaded', defineElements)
   document.addEventListener('turbo:load', defineElements)
   document.addEventListener('turbo:before-cache', restorePlaceholders)
   document.addEventListener('turbolinks:load', defineElements)
   document.addEventListener('turbolinks:before-cache', restorePlaceholders)
   document.addEventListener('cable-ready:after-outer-html', cachePlaceholders)
-
-  polyfillCustomElements()
 }
