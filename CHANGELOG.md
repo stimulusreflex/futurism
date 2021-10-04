@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
 
-[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre1...HEAD)
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre2...HEAD)
+
+**Closed issues:**
+
+- Custom built in elements appear to be broken on mobile safari \(again\) [\#114](https://github.com/stimulusreflex/futurism/issues/114)
+
+## [v1.2.0.pre2](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre2) (2021-10-01)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre1...v1.2.0.pre2)
 
 **Merged pull requests:**
 
