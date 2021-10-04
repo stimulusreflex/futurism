@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    futurism (1.2.0.pre2)
+    futurism (1.2.0.pre3)
       cable_ready (= 5.0.0.pre4)
       rack (~> 2.0)
       rails (>= 5.2)
