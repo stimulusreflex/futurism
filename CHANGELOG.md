@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+## [v1.2.0.pre4](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre4) (2021-10-07)
 
-[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre3...HEAD)
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre3...v1.2.0.pre4)
 
 **Merged pull requests:**
 
