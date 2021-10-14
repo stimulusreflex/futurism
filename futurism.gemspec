@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rack", "~> 2.0"
   spec.add_dependency "rails", ">= 5.2"
-  spec.add_dependency "cable_ready", "= 5.0.0.pre5"
+  spec.add_dependency "cable_ready", "= 5.0.0.pre6"
 end
