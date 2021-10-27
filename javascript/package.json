@@ -1,6 +1,6 @@
 {
   "name": "@stimulus_reflex/futurism",
-  "version": "1.2.0-pre5",
+  "version": "1.2.0-pre6",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/stimulusreflex/futurism#readme",
   "dependencies": {
-    "cable_ready": "5.0.0-pre6"
+    "cable_ready": "5.0.0-pre7"
   },
   "devDependencies": {
     "mocha": "^8.0.1",
