@@ -2,6 +2,7 @@ module Futurism
   module Resolver
     class Resources
       include Futurism::MessageVerifier
+      include Futurism::OptionsTransformer
 
       # resource definitions are an array of [signed_params, sgid, signed_controller, url, broadcast_each]
       def initialize(resource_definitions:, connection:, params:)
@@ -92,9 +93,8 @@ module Futurism
       end
 
       def options_from_resource(resource_definition)
-        message_verifier
-          .verify(resource_definition.signed_params)
-          .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
+        load_options(message_verifier
+          .verify(resource_definition.signed_params))
       end
     end
   end

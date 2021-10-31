@@ -55,6 +55,7 @@ module Futurism
     class WrappingFuturismElement
       include ActionView::Helpers
       include Futurism::MessageVerifier
+      include Futurism::OptionsTransformer
 
       attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
 
@@ -92,14 +93,7 @@ module Futurism
       end
 
       def transformed_options
-        require_relative "shims/deep_transform_values" unless options.respond_to? :deep_transform_values
-
-        options.deep_transform_values do |value|
-          next(value) unless value.respond_to?(:to_global_id)
-          next(value) if value.is_a?(ActiveRecord::Base) && value.new_record?
-
-          value.to_global_id.to_s
-        end
+        dump_options(options)
       end
 
       private
