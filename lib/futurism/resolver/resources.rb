@@ -20,11 +20,11 @@ module Futurism
         end
 
         @resources_without_sgids.each do |resource_definition|
-          resource = lookup_resource(resource_definition)
+          options = options_from_resource(resource_definition)
           renderer = renderer_for(resource_definition: resource_definition)
           html =
             begin
-              renderer.render(resource)
+              renderer.render(options)
             rescue => exception
               error_renderer.render(exception)
             end
@@ -91,7 +91,7 @@ module Futurism
         GlobalID::Locator.locate_many_signed @resources_with_sgids.map(&:sgid)
       end
 
-      def lookup_resource(resource_definition)
+      def options_from_resource(resource_definition)
         message_verifier
           .verify(resource_definition.signed_params)
           .deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
