@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    futurism (1.2.0.pre6)
+    futurism (1.2.0.pre7)
       cable_ready (= 5.0.0.pre7)
       rack (~> 2.0)
       rails (>= 5.2)
@@ -89,7 +89,7 @@ GEM
     erubi (1.10.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     loofah (2.12.0)
       crass (~> 1.0.2)
