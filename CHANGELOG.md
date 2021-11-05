@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.0.pre7](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre7) (2021-11-05)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre6...v1.2.0.pre7)
+
 ## [v1.2.0.pre6](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre6) (2021-10-27)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre5...v1.2.0.pre6)
