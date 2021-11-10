@@ -74,6 +74,17 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "gid://dummy/Futurism::HelperTest::GlobalIdableEntity/fake-id", extract_params(element.children.first["data-signed-params"])[:locals][:entity]
   end
 
+  test "does not render an eager loading data attribute per default" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
+
+    refute_equal "true", element.children.first["data-eager"]
+
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
+    refute_equal "true", element.children.first["data-eager"]
+  end
+
   test "renders an eager loading data attribute" do
     post = Post.create title: "Lorem"
 
@@ -152,6 +163,15 @@ class Futurism::HelperTest < ActionView::TestCase
 
     assert_equal "1. Lorem", element.children.first.children.first.text
     assert_equal "2. Ipsum", element.children.last.children.first.text
+  end
+
+  test "allows to bypass futurism operation by specifying an unless option" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :tr, unless: true) {})
+
+    refute_equal "futurism-tr", element.children.first["is"]
+    assert_includes element.children.first.children.first.text, "Lorem"
   end
 
   def verifier

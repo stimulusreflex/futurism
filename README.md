@@ -21,6 +21,7 @@ Lazy-load Rails partials via CableReady
   - [Explicit Partial](#explicit-partial)
   - [HTML Options](#html-options)
   - [Eager Loading](#eager-loading)
+  - [Bypassing](#bypassing)
   - [Broadcast Partials Individually](#broadcast-partials-individually)
   - [Contextual Placeholder Arguments](#contextual-placeholder-arguments)
 - [Events](#events)
@@ -175,6 +176,19 @@ Futurism makes that dead simple:
 <% end %>
 ```
 
+### Bypassing
+
+In some rare cases, e.g. when combined with CableReady's async `updates_for` mechanism, you'll want to bypass futurism entirely and fall back to native `rendering`. You can do this by passing an `unless` option:
+
+```erb
+<%= futurize 'some_tab', unless: bypass_futurism?, extends: :tr do %>
+  <div class="placeholder"</td>
+<% end %>
+```
+
+Internally, this works the same as [bypassing futurism in tests](#testing)
+
+
 ### Broadcast Partials Individually
 Futurism's default behavior is to `broadcast` partials as they are generated in batches: 
 
@@ -188,7 +202,7 @@ For collections, however, you can opt into individual broadcasts by specifying `
 <% end %>
 ```
 
-## Contextual Placeholder Arguments
+### Contextual Placeholder Arguments
 
 For individual models or arbitrary collections, you can pass `record` and `index` to the placeholder block as arguments:
 
