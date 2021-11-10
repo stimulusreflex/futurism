@@ -166,7 +166,12 @@ class Futurism::HelperTest < ActionView::TestCase
   end
 
   test "allows to bypass futurism operation by specifying an unless option" do
-    
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, extends: :tr, unless: true) {})
+
+    refute_equal "futurism-tr", element.children.first["is"]
+    assert_includes element.children.first.children.first.text, "Lorem"
   end
 
   def verifier

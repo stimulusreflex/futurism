@@ -1,7 +1,7 @@
 module Futurism
   module Helpers
     def futurize(records_or_string = nil, extends:, **options, &block)
-      if Rails.env.test? && Futurism.skip_in_test
+      if (Rails.env.test? && Futurism.skip_in_test) || options[:unless]
         if records_or_string.nil?
           return render(**options)
         else
@@ -10,6 +10,9 @@ module Futurism
       end
 
       options[:eager] = true unless block_given?
+
+      # cannot serialize a proc
+      options.delete(:cached) if options[:cached].is_a?(Proc)
 
       if records_or_string.is_a?(ActiveRecord::Base) || records_or_string.is_a?(ActiveRecord::Relation)
         futurize_active_record(records_or_string, extends: extends, **options, &block)
