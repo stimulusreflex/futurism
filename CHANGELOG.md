@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre7...HEAD)
+
+**Closed issues:**
+
+- Introduce `unless` to bypass futurism completely [\#118](https://github.com/stimulusreflex/futurism/issues/118)
+
+**Merged pull requests:**
+
+- Bypass futurism [\#119](https://github.com/stimulusreflex/futurism/pull/119) ([julianrubisch](https://github.com/julianrubisch))
+
 ## [v1.2.0.pre7](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre7) (2021-11-05)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre6...v1.2.0.pre7)
