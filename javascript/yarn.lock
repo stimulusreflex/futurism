@@ -339,10 +339,10 @@ browser-stdout@1.3.1:
   resolved "https://registry.yarnpkg.com/browser-stdout/-/browser-stdout-1.3.1.tgz#baa559ee14ced73452229bad7326467c61fabd60"
   integrity sha512-qhAVI1+Av2X7qelOfAIYwXONood6XlZE/fXaBSmW/T5SzLAmCgzi+eiWE7fUvbHaeNBQH13UftjpXxsfLkMpgw==
 
-cable_ready@5.0.0-pre6:
-  version "5.0.0-pre6"
-  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-5.0.0-pre6.tgz#2727bbe55d7e6954633fb43c41fe795f6f5bf8f3"
-  integrity sha512-WbWQZwmYXBJKdE6yKh2duhTlepGRhPaoyiqEsOUa/mbkkjo3B59NtaONiplqDqoR5+2q+wNj4BnpGXtDeKaHQA==
+cable_ready@5.0.0-pre8:
+  version "5.0.0-pre8"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-5.0.0-pre8.tgz#fa1b4d6f980f631ff3c895f3007a6789b2e47de7"
+  integrity sha512-5TyAp0DcYiv15YGlAI4WqEBw8Mz/lARSz/pIwEEVWWUnqWQhbsMqCIYIsQoV3IXudKOowaSbukbPRYFN0PYzKg==
   dependencies:
     morphdom "^2.6.1"
 
