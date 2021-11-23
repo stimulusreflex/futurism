@@ -62,3 +62,9 @@ export const extendElementWithEagerLoading = element => {
     dispatchAppearEvent(element)
   }
 }
+
+export const extendElementWithCableReadyUpdatesFor = (element) => {
+  element.addEventListener('cable-ready:after-update', () => {
+    dispatchAppearEvent(element);
+  });
+}
