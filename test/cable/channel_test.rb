@@ -103,6 +103,41 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     end
   end
 
+  test "broadcasts a rendered partial wrapped by a futurism element after receiving signed params" do
+    with_mocked_renderer do |mock_renderer|
+      post = Post.create title: "Lorem"
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div, wrap_for_updates_for: { extends: :div }, wrapped_for_updates_for: true) {})
+      signed_params = fragment.children.first["data-signed-params"]
+      subscribe
+
+      mock_renderer
+        .expect(
+          :render,
+          "<tag></tag>",
+          [
+            partial: "posts/card",
+            locals: {post: post},
+            :wrap_for_updates_for => {
+              :extends => :div,
+              :html_options => {
+                :keep => "keep"
+              },
+              :data_attributes => {
+                "updates-for" => true
+              }
+            },
+            :data => {
+              "updates-for" => true
+            }
+          ]
+        )
+
+      perform :receive, {"signed_params" => [signed_params]}
+
+      assert_mock mock_renderer
+    end
+  end
+
   test "broadcasts a rendered partial after receiving the shorthand syntax" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"

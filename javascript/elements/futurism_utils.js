@@ -64,7 +64,20 @@ export const extendElementWithEagerLoading = element => {
 }
 
 export const extendElementWithCableReadyUpdatesFor = (element) => {
-  element.addEventListener('cable-ready:after-update', () => {
-    dispatchAppearEvent(element);
-  });
+  if (element.dataset.updatesFor) {
+    if (element.hasAttribute('keep')) {
+      if (element.observer) element.observer.disconnect()
+    }
+
+    element.addEventListener('cable-ready:after-update', (event) => {
+      const evt = new CustomEvent('futurism:appear', {
+        bubbles: true,
+        detail: {
+          target: element,
+          observer: null
+        }
+      })
+      document.dispatchEvent(evt)
+    });
+  }
 }
