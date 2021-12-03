@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/stimulusreflex/futurism/tree/HEAD)
+
+[Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre9...HEAD)
+
+**Merged pull requests:**
+
+- Update GH action [\#121](https://github.com/stimulusreflex/futurism/pull/121) ([nachiket87](https://github.com/nachiket87))
+
 ## [v1.2.0.pre9](https://github.com/stimulusreflex/futurism/tree/v1.2.0.pre9) (2021-11-22)
 
 [Full Changelog](https://github.com/stimulusreflex/futurism/compare/v1.2.0.pre8...v1.2.0.pre9)
