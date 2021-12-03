@@ -19,12 +19,6 @@ jobs:
       with:
         ruby-version: 3.0.3
         bundler-cache: true
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
     - name: Install sqlite headers
       run: |
         sudo apt-get update
