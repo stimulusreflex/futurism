@@ -15,15 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
+        ruby-version: 3.0.3
+        bundler-cache: true
     - name: Install sqlite headers
       run: |
         sudo apt-get update
