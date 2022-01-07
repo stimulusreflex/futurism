@@ -11,7 +11,5 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem "appraisal", github: "excid3/appraisal", branch: "fix-bundle-env"
-
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
