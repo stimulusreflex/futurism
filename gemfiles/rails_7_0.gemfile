@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "appraisal", branch: "master", git: "https://github.com/julianrubisch/appraisal.git"
+gem "appraisal", branch: "fix-bundle-env", git: "https://github.com/julianrubisch/appraisal.git"
 gem "rails", "7.0.0"
 gem "sqlite3", "~> 1.4"
 

@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/julianrubisch/appraisal.git
-  revision: 2f5be65b8e127bd602fd149f395f2f8fa50616a8
-  branch: master
+  revision: d3aa357ed6ffe79444ad70a7f1a87c1474c48a5b
+  branch: fix-bundle-env
   specs:
     appraisal (2.4.1)
       bundler
