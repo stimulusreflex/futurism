@@ -8,7 +8,7 @@ class Futurism::HelperTest < ActionView::TestCase
   test "renders html options with data attributes" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, html_options: {class: "absolute inset-0", data: {controller: "test"}}) {})
+    element = Nokogiri::HTML.fragment(futurize(post, html_options: {class: "absolute inset-0", data: {controller: "test"}}) {})
 
     assert_equal "futurism-element", element.children.first.name
     assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
@@ -17,7 +17,7 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_equal "absolute inset-0", element.children.first["class"]
 
     params = {partial: "posts/card", locals: {post: post}}
-    element = Nokogiri::HTML.fragment(futurize(**params.merge({html_options: {class: "flex justify-center", data: {action: "test#click"}}, extends: :div})) {})
+    element = Nokogiri::HTML.fragment(futurize(**params.merge({html_options: {class: "flex justify-center", data: {action: "test#click"}}})) {})
 
     assert_equal "futurism-element", element.children.first.name
     assert_nil element.children.first["data-sgid"]
@@ -31,7 +31,7 @@ class Futurism::HelperTest < ActionView::TestCase
   test "renders html options with data attributes with multi-word object" do
     action_item = ActionItem.create description: "Do this"
 
-    element = Nokogiri::HTML.fragment(futurize(action_item, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(action_item) {})
 
     assert_equal "futurism-element", element.children.first.name
     assert_equal action_item, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
@@ -40,7 +40,7 @@ class Futurism::HelperTest < ActionView::TestCase
   test "ensures signed_params and sgid are not overwritable" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, html_options: {data: {controller: "test", sgid: "test", signed_params: "test"}}) {})
+    element = Nokogiri::HTML.fragment(futurize(post, html_options: {data: {controller: "test", sgid: "test", signed_params: "test"}}) {})
 
     assert_equal post, GlobalID::Locator.locate_signed(element.children.first["data-sgid"])
     assert_equal sign_params({data: {controller: "test"}}), element.children.first["data-signed-params"]
@@ -49,7 +49,7 @@ class Futurism::HelperTest < ActionView::TestCase
   test "allows to specify a new ActiveRecord record" do
     post = Post.new
 
-    element = Nokogiri::HTML.fragment(futurize("posts/form", post: post, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize("posts/form", post: post) {})
 
     assert extract_params(element.children.first["data-signed-params"])[:locals][:post].new_record?
   end
@@ -69,7 +69,7 @@ class Futurism::HelperTest < ActionView::TestCase
 
   test "allows to specify any GlobalId-able entity" do
     entity = GlobalIdableEntity.new
-    element = Nokogiri::HTML.fragment(futurize("posts/form", entity: entity, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize("posts/form", entity: entity) {})
 
     assert_equal "gid://dummy/Futurism::HelperTest::GlobalIdableEntity/fake-id", extract_params(element.children.first["data-signed-params"])[:locals][:entity]
   end
@@ -77,33 +77,33 @@ class Futurism::HelperTest < ActionView::TestCase
   test "does not render an eager loading data attribute per default" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(post) {})
 
     refute_equal "true", element.children.first["data-eager"]
 
-    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}) {})
     refute_equal "true", element.children.first["data-eager"]
   end
 
   test "renders an eager loading data attribute" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, eager: true) {})
+    element = Nokogiri::HTML.fragment(futurize(post, eager: true) {})
 
     assert_equal "true", element.children.first["data-eager"]
 
-    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, eager: true, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, eager: true) {})
     assert_equal "true", element.children.first["data-eager"]
   end
 
   test "renders an eager loading data attribute for an empty placeholder block" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div, eager: true) {})
+    element = Nokogiri::HTML.fragment(futurize(post, eager: true) {})
 
     assert_equal "true", element.children.first["data-eager"]
 
-    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div))
+    element = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}))
     assert_equal "true", element.children.first["data-eager"]
   end
 
@@ -111,7 +111,7 @@ class Futurism::HelperTest < ActionView::TestCase
     Post.create title: "Lorem"
     Post.create title: "Lorem2"
 
-    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(collection: Post.all) {})
 
     assert_equal({post: "gid://dummy/Post/1", post_counter: 0}, Futurism::MessageVerifier.message_verifier.verify(element.children.first["data-signed-params"])[:locals])
     assert_equal({post: "gid://dummy/Post/2", post_counter: 1}, Futurism::MessageVerifier.message_verifier.verify(element.children.last["data-signed-params"])[:locals])
@@ -121,7 +121,7 @@ class Futurism::HelperTest < ActionView::TestCase
     ActionItem.create description: "Do this"
     ActionItem.create description: "Do that"
 
-    element = Nokogiri::HTML.fragment(futurize(collection: ActionItem.all, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(collection: ActionItem.all) {})
 
     assert_equal({action_item: "gid://dummy/ActionItem/1", action_item_counter: 0}, Futurism::MessageVerifier.message_verifier.verify(element.children.first["data-signed-params"])[:locals])
     assert_equal({action_item: "gid://dummy/ActionItem/2", action_item_counter: 1}, Futurism::MessageVerifier.message_verifier.verify(element.children.last["data-signed-params"])[:locals])
@@ -131,7 +131,7 @@ class Futurism::HelperTest < ActionView::TestCase
     Post.create title: "Lorem"
     Post.create title: "Lorem2"
 
-    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true, extends: :div) {})
+    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true) {})
 
     assert_equal "true", element.children.first["data-broadcast-each"]
     assert_equal "true", element.children.last["data-broadcast-each"]
@@ -140,7 +140,7 @@ class Futurism::HelperTest < ActionView::TestCase
   test "renders contextual placeholder arguments for an ActiveRecord::Base" do
     post = Post.create title: "Lorem"
 
-    element = Nokogiri::HTML.fragment(futurize(post, extends: :div) { |post| post.title })
+    element = Nokogiri::HTML.fragment(futurize(post) { |post| post.title })
 
     assert_equal "Lorem", element.children.first.children.first.text
   end
@@ -149,7 +149,7 @@ class Futurism::HelperTest < ActionView::TestCase
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
 
-    element = Nokogiri::HTML.fragment(futurize(Post.all, broadcast_each: true, extends: :div) { |post, index| "#{index + 1}. #{post.title}" })
+    element = Nokogiri::HTML.fragment(futurize(Post.all, broadcast_each: true) { |post, index| "#{index + 1}. #{post.title}" })
 
     assert_equal "1. Lorem", element.children.first.children.first.text
     assert_equal "2. Ipsum", element.children.last.children.first.text
@@ -159,7 +159,7 @@ class Futurism::HelperTest < ActionView::TestCase
     Post.create title: "Lorem"
     Post.create title: "Ipsum"
 
-    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true, extends: :div) { |post, index| "#{index + 1}. #{post.title}" })
+    element = Nokogiri::HTML.fragment(futurize(collection: Post.all, broadcast_each: true) { |post, index| "#{index + 1}. #{post.title}" })
 
     assert_equal "1. Lorem", element.children.first.children.first.text
     assert_equal "2. Ipsum", element.children.last.children.first.text

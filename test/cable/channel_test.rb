@@ -54,7 +54,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "broadcasts a rendered model after receiving signed params" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"
-      fragment = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize(post) {})
       signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
       sgids = fragment.children.map { |element| element["data-sgid"] }
       subscribe
@@ -72,7 +72,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
       post1 = Post.create(title: "Lorem")
       post2 = Post.create(title: "Ipsum")
 
-      fragment = Nokogiri::HTML.fragment(futurize(Post.all, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize(Post.all) {})
       signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
       sgids = fragment.children.map { |element| element["data-sgid"] }
       subscribe
@@ -90,7 +90,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "broadcasts a rendered partial after receiving signed params" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}) {})
       signed_params = fragment.children.first["data-signed-params"]
       subscribe
 
@@ -106,7 +106,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "broadcasts a rendered partial after receiving the shorthand syntax" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"
-      fragment = Nokogiri::HTML.fragment(futurize("posts/card", post: post, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize("posts/card", post: post) {})
       signed_params = fragment.children.first["data-signed-params"]
       subscribe
 
@@ -120,7 +120,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "broadcasts a rendered partial after receiving the shorthand syntax with html options" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"
-      fragment = Nokogiri::HTML.fragment(futurize("posts/card", post: post, extends: :div, html_options: {style: "color: green"}) {})
+      fragment = Nokogiri::HTML.fragment(futurize("posts/card", post: post, html_options: {style: "color: green"}) {})
       signed_params = fragment.children.first["data-signed-params"]
       subscribe
 
@@ -136,7 +136,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     with_mocked_renderer do |mock_renderer|
       Post.create title: "Lorem"
       Post.create title: "Ipsum"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, extends: :div, locals: {important_local: "needed to render"}) {})
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, locals: {important_local: "needed to render"}) {})
       subscribe
 
       mock_renderer
@@ -157,7 +157,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     with_mocked_renderer do |mock_renderer|
       ActionItem.create description: "Do this"
       ActionItem.create description: "Do that"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: ActionItem.all, extends: :div, locals: {important_local: "needed to render"}) {})
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: ActionItem.all, locals: {important_local: "needed to render"}) {})
 
       subscribe
 
@@ -179,7 +179,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     with_mocked_renderer do |mock_renderer|
       Post.create title: "Lorem"
       Post.create title: "Ipsum"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :post_item, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :post_item) {})
       subscribe
 
       mock_renderer.expect(:render, "<tag></tag>", [partial: "posts/card", locals: {post_item: Post.first, post_item_counter: 0}])
@@ -198,7 +198,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     with_mocked_cable_ready do |cable_ready_mock|
       Post.create title: "Lorem"
       Post.create title: "Ipsum"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, broadcast_each: true, extends: :div, locals: {important_local: "needed to render"}) {})
+      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, broadcast_each: true, locals: {important_local: "needed to render"}) {})
       subscribe
 
       signed_params_1 = fragment.children.first["data-signed-params"]
@@ -212,7 +212,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts an inline rendered text" do
-    fragment = Nokogiri::HTML.fragment(futurize(inline: "<%= 1 + 2 %>", extends: :div) {})
+    fragment = Nokogiri::HTML.fragment(futurize(inline: "<%= 1 + 2 %>") {})
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
@@ -223,7 +223,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
   test "broadcasts a correctly formed path" do
     post = Post.create title: "Lorem"
-    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}, extends: :div) {})
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", locals: {post: post}) {})
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
@@ -237,7 +237,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   test "passes parsed params to controller render" do
     with_mocked_renderer do |mock_renderer|
       post = Post.create title: "Lorem"
-      fragment = Nokogiri::HTML.fragment(futurize(post, extends: :div) {})
+      fragment = Nokogiri::HTML.fragment(futurize(post) {})
       signed_params_array = fragment.children.map { |element| element["data-signed-params"] }
       sgids = fragment.children.map { |element| element["data-sgid"] }
       urls = Array.new(fragment.children.length, "http://www.example.org/route?param1=true&param2=1234")
@@ -252,7 +252,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "renders error message when rendering invalid partial error" do
-    fragment = Nokogiri::HTML.fragment(futurize(partial: "INVALID/PARTIAL", extends: :div) {})
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "INVALID/PARTIAL") {})
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
@@ -265,7 +265,7 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
 
   test "renders error message when wrong variable name" do
     Post.create title: "Lorem"
-    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :wrong_variable_name, extends: :div) {})
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, as: :wrong_variable_name) {})
     signed_params = fragment.children.first["data-signed-params"]
     subscribe(channel: "Futurism::Channel")
 
