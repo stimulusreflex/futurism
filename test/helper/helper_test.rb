@@ -54,6 +54,24 @@ class Futurism::HelperTest < ActionView::TestCase
     assert extract_params(element.children.first["data-signed-params"])[:locals][:post].new_record?
   end
 
+  test "renders futurism-element by default" do
+    element = Nokogiri::HTML.fragment(futurize("posts/card", post: Post.new) {})
+
+    assert_equal element.children.first.name, "futurism-element"
+  end
+
+  test "renders futurism-table-row or futurism-li if specified via extends option" do
+    element = Nokogiri::HTML.fragment(futurize("posts/card", post: Post.new, extends: :tr) {})
+
+    assert_equal element.children.first.name, "tr"
+    assert_equal element.children.first["is"], "futurism-table-row"
+
+    element = Nokogiri::HTML.fragment(futurize("posts/card", post: Post.new, extends: :li) {})
+
+    assert_equal element.children.first.name, "li"
+    assert_equal element.children.first["is"], "futurism-li"
+  end
+
   # PORO that is serializable/de-serializable
   class GlobalIdableEntity
     include GlobalID::Identification
