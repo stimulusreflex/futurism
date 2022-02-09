@@ -1,6 +1,6 @@
 module Futurism
   module Helpers
-    def futurize(records_or_string = nil, extends:, **options, &block)
+    def futurize(records_or_string = nil, extends: :div, **options, &block)
       if (Rails.env.test? && Futurism.skip_in_test) || options[:unless]
         if records_or_string.nil?
           return render(**options)
