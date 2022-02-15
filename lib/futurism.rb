@@ -1,13 +1,15 @@
 require "rails"
+
+
 require "action_cable"
 require "cable_ready"
+require "futurism/configuration"
 require "futurism/engine"
 require "futurism/message_verifier"
 require "futurism/options_transformer"
 require "futurism/resolver/resources"
 require "futurism/resolver/controller"
 require "futurism/resolver/controller/renderer"
-require "futurism/channel"
 require "futurism/helpers"
 
 module Futurism
