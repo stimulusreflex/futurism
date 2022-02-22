@@ -12,11 +12,10 @@ module Futurism
   end
 
   class Configuration
-
     attr_accessor :parent_channel
 
     def initialize
-      @parent_channel = '::ApplicationCable::Channel'
+      @parent_channel = "::ApplicationCable::Channel"
     end
   end
 end

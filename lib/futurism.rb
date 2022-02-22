@@ -1,6 +1,5 @@
 require "rails"
 
-
 require "action_cable"
 require "cable_ready"
 require "futurism/configuration"
