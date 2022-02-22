@@ -308,6 +308,18 @@ Out of the box, Rails will prefix generated urls with `http://example.org` rathe
 
 to your environments.
 
+### Choosing the parent for Futurism::Channel
+
+By default Futurism::CHannel will inherit from ApplicationCable::Channel, you can change this by setting
+
+```ruby
+Futurism.configure do |config|
+  config.parent_channel = "CustomFuturismChannel"
+end
+
+```
+in config/initializers.
+
 ## Contributing
 
 ### Get local environment setup
