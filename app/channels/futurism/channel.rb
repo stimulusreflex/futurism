@@ -1,5 +1,5 @@
 module Futurism
-  class Channel < ActionCable::Channel::Base
+  class Channel < Futurism.configuration.parent_channel.constantize
     include CableReady::Broadcaster
 
     def stream_name
