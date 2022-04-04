@@ -1,0 +1,47 @@
+{
+  "name": "@stimulus_reflex/futurism",
+  "version": "1.2.0-pre9",
+  "description": "Lazy-load Rails partials via CableReady",
+  "main": "./dist/futurism.umd.min.js",
+  "module": "./dist/futurism.min.js",
+  "files": [
+    "dist/*",
+    "javascript/*"
+  ],
+  "scripts": {
+    "test": "yarn run mocha",
+    "lint": "yarn run prettier-standard:check",
+    "format": "yarn run prettier-standard:format",
+    "prettier-standard:check": "yarn run prettier-standard --check ./javascript/**/*.js rollup.config.js",
+    "prettier-standard:format": "yarn run prettier-standard ./javascript/**/*.js rollup.config.js",
+    "build": "yarn rollup -c",
+    "watch": "yarn rollup -wc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stimulusreflex/futurism.git"
+  },
+  "keywords": [
+    "cable_ready",
+    "lazy",
+    "loading"
+  ],
+  "author": "Julian Rubisch <julian.rubisch@hey.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stimulusreflex/futurism/issues"
+  },
+  "homepage": "https://github.com/stimulusreflex/futurism#readme",
+  "dependencies": {
+    "cable_ready": "5.0.0-pre8"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "mocha": "^8.0.1",
+    "prettier-standard": "^16.4.1",
+    "rollup": "^2.70.1",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
