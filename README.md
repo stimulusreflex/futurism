@@ -251,8 +251,27 @@ $ bin/rails futurism:install
 ### Manual Installation
 After `bundle`, install the Javascript library:
 
-```bash
-$ bin/yarn add @stimulus_reflex/futurism
+There are a few ways to install the Futurism JavaScript client, depending on your application setup.
+
+#### ESBuild / Webpacker
+
+```sh
+yarn add @stimulus_reflex/futurism
+```
+
+#### Import maps:
+
+```ruby
+# config/importmap.rb
+# ...
+pin '@stimulus_reflex/futurism', to: 'futurism.min.js', preload: true
+```
+
+#### Rails Asset pipeline (Sprockets):
+
+```html+erb
+<!-- app/views/layouts/application.html.erb -->
+<%= javascript_include_tag "futurism.umd.min.js", "data-turbo-track": "reload" %>
 ```
 
 In your `app/javascript/channels/index.js`, add the following
@@ -355,13 +374,17 @@ cd path/to/project
 yarn install --force
 ```
 
-### Release
+### 📦 Releasing
 
-1. Update the version numbers in `javascript/package.json` and `lib/futurism/version.rb`
-2. `git commit -m "Bump version to x.x.x"`
-3. Run `bundle exec rake build`
-4. Run `bundle exec rake release`
-5. `cd javascript && npm publish --access public`
+1. Make sure that you run `yarn` and `bundle` to pick up the latest.
+2. Bump version number at `lib/futurism/version.rb`. Pre-release versions use `.preN`
+3. Run `rake build` and `yarn build`
+4. Commit and push changes to github `git commit -m "Bump version to x.x.x"`
+5. Run `rake release`
+6. Run `yarn publish --no-git-tag-version`
+7. Yarn will prompt you for the new version. Pre-release versions use `-preN`
+8. Commit and push changes to GitHub
+9. Create a new release on GitHub ([here](https://github.com/stimulusreflex/futurism/releases)) and generate the changelog for the stable release for it
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

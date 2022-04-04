@@ -7,3 +7,9 @@ test/dummy/tmp/
 *~
 node_modules
 gemfiles/*.lock
+
+dist/**
+!dist/.keep
+
+app/assets/javascripts/**
+!app/assets/javascripts/.keep

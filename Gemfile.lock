@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    futurism (1.2.0.pre9)
-      cable_ready (= 5.0.0.pre8)
+    futurism (1.2.0.pre10)
+      cable_ready (= 5.0.0.pre9)
       rack (~> 2.0)
       rails (>= 5.2)
 
@@ -80,11 +80,16 @@ GEM
       thor (>= 0.14.0)
     ast (2.4.1)
     builder (3.2.4)
-    cable_ready (5.0.0.pre8)
-      rails (>= 5.2)
+    cable_ready (5.0.0.pre9)
+      actioncable (>= 5.2)
+      actionpack (>= 5.2)
+      actionview (>= 5.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
       thread-local (>= 1.1.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     digest (3.1.0)
     erubi (1.10.0)
@@ -92,8 +97,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    io-wait (0.2.1)
-    loofah (2.14.0)
+    loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -111,8 +115,7 @@ GEM
       digest
       net-protocol
       timeout
-    net-protocol (0.1.2)
-      io-wait
+    net-protocol (0.1.3)
       timeout
     net-smtp (0.3.1)
       digest
