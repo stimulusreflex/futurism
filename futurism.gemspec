@@ -14,7 +14,15 @@ Gem::Specification.new do |spec|
   spec.description = "Uses custom html elements with attached IntersectionObserver to automatically lazy load partials via websockets"
   spec.license = "MIT"
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files = Dir[
+    "lib/**/*.rb",
+    "app/**/*.rb",
+    "app/assets/javascripts/*",
+    "bin/*",
+    "[A-Z]*"
+  ]
+
+  spec.test_files = Dir["test/**/*.rb"]
 
   spec.add_development_dependency "appraisal"
   spec.add_development_dependency "bundler", "~> 2.0"
