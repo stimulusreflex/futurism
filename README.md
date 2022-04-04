@@ -377,7 +377,7 @@ yarn install --force
 ### 📦 Releasing
 
 1. Make sure that you run `yarn` and `bundle` to pick up the latest.
-2. Bump version number at `lib/cable_ready/version.rb`. Pre-release versions use `.preN`
+2. Bump version number at `lib/futurism/version.rb`. Pre-release versions use `.preN`
 3. Run `rake build` and `yarn build`
 4. Commit and push changes to github `git commit -m "Bump version to x.x.x"`
 5. Run `rake release`
