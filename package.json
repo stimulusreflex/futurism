@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/stimulusreflex/futurism#readme",
   "dependencies": {
-    "cable_ready": "5.0.0-pre8"
+    "cable_ready": "^5.0.0-pre9"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.3",
