@@ -251,8 +251,27 @@ $ bin/rails futurism:install
 ### Manual Installation
 After `bundle`, install the Javascript library:
 
-```bash
-$ bin/yarn add @stimulus_reflex/futurism
+There are a few ways to install the Futurism JavaScript client, depending on your application setup.
+
+#### ESBuild / Webpacker
+
+```sh
+yarn add @stimulus_reflex/futurism
+```
+
+#### Import maps:
+
+```ruby
+# config/importmap.rb
+# ...
+pin '@stimulus_reflex/futurism', to: 'futurism.min.js', preload: true
+```
+
+#### Rails Asset pipeline (Sprockets):
+
+```html+erb
+<!-- app/views/layouts/application.html.erb -->
+<%= javascript_include_tag "futurism.umd.min.js", "data-turbo-track": "reload" %>
 ```
 
 In your `app/javascript/channels/index.js`, add the following
@@ -357,11 +376,11 @@ yarn install --force
 
 ### Release
 
-1. Update the version numbers in `javascript/package.json` and `lib/futurism/version.rb`
+1. Update the version numbers in `package.json` and `lib/futurism/version.rb`
 2. `git commit -m "Bump version to x.x.x"`
-3. Run `bundle exec rake build`
+3. Run `bundle exec rake build` and `yarn build`
 4. Run `bundle exec rake release`
-5. `cd javascript && npm publish --access public`
+5. `npm publish --access public`
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
