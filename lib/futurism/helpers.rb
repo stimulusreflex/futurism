@@ -77,7 +77,7 @@ module Futurism
       def dataset
         data_attributes.merge({
           signed_params: signed_params,
-          sgid: model && model.to_sgid.to_s,
+          sgid: model && model.to_sgid(expires_in: nil).to_s,
           eager: eager.presence,
           broadcast_each: broadcast_each.presence,
           signed_controller: signed_controller
