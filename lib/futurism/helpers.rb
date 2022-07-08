@@ -60,7 +60,7 @@ module Futurism
       include Futurism::MessageVerifier
       include Futurism::OptionsTransformer
 
-      attr_reader :extends, :placeholder, :html_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
+      attr_reader :extends, :placeholder, :html_options, :observer_options, :data_attributes, :model, :options, :eager, :broadcast_each, :controller
 
       def initialize(extends:, placeholder:, options:)
         @extends = extends
@@ -69,6 +69,7 @@ module Futurism
         @broadcast_each = options.delete(:broadcast_each)
         @controller = options.delete(:controller)
         @html_options = options.delete(:html_options) || {}
+        @observer_options = options.delete(:observer_options)
         @data_attributes = html_options.fetch(:data, {}).except(:sgid, :signed_params)
         @model = options.delete(:model)
         @options = data_attributes.any? ? options.merge(data: data_attributes) : options
@@ -80,7 +81,8 @@ module Futurism
           sgid: model && model.to_sgid(expires_in: nil).to_s,
           eager: eager.presence,
           broadcast_each: broadcast_each.presence,
-          signed_controller: signed_controller
+          signed_controller: signed_controller,
+          observer_options: observer_options
         })
       end
 

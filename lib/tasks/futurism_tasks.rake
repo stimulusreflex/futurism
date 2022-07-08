@@ -28,11 +28,8 @@ namespace :futurism do
       lines.insert lines.index(matches.last).to_i + 1, "import consumer from '../channels/consumer'\n"
     end
 
-    initialize_line = lines.find { |line| line.start_with?("Futurism.initializeElements") }
-    lines << "Futurism.initializeElements()\n" unless initialize_line
-
-    subscribe_line = lines.find { |line| line.start_with?("Futurism.createSubscription") }
-    lines << "Futurism.createSubscription(consumer)\n" unless subscribe_line
+    initialize_line = lines.find { |line| line.start_with?("Futurism.initialize(consumer)") }
+    lines << "Futurism.initialize(consumer)\n" unless initialize_line
 
     File.open(filepath, "w") { |f| f.write lines.join }
   end
