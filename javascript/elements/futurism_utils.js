@@ -1,12 +1,6 @@
 /* global IntersectionObserver, CustomEvent, setTimeout */
 
 const dispatchAppearEvent = (entry, observer = null) => {
-  if (!window.Futurism) {
-    return () => {
-      setTimeout(() => dispatchAppearEvent(entry, observer)(), 1)
-    }
-  }
-
   const target = entry.target ? entry.target : entry
 
   const evt = new CustomEvent('futurism:appear', {
@@ -17,25 +11,7 @@ const dispatchAppearEvent = (entry, observer = null) => {
     }
   })
 
-  return () => {
-    target.dispatchEvent(evt)
-  }
-}
-
-// from https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/#rejection-based-retrying
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-const callWithRetry = async (fn, depth = 0) => {
-  try {
-    return await fn()
-  } catch (e) {
-    if (depth > 10) {
-      throw e
-    }
-    await wait(1.15 ** depth * 2000)
-
-    return callWithRetry(fn, depth + 1)
-  }
+  target.dispatchEvent(evt)
 }
 
 const observerCallback = (entries, observer) => {
@@ -43,7 +19,7 @@ const observerCallback = (entries, observer) => {
     if (!entry.isIntersecting) return
 
     observer.disconnect()
-    await callWithRetry(dispatchAppearEvent(entry, observer))
+    dispatchAppearEvent(entry, observer)
   })
 }
 
@@ -65,6 +41,6 @@ export const extendElementWithIntersectionObserver = element => {
 export const extendElementWithEagerLoading = element => {
   if (element.dataset.eager === 'true') {
     if (element.observer) element.observer.disconnect()
-    callWithRetry(dispatchAppearEvent(element))
+    dispatchAppearEvent(element)
   }
 }
