@@ -1,4 +1,4 @@
-/* global IntersectionObserver, CustomEvent, setTimeout */
+/* global IntersectionObserver, CustomEvent */
 
 const dispatchAppearEvent = (entry, observer = null) => {
   const target = entry.target ? entry.target : entry
