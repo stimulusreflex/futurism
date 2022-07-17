@@ -82,7 +82,7 @@ module Futurism
           eager: eager.presence,
           broadcast_each: broadcast_each.presence,
           signed_controller: signed_controller,
-          observer_options: observer_options
+          observer_options: observer_options.presence
         })
       end
 
