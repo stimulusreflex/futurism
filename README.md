@@ -10,7 +10,7 @@
 
 Lazy-load Rails partials via CableReady
 
-:rotating*light: \_BREAKING CHANGE: With v1.0, futurism has been transferred to the [stimulusreflex](https://github.com/stimulusreflex) organization. Please update your npm package to `@stimulus_reflex/futurism` accordingly* :rotating_light:
+:rotating_light: *BREAKING CHANGE: With v1.0, futurism has been transferred to the [stimulusreflex](https://github.com/stimulusreflex) organization. Please update your npm package to `@stimulus_reflex/futurism` accordingly* :rotating_light:
 
 <img src="https://user-images.githubusercontent.com/4352208/88374198-9e6f3500-cd99-11ea-804b-0216ed320eff.jpg" alt="birmingham-museums-trust-GrvC6MI-z4w-unsplash" width="50%" align="center"/>
 <span>Photo by <a href="https://unsplash.com/@birminghammuseumstrust?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Birmingham Museums Trust</a> on <a href="https://unsplash.com/s/photos/futurism?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
