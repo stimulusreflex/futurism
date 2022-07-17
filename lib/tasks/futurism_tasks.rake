@@ -28,7 +28,7 @@ namespace :futurism do
       lines.insert lines.index(matches.last).to_i + 1, "import consumer from '../channels/consumer'\n"
     end
 
-    initialize_line = lines.find { |line| line.start_with?("Futurism.initialize(consumer)") }
+    initialize_line = lines.find { |line| line.start_with?("Futurism.initialize") }
     lines << "Futurism.initialize(consumer)\n" unless initialize_line
 
     File.open(filepath, "w") { |f| f.write lines.join }
