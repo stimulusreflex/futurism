@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "standardrb"
   spec.add_development_dependency "sqlite3"
 
-  spec.add_dependency "rack", "~> 2.0"
+  spec.add_dependency "rack", ">= 2", "< 4"
   spec.add_dependency "rails", ">= 5.2"
   spec.add_dependency "cable_ready", "= 5.0.0.pre9"
 end
