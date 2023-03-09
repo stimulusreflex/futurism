@@ -3,7 +3,7 @@ PATH
   specs:
     futurism (1.2.0.pre11)
       cable_ready (= 5.0.0.pre9)
-      rack (~> 2.0)
+      rack (>= 2, < 4)
       rails (>= 5.2)
 
 GEM
@@ -132,7 +132,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     racc (1.6.0)
-    rack (2.2.3.1)
+    rack (2.2.6.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.2.4)
