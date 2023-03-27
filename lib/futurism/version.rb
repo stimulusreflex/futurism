@@ -1,3 +1,3 @@
 module Futurism
-  VERSION = "1.2.0.pre11"
+  VERSION = "1.2.0.rc1"
 end
