@@ -226,7 +226,7 @@ For individual models or arbitrary collections, you can pass `record` and `index
 
 ## Events
 
-Once your futurize element has been rendered, the `futurize:appeared` custom event will be called.
+Once your futurize element has been rendered, the `futurism:appeared` custom event will be called.
 
 ## Installation
 Add this line to your application's Gemfile:
