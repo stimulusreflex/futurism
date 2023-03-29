@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    futurism (1.2.0.rc1)
-      cable_ready (= 5.0.0.rc1)
+    futurism (1.2.0.rc2)
+      cable_ready (= 5.0.0.rc2)
       rack (~> 2.0)
       rails (>= 5.2)
 
@@ -80,7 +80,7 @@ GEM
       thor (>= 0.14.0)
     ast (2.4.2)
     builder (3.2.4)
-    cable_ready (5.0.0.rc1)
+    cable_ready (5.0.0.rc2)
       actionpack (>= 5.2)
       actionview (>= 5.2)
       activesupport (>= 5.2)

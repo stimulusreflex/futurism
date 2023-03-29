@@ -1,6 +1,6 @@
 {
   "name": "@stimulus_reflex/futurism",
-  "version": "1.2.0-rc1",
+  "version": "1.2.0-rc2",
   "description": "Lazy-load Rails partials via CableReady",
   "main": "./dist/futurism.umd.min.js",
   "module": "./dist/futurism.min.js",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/stimulusreflex/futurism#readme",
   "dependencies": {
-    "cable_ready": "^5.0.0-rc1"
+    "cable_ready": "^5.0.0-rc2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.3",
