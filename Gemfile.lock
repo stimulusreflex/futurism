@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    futurism (1.2.0.rc2)
-      cable_ready (= 5.0.0.rc2)
+    futurism (1.2.0)
+      cable_ready (>= 5.0)
       rack (~> 2.0)
       rails (>= 5.2)
 
@@ -80,7 +80,7 @@ GEM
       thor (>= 0.14.0)
     ast (2.4.2)
     builder (3.2.4)
-    cable_ready (5.0.0.rc2)
+    cable_ready (5.0.0)
       actionpack (>= 5.2)
       actionview (>= 5.2)
       activesupport (>= 5.2)
@@ -97,7 +97,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -118,7 +118,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
     parallel (1.22.1)
