@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "appraisal"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "pry", "~> 0.12.2"
   spec.add_development_dependency "nokogiri"
   spec.add_development_dependency "standardrb"
   spec.add_development_dependency "sqlite3"
