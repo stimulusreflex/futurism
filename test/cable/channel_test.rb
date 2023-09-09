@@ -9,8 +9,8 @@ def with_mocked_renderer
 end
 
 def with_mocked_cable_ready(signed_params:, html:)
-  cable_ready_mock = MiniTest::Mock.new
-  cable_ready_channel = MiniTest::Mock.new
+  cable_ready_mock = Minitest::Mock.new
+  cable_ready_channel = Minitest::Mock.new
 
   cable_ready_channel.expect(:outer_html, nil, [], selector: "[data-signed-params='#{signed_params.first}']", html: html.first)
   cable_ready_channel.expect(:outer_html, nil, [], selector: "[data-signed-params='#{signed_params.second}']", html: html.second)
