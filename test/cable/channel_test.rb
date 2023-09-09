@@ -230,8 +230,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                    selector: "[data-signed-params='#{signed_params}']",
-                                    html: "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n") do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n") do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -259,8 +259,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                    selector: "[data-signed-params='#{signed_params}']",
-                                    html: /Missing partial INVALID\/_PARTIAL/) do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: /Missing partial INVALID\/_PARTIAL/) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -272,8 +272,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                    selector: "[data-signed-params='#{signed_params}']",
-                                    html: /undefined local variable or method/) do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: /undefined local variable or method/) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -282,10 +282,10 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     data = {
       "cableReady" => true,
       "operations" => [{
-                         "selector" => selector,
-                         "html" => html,
-                         "operation" => operation
-                       }]
+        "selector" => selector,
+        "html" => html,
+        "operation" => operation
+      }]
     }
 
     old_messages = broadcasts(stream)

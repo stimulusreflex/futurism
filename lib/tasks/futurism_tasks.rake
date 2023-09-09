@@ -34,6 +34,6 @@ namespace :futurism do
     subscribe_line = lines.find { |line| line.start_with?("Futurism.createSubscription") }
     lines << "Futurism.createSubscription(consumer)\n" unless subscribe_line
 
-    File.open(filepath, "w") { |f| f.write lines.join }
+    File.write(filepath, lines.join)
   end
 end

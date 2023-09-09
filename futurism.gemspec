@@ -22,8 +22,6 @@ Gem::Specification.new do |spec|
     "[A-Z]*"
   ]
 
-  spec.test_files = Dir["test/**/*.rb"]
-
   spec.add_development_dependency "appraisal"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"

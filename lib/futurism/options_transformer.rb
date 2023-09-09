@@ -14,7 +14,7 @@ module Futurism
     def load_options(options)
       require_relative "shims/deep_transform_values" unless options.respond_to? :deep_transform_values
 
-      options.deep_transform_values { |value| value.is_a?(String) && value.start_with?("gid://") ? GlobalID::Locator.locate(value) : value }
+      options.deep_transform_values { |value| (value.is_a?(String) && value.start_with?("gid://")) ? GlobalID::Locator.locate(value) : value }
     end
   end
 end

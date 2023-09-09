@@ -9,7 +9,7 @@ module Futurism
         end
       end
 
-      options[:eager] = true unless block_given?
+      options[:eager] = true unless block
 
       # cannot serialize a proc
       options.delete(:cached) if options[:cached].is_a?(Proc)
@@ -27,7 +27,7 @@ module Futurism
     def futurize_with_options(extends:, **options, &block)
       collection = options.delete(:collection)
       if collection.nil?
-        placeholder = capture(&block) if block_given?
+        placeholder = capture(&block) if block
 
         WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options).render
       else
@@ -36,7 +36,7 @@ module Futurism
         broadcast_each = options.delete(:broadcast_each) || false
 
         collection.each_with_index.map { |record, index|
-          placeholder = capture(record, index, &block) if block_given?
+          placeholder = capture(record, index, &block) if block
 
           WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(
             broadcast_each: broadcast_each,
@@ -48,7 +48,7 @@ module Futurism
 
     def futurize_active_record(records, extends:, **options, &block)
       Array(records).map.with_index { |record, index|
-        placeholder = capture(record, index, &block) if block_given?
+        placeholder = capture(record, index, &block) if block
 
         WrappingFuturismElement.new(extends: extends, options: options.merge(model: record), placeholder: placeholder).render
       }.join.html_safe
