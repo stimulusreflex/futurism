@@ -8,11 +8,12 @@ def with_mocked_renderer
   end
 end
 
-def with_mocked_cable_ready
-  cable_ready_mock = MiniTest::Mock.new
-  cable_ready_channel = MiniTest::Mock.new
-  cable_ready_channel.expect(:outer_html, nil, [Hash])
-  cable_ready_channel.expect(:outer_html, nil, [Hash])
+def with_mocked_cable_ready(signed_params:, html:)
+  cable_ready_mock = Minitest::Mock.new
+  cable_ready_channel = Minitest::Mock.new
+
+  cable_ready_channel.expect(:outer_html, nil, [], selector: "[data-signed-params='#{signed_params.first}']", html: html.first)
+  cable_ready_channel.expect(:outer_html, nil, [], selector: "[data-signed-params='#{signed_params.second}']", html: html.second)
 
   cable_ready_mock.expect(:[], cable_ready_channel, ["1"])
   cable_ready_mock.expect(:[], cable_ready_channel, ["1"])
@@ -195,16 +196,17 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts elements of a collection immediately" do
-    with_mocked_cable_ready do |cable_ready_mock|
-      Post.create title: "Lorem"
-      Post.create title: "Ipsum"
-      fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, broadcast_each: true, locals: {important_local: "needed to render"}) {})
-      subscribe
+    Post.create title: "Lorem"
+    Post.create title: "Ipsum"
+    fragment = Nokogiri::HTML.fragment(futurize(partial: "posts/card", collection: Post.all, broadcast_each: true, locals: {important_local: "needed to render"}) {})
+    subscribe
 
-      signed_params_1 = fragment.children.first["data-signed-params"]
-      broadcast_each_1 = fragment.children.first["data-broadcast-each"]
-      signed_params_2 = fragment.children.last["data-signed-params"]
-      broadcast_each_2 = fragment.children.last["data-broadcast-each"]
+    signed_params_1 = fragment.children.first["data-signed-params"]
+    broadcast_each_1 = fragment.children.first["data-broadcast-each"]
+    signed_params_2 = fragment.children.last["data-signed-params"]
+    broadcast_each_2 = fragment.children.last["data-broadcast-each"]
+
+    with_mocked_cable_ready(signed_params: [signed_params_1, signed_params_2], html: ["<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n", "<div class=\"card\">\n  Ipsum\n  <a href=\"/posts/2/edit\">Edit</a>\n</div>\n"]) do |cable_ready_mock|
       perform :receive, {"signed_params" => [signed_params_1, signed_params_2], "broadcast_each" => [broadcast_each_1, broadcast_each_2]}
 
       assert_mock cable_ready_mock
@@ -228,8 +230,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                                           selector: "[data-signed-params='#{signed_params}']",
-                                                           html: "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n") do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: "<div class=\"card\">\n  Lorem\n  <a href=\"/posts/1/edit\">Edit</a>\n</div>\n") do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -257,8 +259,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                                           selector: "[data-signed-params='#{signed_params}']",
-                                                           html: /Missing partial INVALID\/_PARTIAL/) do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: /Missing partial INVALID\/_PARTIAL/) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end
@@ -270,8 +272,8 @@ class Futurism::ChannelTest < ActionCable::Channel::TestCase
     subscribe(channel: "Futurism::Channel")
 
     assert_cable_ready_operation_on("Futurism::Channel:1", operation: "outerHtml",
-                                                           selector: "[data-signed-params='#{signed_params}']",
-                                                           html: /undefined local variable or method/) do
+      selector: "[data-signed-params='#{signed_params}']",
+      html: /undefined local variable or method/) do
       perform :receive, {"signed_params" => [signed_params]}
     end
   end

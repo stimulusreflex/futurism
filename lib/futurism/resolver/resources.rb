@@ -83,9 +83,9 @@ module Futurism
 
       def renderer_for(resource_definition:)
         Resolver::Controller::Renderer.for(controller: resource_definition.controller,
-                                           connection: @connection,
-                                           url: resource_definition.url,
-                                           params: @params)
+          connection: @connection,
+          url: resource_definition.url,
+          params: @params)
       end
 
       def resolved_models
