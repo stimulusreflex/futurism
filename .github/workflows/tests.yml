@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
        matrix:
-         ruby-version: [2.7.2, '3.0.2', '3.1.4', '3.2.2']
+         ruby-version: ['3.0.2', '3.1.4', '3.2.2']
          rails-version: ['6_0', '6_1', '7_0'] 
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/rails_${{ matrix.rails-version }}.gemfile         
