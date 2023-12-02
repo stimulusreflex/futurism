@@ -17,16 +17,23 @@ module Futurism
   autoload :Helpers, "futurism/helpers"
 
   mattr_accessor :skip_in_test, default: false
+  mattr_accessor :instrumentation, default: false
+  mattr_accessor :logger
 
   mattr_writer :default_controller
   def self.default_controller
     (@@default_controller || "::ApplicationController").to_s.constantize
   end
 
+  def self.skip_in_test?
+    skip_in_test.present?
+  end
+
+  def self.instrumentation?
+    instrumentation.present?
+  end
+
   ActiveSupport.on_load(:action_view) do
     include Futurism::Helpers
   end
-
-  mattr_accessor :logger
-  self.logger ||= Rails.logger ? Rails.logger.new : Logger.new($stdout)
 end

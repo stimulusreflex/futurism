@@ -9,12 +9,11 @@ class Futurism::Resolver::ControllerTest < ActiveSupport::TestCase
   end
 
   test ".from uses Futurism.default_controller" do
-    Futurism.default_controller = DummyController
-    controller = Futurism::Resolver::Controller.from(signed_string: nil)
+    swap Futurism, default_controller: DummyController do
+      controller = Futurism::Resolver::Controller.from(signed_string: nil)
 
-    assert_equal controller, DummyController
-
-    Futurism.default_controller = nil
+      assert_equal controller, DummyController
+    end
   end
 
   test ".from lookups up controller via signed_string:" do
