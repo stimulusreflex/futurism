@@ -21,7 +21,7 @@ module Futurism
     end
 
     initializer "futurism.logger", after: "initialize_logger" do
-      Futurism.logger ||= Rails.logger ? Rails.logger : Logger.new($stdout)
+      Futurism.logger ||= Rails.logger || Logger.new($stdout)
     end
   end
 end
