@@ -9,6 +9,7 @@ require "futurism/options_transformer"
 require "futurism/resolver/resources"
 require "futurism/resolver/controller"
 require "futurism/resolver/controller/renderer"
+require "futurism/resolver/controller/instrumentation"
 require "futurism/helpers"
 
 module Futurism
