@@ -19,5 +19,9 @@ module Futurism
         app.config.importmap.cache_sweepers << Engine.root.join("app/assets/javascripts")
       end
     end
+
+    initializer "futurism.logger", after: "initialize_logger" do
+      Futurism.logger ||= Rails.logger || Logger.new($stdout)
+    end
   end
 end

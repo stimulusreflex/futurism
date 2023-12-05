@@ -25,6 +25,7 @@ Lazy-load Rails partials via CableReady
   - [Broadcast Partials Individually](#broadcast-partials-individually)
   - [Contextual Placeholder Arguments](#contextual-placeholder-arguments)
 - [Events](#events)
+- [Instrumentation](#instrumentation)
 - [Installation](#installation)
   - [Manual Installation](#manual-installation)
 - [Authentication](#authentication)
@@ -227,6 +228,31 @@ For individual models or arbitrary collections, you can pass `record` and `index
 ## Events
 
 Once your futurize element has been rendered, the `futurism:appeared` custom event will be called.
+
+## Instrumentation
+
+Futurism includes support for instrumenting rendering events.
+
+To enable ActiveSupport notifications, use the `instrumentation` option:
+
+```ruby
+Futurism.instrumentation = true
+```
+
+Then subscribe to the `render.futurism` event:
+
+```ruby
+ActiveSupport::Notifications.subscribe("render.futurism") do |*args|
+  event = ActiveSupport::Notifications::Event.new(*args)
+  event.name                 # => "render.futurism"
+  event.payload[:channel]    # => "Futurism::Channel" # ActionCable channel to broadcast
+  event.payload[:controller] # => "posts"             # The controller that invokes `futurize` call
+  event.payload[:action]     # => "show"              # The action that invokes `futurize` call
+  event.payload[:partial]    # => "posts/card"        # The partial that was rendered
+end
+```
+
+This is useful for performance monitoring, specifically for tracking the source of `futurize` calls.
 
 ## Installation
 Add this line to your application's Gemfile:

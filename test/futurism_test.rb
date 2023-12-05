@@ -7,22 +7,31 @@ class Futurism::Test < ActiveSupport::TestCase
     assert_kind_of Module, Futurism
   end
 
-  test ".skip_in_test" do
-    assert_equal false, Futurism.skip_in_test
+  test ".skip_in_test?" do
+    swap Futurism, skip_in_test: "" do
+      assert_equal false, Futurism.skip_in_test?
+    end
+  end
+
+  test ".instrumentation?" do
+    swap Futurism, instrumentation: "" do
+      assert_equal false, Futurism.instrumentation?
+    end
   end
 
   test ".default_controller" do
     assert_equal ApplicationController, Futurism.default_controller
 
-    Futurism.default_controller = nil
-    assert_equal ApplicationController, Futurism.default_controller
+    swap Futurism, default_controller: nil do
+      assert_equal ApplicationController, Futurism.default_controller
+    end
 
-    Futurism.default_controller = DummyController
-    assert_equal DummyController, Futurism.default_controller
+    swap Futurism, default_controller: DummyController do
+      assert_equal DummyController, Futurism.default_controller
+    end
 
-    Futurism.default_controller = "DummyController"
-    assert_equal DummyController, Futurism.default_controller
-
-    Futurism.default_controller = nil
+    swap Futurism, default_controller: "DummyController" do
+      assert_equal DummyController, Futurism.default_controller
+    end
   end
 end

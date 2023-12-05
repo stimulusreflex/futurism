@@ -7,7 +7,11 @@ module Futurism
         HTTP_METHODS = [:get, :post, :put, :patch, :delete]
 
         def self.for(controller:, connection:, url:, params:)
-          new(controller: controller, connection: connection, url: url, params: params).renderer
+          controller_renderer = new(
+            controller: controller, connection: connection, url: url, params: params
+          ).renderer
+
+          Futurism.instrumentation? ? Instrumentation.new(controller_renderer) : controller_renderer
         end
 
         def initialize(controller:, connection:, url:, params:)
