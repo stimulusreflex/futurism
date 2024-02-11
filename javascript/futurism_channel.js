@@ -2,6 +2,10 @@
 
 import CableReady from 'cable_ready'
 
+let subscription
+let active
+let queue = []
+
 const debounceEvents = (callback, delay = 20) => {
   let timeoutId
   let events = []
@@ -17,23 +21,15 @@ const debounceEvents = (callback, delay = 20) => {
 }
 
 export const createSubscription = consumer => {
-  consumer.subscriptions.create('Futurism::Channel', {
+  subscription = consumer.subscriptions.create('Futurism::Channel', {
     connected () {
-      window.Futurism = this
-      document.addEventListener(
-        'futurism:appear',
-        debounceEvents(events => {
-          this.send({
-            signed_params: events.map(e => e.target.dataset.signedParams),
-            sgids: events.map(e => e.target.dataset.sgid),
-            signed_controllers: events.map(
-              e => e.target.dataset.signedController
-            ),
-            urls: events.map(_ => window.location.href),
-            broadcast_each: events.map(e => e.target.dataset.broadcastEach)
-          })
-        })
-      )
+      active = true
+      queue.forEach(payload => subscription.send(payload))
+      queue = []
+    },
+
+    disconnected () {
+      active = false
     },
 
     received (data) {
@@ -52,3 +48,17 @@ export const createSubscription = consumer => {
     }
   })
 }
+
+document.addEventListener(
+  'futurism:appear',
+  debounceEvents(events => {
+    const payload = {
+      signed_params: events.map(e => e.target.dataset.signedParams),
+      sgids: events.map(e => e.target.dataset.sgid),
+      signed_controllers: events.map(e => e.target.dataset.signedController),
+      urls: events.map(_ => window.location.href),
+      broadcast_each: events.map(e => e.target.dataset.broadcastEach)
+    }
+    active ? subscription.send(payload) : queue.push(payload)
+  })
+)
