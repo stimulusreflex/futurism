@@ -40,7 +40,7 @@ module Futurism
 
           WrappingFuturismElement.new(extends: extends, placeholder: placeholder, options: options.deep_merge(
             broadcast_each: broadcast_each,
-            locals: {as.to_sym => record, "#{as}_counter".to_sym => index}
+            locals: {as.to_sym => record, :"#{as}_counter" => index}
           )).render
         }.join.html_safe
       end
