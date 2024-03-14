@@ -33,7 +33,7 @@ module Futurism
         attr_writer :renderer
 
         def setup_env!
-          if url.present?
+          unless url.nil?
             uri = URI.parse(url)
             path = ActionDispatch::Journey::Router::Utils.normalize_path(uri.path)
             query_hash = Rack::Utils.parse_nested_query(uri.query)
