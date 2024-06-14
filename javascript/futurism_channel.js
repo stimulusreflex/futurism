@@ -16,6 +16,10 @@ const debounceEvents = (callback, delay = 20) => {
   }
 }
 
+const targetResolver = (event) => {
+  return event.detail.target || event.target
+}
+
 export const createSubscription = consumer => {
   consumer.subscriptions.create('Futurism::Channel', {
     connected () {
@@ -24,13 +28,13 @@ export const createSubscription = consumer => {
         'futurism:appear',
         debounceEvents(events => {
           this.send({
-            signed_params: events.map(e => e.target.dataset.signedParams),
-            sgids: events.map(e => e.target.dataset.sgid),
+            signed_params: events.map(e => targetResolver(e).dataset.signedParams),
+            sgids: events.map(e => targetResolver(e).dataset.sgid),
             signed_controllers: events.map(
-              e => e.target.dataset.signedController
+              e => targetResolver(e).dataset.signedController
             ),
             urls: events.map(_ => window.location.href),
-            broadcast_each: events.map(e => e.target.dataset.broadcastEach)
+            broadcast_each: events.map(e => targetResolver(e).dataset.broadcastEach)
           })
         })
       )
