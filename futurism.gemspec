@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir[
     "lib/**/*.rb",
+    "lib/**/*.rake",
     "app/**/*.rb",
     "app/assets/javascripts/*",
     "bin/*",
