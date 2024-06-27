@@ -60,7 +60,7 @@ const restorePlaceholders = e => {
   // if the TF request has been promoted to an advance action
   // (data-turbo-action="advance"), this callback will fire inadvertently
   // but the whole page will not be exchanged as in a regular TD visit
-  if (!!window.Futurism.requestedTurboFrame) {
+  if (window.Futurism.requestedTurboFrame) {
     delete window.Futurism.requestedTurboFrame
     return
   }
