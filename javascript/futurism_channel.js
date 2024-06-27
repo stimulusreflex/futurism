@@ -19,7 +19,9 @@ const debounceEvents = (callback, delay = 20) => {
 export const createSubscription = consumer => {
   consumer.subscriptions.create('Futurism::Channel', {
     connected () {
-      window.Futurism = this
+      window.Futurism = {
+        subscription: this
+      }
       document.addEventListener(
         'futurism:appear',
         debounceEvents(events => {
