@@ -56,6 +56,15 @@ const cachePlaceholders = e => {
 }
 
 const restorePlaceholders = e => {
+  // we have to opt out of this if the request leading to this is a TF request
+  // if the TF request has been promoted to an advance action
+  // (data-turbo-action="advance"), this callback will fire inadvertently
+  // but the whole page will not be exchanged as in a regular TD visit
+  if (sessionStorage.getItem('requested-turbo-frame')) {
+    delete sessionStorage.removeItem('requested-turbo-frame')
+    return
+  }
+
   const inNamespace = ([key, _payload]) => key.startsWith('futurism-')
   Object.entries(sessionStorage)
     .filter(inNamespace)
@@ -72,6 +81,15 @@ const restorePlaceholders = e => {
     })
 }
 
+const storeRequestedTurboFrame = e => {
+  const { headers } = e.detail.fetchOptions
+
+  if (!headers['Turbo-Frame'] || headers['X-Sec-Purpose'] === 'prefetch') return
+
+  // we store the frame ID in case the incoming request was referencing one
+  sessionStorage.setItem('requested-turbo-frame', headers['Turbo-Frame'])
+}
+
 export const initializeElements = () => {
   polyfillCustomElements()
   document.addEventListener('DOMContentLoaded', defineElements)
@@ -80,4 +98,9 @@ export const initializeElements = () => {
   document.addEventListener('turbolinks:load', defineElements)
   document.addEventListener('turbolinks:before-cache', restorePlaceholders)
   document.addEventListener('cable-ready:after-outer-html', cachePlaceholders)
+
+  document.addEventListener(
+    'turbo:before-fetch-request',
+    storeRequestedTurboFrame
+  )
 }
