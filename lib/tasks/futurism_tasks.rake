@@ -8,6 +8,8 @@ namespace :futurism do
     filepath = %w[
       app/javascript/channels/index.js
       app/javascript/channels/index.ts
+      app/javascript/application.js
+      app/javascript/application.ts
       app/javascript/packs/application.js
       app/javascript/packs/application.ts
     ]
