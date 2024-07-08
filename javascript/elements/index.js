@@ -60,8 +60,8 @@ const restorePlaceholders = e => {
   // if the TF request has been promoted to an advance action
   // (data-turbo-action="advance"), this callback will fire inadvertently
   // but the whole page will not be exchanged as in a regular TD visit
-  if (window.Futurism.requestedTurboFrame) {
-    delete window.Futurism.requestedTurboFrame
+  if (sessionStorage.getItem('requested-turbo-frame')) {
+    delete sessionStorage.removeItem('requested-turbo-frame')
     return
   }
 
@@ -87,7 +87,7 @@ const storeRequestedTurboFrame = e => {
   if (!headers['Turbo-Frame'] || headers['X-Sec-Purpose'] === 'prefetch') return
 
   // we store the frame ID in case the incoming request was referencing one
-  window.Futurism.requestedTurboFrame = headers['Turbo-Frame']
+  sessionStorage.setItem('requested-turbo-frame', headers['Turbo-Frame'])
 }
 
 export const initializeElements = () => {

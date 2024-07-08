@@ -1,7 +1,7 @@
 /* global IntersectionObserver, CustomEvent, setTimeout */
 
 const dispatchAppearEvent = (entry, observer = null) => {
-  if (!window.Futurism) {
+  if (!window.Futurism?.subscription) {
     return () => {
       setTimeout(() => dispatchAppearEvent(entry, observer)(), 1)
     }
