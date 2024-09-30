@@ -15,26 +15,47 @@ module Futurism
 
       def resolve
         resolved_models.zip(@resources_with_sgids).each do |model, resource_definition|
-          html = renderer_for(resource_definition: resource_definition).render(model)
+          options = options_from_resource(resource_definition)
+          html = render_html(model, resource_definition: resource_definition, render_exceptions: false)
+          html = wrapped_html(html, options)
 
           yield(resource_definition.selector, html, resource_definition.broadcast_each)
         end
 
         @resources_without_sgids.each do |resource_definition|
           options = options_from_resource(resource_definition)
-          renderer = renderer_for(resource_definition: resource_definition)
-          html =
-            begin
-              renderer.render(options)
-            rescue => exception
-              error_renderer.render(exception)
-            end
+          html = render_html(options, resource_definition: resource_definition)
+          html = wrapped_html(html, options)
 
           yield(resource_definition.selector, html, resource_definition.broadcast_each)
         end
       end
 
       private
+
+      def wrapped_html(html, options)
+        wrap_for_updates_for = options.delete(:wrap_for_updates_for)
+        return html unless wrap_for_updates_for
+
+        # Only wrap the element again if we were told to for the updates_for feature
+        options = options.dup
+        options.merge!(wrap_for_updates_for)
+        options[:wrapped_for_updates_for] = true
+
+        extends = options.delete(:extends)
+
+        Futurism::Helpers::WrappingFuturismElement.new(extends: extends, placeholder: html, options: options).render
+      end
+
+      def render_html(model, render_exceptions: true, **kwargs)
+        return renderer_for(**kwargs).render(model) unless render_exceptions
+
+        begin
+          renderer_for(**kwargs).render(model)
+        rescue => exception
+          error_renderer.render(exception)
+        end
+      end
 
       def error_renderer
         ErrorRenderer.new
