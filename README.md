@@ -1,8 +1,13 @@
 # Futurism
+
 [![Twitter follow](https://img.shields.io/twitter/follow/julian_rubisch?style=social)](https://twitter.com/julian_rubisch)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 Lazy-load Rails partials via CableReady
 
 :rotating_light: *BREAKING CHANGE: With v1.0, futurism has been transferred to the [stimulusreflex](https://github.com/stimulusreflex) organization. Please update your npm package to `@stimulus_reflex/futurism` accordingly* :rotating_light:
@@ -16,10 +21,13 @@ Lazy-load Rails partials via CableReady
 - [Facts](#facts)
   - [Browser Support](#browser-support)
 - [Usage](#usage)
+  - [Placeholders](#placeholders)
+  - [Tables and Lists](#tables-and-lists)
 - [API](#api)
   - [Resource](#resource)
   - [Explicit Partial](#explicit-partial)
   - [HTML Options](#html-options)
+  - [Observer Options](#observer-options)
   - [Eager Loading](#eager-loading)
   - [Bypassing](#bypassing)
   - [Broadcast Partials Individually](#broadcast-partials-individually)
@@ -36,6 +44,7 @@ Lazy-load Rails partials via CableReady
 - [Contributors](#contributors)
 
 ## Facts
+
 - only one dependency: CableReady
 - bundle size (without CableReady) is around [~2.46kB](https://bundlephobia.com/result?p=@stimulus_reflex/futurism@0.7.2)
 
@@ -50,19 +59,38 @@ Lazy-load Rails partials via CableReady
 [Caniuse](https://www.caniuse.com/#search=custom%20elements)
 
 ## Usage
-with a helper in your template
+
+Futurism provides the `futurize` helper. You can pass a single `ActiveRecord` or an `ActiveRecord::Relation`, just as you would call `render`:
 
 ```erb
-<%= futurize @posts, extends: :div do %>
+<%= futurize @posts do %>
   <!-- placeholder -->
 <% end %>
 ```
 
-custom `<futurism-element>`s (in the form of a `<div>` or a `<tr is="futurism-table-row">` are rendered. Those custom elements have an `IntersectionObserver` attached that will send a signed global id to an ActionCable channel (`FuturismChannel`) which will then replace the placeholders with the actual resource partial.
+The helper will emit `<futurism-element>` Web Component elements that have an `IntersectionObserver` attached. When the observer is triggered, it will send a signed global id to an Action Cable channel (`FuturismChannel`). The channel will then use CableReady to replace the placeholders with the actual resource partial.
 
-With that method, you could lazy load every class that has to_partial_path defined (ActiveModel has by default).
+With Futurism, you can lazy load any class that has to_partial_path defined, which includes every Active Record and Active Model by default.
 
-You can pass the placeholder as a block:
+### Placeholders
+
+An import concept in Futurism is the placeholder content which is displayed before the computed content is requested from the server.
+
+Pass the placeholder as a block:
+
+```erb
+<%= futurize @posts do %>
+  <div class="spinner"></div>
+<% end %>
+```
+
+![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
+
+Optionally, you can omit the placeholder, which instructs Futurism to utilize [eager loading](#eager-loading).
+
+### Tables and Lists
+
+By default, `futurize` assumes that you are working with a _`div`-like_ element. Due to idiosyncracies in the HTML specification, you need to provide an `extends` option if you're replacing content inside of a `table` or list (`ul` or `ol`).
 
 ```erb
 <%= futurize @posts, extends: :tr do %>
@@ -70,17 +98,25 @@ You can pass the placeholder as a block:
 <% end %>
 ```
 
-![aa601dec1930151f71dbf0d6b02b61c9](https://user-images.githubusercontent.com/4352208/87131629-f768a480-c294-11ea-89a9-ea0a76ee06ef.gif)
+You will see that a `<tr is="futurism-table-row">` is rendered instead of a `futurism-element`.
 
-You can also omit the placeholder, which falls back to [eager loading](#eager-loading).
+Similarly, you can replace an element in a list, resulting in an `<li is="futurism-li">` element:
+
+```erb
+<ul>
+  <%= futurize @posts, extends: :li do %>
+    Loading...
+  <% end %>
+</ul>
+```
 
 ## API
 
-Currently there are two ways to call `futurize`, designed to wrap `render`'s behavior:
+Currently there are two ways to call `futurize`, designed to mirror `render`'s behavior:
 
 ### Resource
 
-You can pass a single `ActiveRecord` or an `ActiveRecord::Relation` to `futurize`, just as you would call `render`:
+You can pass a single `ActiveRecord` or an `ActiveRecord::Relation` to `futurize`:
 
 ```erb
 <%= futurize @posts, extends: :tr do %>
@@ -107,7 +143,7 @@ That way you get maximal flexibility when just specifying a single resource.
 Call `futurize` with a `partial` keyword:
 
 ```erb
-<%= futurize partial: "items/card", locals: {card: @card}, extends: :div do %>
+<%= futurize partial: "items/card", locals: {card: @card} do %>
   <div class="spinner"></div>
 <% end %>
 ```
@@ -115,7 +151,7 @@ Call `futurize` with a `partial` keyword:
 You can also use the shorthand syntax:
 
 ```erb
-<%= futurize "items/card", card: @card, extends: :div do %>
+<%= futurize "items/card", card: @card do %>
   <div class="spinner"></div>
 <% end %>
 ```
@@ -125,7 +161,7 @@ You can also use the shorthand syntax:
 Collection rendering is also possible:
 
 ```erb
-<%= futurize partial: "items/card", collection: @cards, extends: :div do %>
+<%= futurize partial: "items/card", collection: @cards do %>
   <div class="spinner"></div>
 <% end %>
 ```
@@ -135,7 +171,7 @@ Collection rendering is also possible:
 You can also pass in the controller that will be used to render the partial.
 
 ```erb
-<%= futurize partial: "items/card", collection: @cards, controller: MyController, extends: :div do %>
+<%= futurize partial: "items/card", collection: @cards, controller: MyController do %>
   <div class="spinner"></div>
 <% end %>
 ```
@@ -164,7 +200,20 @@ This will output the following:
 </tr>
 ```
 
+### Observer Options
+
+You can pass a hash of attribute/value pairs that will be passed to the IntersectionObserver constructor.
+
+```erb
+<%= futurize @posts, observer_options: {rootMargin: "100px"} do %>
+  <div class="spinner"></div>
+<% end %>
+```
+
+One common use is to configure the observer to look ahead of the current viewable window to start loading partial content just before you scroll down to it. In many cases, this means that the user will never even be aware that the content they are seeing was lazy loaded.
+
 ### Eager Loading
+
 It may sound surprising to support eager loading in a lazy loading library :joy:, but there's a quite simple use case:
 
 Suppose you have some hidden interactive portion of your page, like a tab or dropdown. You don't want its content to block the initial page load, but once that is done, you occasionally don't want to wait for the element to become visible and trigger the `IntersectionObserver`, you want to lazy load its contents right after it's added to the DOM.
@@ -189,9 +238,9 @@ In some rare cases, e.g. when combined with CableReady's async `updates_for` mec
 
 Internally, this works the same as [bypassing futurism in tests](#testing)
 
-
 ### Broadcast Partials Individually
-Futurism's default behavior is to `broadcast` partials as they are generated in batches: 
+
+Futurism's default behavior is to `broadcast` partials as they are generated in batches:
 
 On the client side, `IntersectionObserver` events are triggered in a debounced fashion, so several `render`s are performed on the server for each of those events. By default, futurism will group those to a single `broadcast` call (to save server CPU time).
 
@@ -208,7 +257,7 @@ For collections, however, you can opt into individual broadcasts by specifying `
 For individual models or arbitrary collections, you can pass `record` and `index` to the placeholder block as arguments:
 
 ```erb
-<%= futurize @post, extends: :div do |post| %>
+<%= futurize @post do |post| %>
   <div><%= post.title %></div>
 <% end %>
 ```
@@ -255,6 +304,7 @@ end
 This is useful for performance monitoring, specifically for tracking the source of `futurize` calls.
 
 ## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -262,6 +312,7 @@ gem 'futurism'
 ```
 
 And then execute:
+
 ```bash
 $ bundle
 ```
@@ -275,6 +326,7 @@ $ bin/rails futurism:install
 **! Note that the installer will run `yarn add @stimulus_reflex/futurism` for you !**
 
 ### Manual Installation
+
 After `bundle`, install the Javascript library:
 
 There are a few ways to install the Futurism JavaScript client, depending on your application setup.
@@ -307,12 +359,12 @@ import * as Futurism from '@stimulus_reflex/futurism'
 
 import consumer from './consumer'
 
-Futurism.initializeElements()
-Futurism.createSubscription(consumer)
+Futurism.initialize(consumer)
 ```
 
 ## Authentication
-For authentication, you can rely on ActionCable identifiers, for example, if you use Devise:
+
+For authentication, you can rely on Action Cable identifiers, for example, if you use Devise:
 
 ```ruby
 module ApplicationCable
@@ -329,6 +381,7 @@ end
 The [Stimulus Reflex Docs](https://docs.stimulusreflex.com/authentication) have an excellent section about all sorts of authentication.
 
 ## Testing
+
 In Rails system tests there is a chance that flaky errors will occur due to Capybara not waiting for the placeholder elements to be replaced. To overcome this, add the flag
 
 ```ruby
@@ -363,6 +416,7 @@ Futurism.configure do |config|
 end
 
 ```
+
 in config/initializers.
 
 ## Contributing
@@ -413,6 +467,7 @@ yarn install --force
 9. Create a new release on GitHub ([here](https://github.com/stimulusreflex/futurism/releases)) and generate the changelog for the stable release for it
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Contributors ✨
