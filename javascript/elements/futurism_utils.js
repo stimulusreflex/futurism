@@ -42,13 +42,20 @@ const observerCallback = (entries, observer) => {
   entries.forEach(async entry => {
     if (!entry.isIntersecting) return
 
+    observer.disconnect()
     await callWithRetry(dispatchAppearEvent(entry, observer))
   })
 }
 
 export const extendElementWithIntersectionObserver = element => {
+  const observerOptions = element.dataset.observerOptions
+    ? JSON.parse(element.dataset.observerOptions)
+    : {}
   Object.assign(element, {
-    observer: new IntersectionObserver(observerCallback.bind(element), {})
+    observer: new IntersectionObserver(
+      observerCallback.bind(element),
+      observerOptions
+    )
   })
 
   if (!element.hasAttribute('keep')) {
