@@ -192,6 +192,30 @@ class Futurism::HelperTest < ActionView::TestCase
     assert_includes element.children.first.children.first.text, "Lorem"
   end
 
+  test "allows to automatically wrap the futurism html element with a CableReady updates_for element" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, updates_for: post, extends: :div) {})
+    assert_equal "updates-for", element.children.first.name
+    assert_equal "futurism-element", element.children.first.children.first.name
+  end
+
+  test "does not wrap the futurism html element with a CableReady updates_for element when using extends: :tr" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, updates_for: post, extends: :tr) {})
+    refute_equal "updates-for", element.children.first.name
+    assert_equal "tr", element.children.first.name
+  end
+
+  test "does not wrap the futurism html element with a CableReady updates_for element when using extends: :li" do
+    post = Post.create title: "Lorem"
+
+    element = Nokogiri::HTML.fragment(futurize(post, updates_for: post, extends: :li) {})
+    refute_equal "updates-for", element.children.first.name
+    assert_equal "li", element.children.first.name
+  end
+
   def verifier
     Futurism::MessageVerifier.message_verifier
   end
